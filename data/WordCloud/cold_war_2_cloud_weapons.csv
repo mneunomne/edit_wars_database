@@ -1,0 +1,128 @@
+﻿text	text ru/en	head	OR Filter 2	Regex String (OR)	text eng	text eng shortened	count
+срыв	срыв	угроза	True	(^угроз)	Disruption	disruption	4
+германия	германия	угроза	True	(^угроз)	Germany	germany	4
+авиация	авиация	угроза	True	(^угроз)	aviation	aviation	4
+создание	создание	угроза	True	(^угроз)	creation	creation	4
+смерть	смерть	угроза	True	(^угроз)	death	death	4
+уничтожение	уничтожение	угроза	True	(^угроз)	destruction	destruction	4
+эмбарго	эмбарго	угроза	True	(^угроз)	embargo	embargo	4
+смертельный	смертельный	угроза	True	(^угроз)	fatal	fatal	4
+человечество	человечество	угроза	True	(^угроз)	humanity	humanity	4
+больший	больший	угроза	True	(^угроз)	more	more	4
+вернуть	вернуть	угроза	True	(^угроз)	return	return	4
+стратегия	стратегия	угроза	True	(^угроз)	strategy	strategy	4
+судно	судно	угроза	True	(^угроз)	vessel	vessel	4
+биооружия	биооружия	угроза	True	(^угроз)	Bio -weapon	bio -weapon	5
+блокировка	блокировка	угроза	True	(^угроз)	Blocking	blocking	5
+спецслужба	спецслужба	угроза	True	(^угроз)	Special services	special services	5
+арест	арест	угроза	True	(^угроз)	arrest	arrest	5
+стабильность	стабильность	угроза	True	(^угроз)	stability	stability	5
+всу	всу	угроза	True	(^угроз)	Armed Forces	armed forces	6
+байдена	байдена	угроза	True	(^угроз)	Biden	biden	6
+эскалация	эскалация	угроза	True	(^угроз)	escalation	escalation	6
+выдворить	выдворить	угроза	True	(^угроз)	expel	expel	6
+выдворение	выдворение	угроза	True	(^угроз)	expulsion	expulsion	6
+убийство	убийство	угроза	True	(^угроз)	murder	murder	6
+власть	власть	угроза	True	(^угроз)	power	power	6
+белоруссия	белоруссия	угроза	True	(^угроз)	Belarus	belarus	7
+биолабораторий	биолабораторий	угроза	True	(^угроз)	Biolaboratories	biolaboratories	7
+альянс	альянс	угроза	True	(^угроз)	alliance	alliance	7
+биологический	биологический	угроза	True	(^угроз)	biological	biological	7
+экзистенциальный	экзистенциальный	угроза	True	(^угроз)	existential	existential	7
+существование	существование	угроза	True	(^угроз)	Existence	existence	8
+вашингтон	вашингтон	угроза	True	(^угроз)	Washington	washington	8
+большой	большой	угроза	True	(^угроз)	big	big	8
+столкновение	столкновение	угроза	True	(^угроз)	collision	collision	8
+выслать	выслать	угроза	True	(^угроз)	Send	send	9
+ввести	ввести	угроза	True	(^угроз)	Introduce	introduce	10
+атака	атака	угроза	True	(^угроз)	attack	attack	10
+целостность	целостность	угроза	True	(^угроз)	integrity	integrity	10
+вступление	вступление	угроза	True	(^угроз)	introduction	introduction	10
+удар	удар	угроза	True	(^угроз)	hit	hit	12
+атаковать	атаковать	угроза	True	(^угроз)	to attack	attack	12
+ударить	ударить	угроза	True	(^угроз)	hit	hit	13
+возможный	возможный	угроза	True	(^угроз)	possible	possible	14
+экономика	экономика	угроза	True	(^угроз)	economy	economy	15
+взрыв	взрыв	угроза	True	(^угроз)	explosion	explosion	19
+страна	страна	угроза	True	(^угроз)	country	country	20
+вторжение	вторжение	угроза	True	(^угроз)	invasion	invasion	37
+военный	военный	угроза	True	(^угроз)	military	military	40
+украина	украина	угроза	True	(^угроз)	Ukraine	ukraine	42
+ядерный	ядерный	угроза	True	(^угроз)	nuclear	nuclear	62
+адрес	адрес	угроза	True	(^угроз)	address	address	68
+сша	сша	угроза	True	(^угроз)	USA	usa	73
+безопасность	безопасность	угроза	True	(^угроз)	safety	safety	80
+война	война	угроза	True	(^угроз)	war	war	85
+мост	мост	угроза	True	(^угроз)	bridge	bridge	11
+система	система	угроза	True	(^угроз)	system	system	11
+китайский	китайский	угроза	True	(^угроз)	Chinese	chinese	12
+кризис	кризис	угроза	True	(^угроз)	a crisis	crisis	14
+острый	острый	угроза	True	(^угроз)	spicy	spicy	14
+кибератак	кибератак	угроза	True	(^угроз)	Kiberatak	kiberatak	17
+запад	запад	угроза	True	(^угроз)	west	west	17
+серьёзный	серьёзный	угроза	True	(^угроз)	serious	serious	18
+рф	рф	угроза	True	(^угроз)	RF	rf	19
+новый	новый	угроза	True	(^угроз)	new	new	19
+конфликт	конфликт	угроза	True	(^угроз)	conflict	conflict	21
+зеленского	зеленского	угроза	True	(^угроз)	Zelensky	zelensky	22
+мир	мир	угроза	True	(^угроз)	world	world	22
+прямой	прямой	угроза	True	(^угроз)	straight	straight	25
+реальный	реальный	угроза	True	(^угроз)	real	real	26
+киев	киев	угроза	True	(^угроз)	Kyiv	kyiv	31
+нато	нато	угроза	True	(^угроз)	NATO	nato	36
+голод	голод	угроза	True	(^угроз)	hunger	hunger	36
+российский	российский	угроза	True	(^угроз)	Russian	russian	50
+санкция	санкция	угроза	True	(^угроз)	sanction	sanction	57
+минирование	минирование	угроза	True	(^угроз)	mining	mining	88
+россия	россия	угроза	True	(^угроз)	Russia	russia	108
+рецессия	рецессия	угроза	True	(^угроз)	recession	recession	7
+значительный	значительный	угроза	True	(^угроз)	significant	significant	7
+повредить	повредить	угроза	True	(^угроз)	to harm	harm	7
+концепция	концепция	угроза	True	(^угроз)	concept	concept	8
+польша	польша	угроза	True	(^угроз)	Poland	poland	9
+применение	применение	угроза	True	(^угроз)	Application	application	10
+европа	европа	угроза	True	(^угроз)	Europe	europe	10
+нацбезопасность	нацбезопасность	угроза	True	(^угроз)	National security	national security	10
+журналист	журналист	угроза	True	(^угроз)	journalist	journalist	4
+запретить	запретить	угроза	True	(^угроз)	prohibit	prohibit	4
+настоящий	настоящий	угроза	True	(^угроз)	real	real	4
+граница	граница	угроза	True	(^угроз)	the border	border	4
+конец	конец	угроза	True	(^угроз)	the end	end	4
+госдеп	госдеп	угроза	True	(^угроз)	State Department	state department	5
+деятельность	деятельность	угроза	True	(^угроз)	activity	activity	5
+дефицит	дефицит	угроза	True	(^угроз)	deficit	deficit	5
+депутат	депутат	угроза	True	(^угроз)	deputy	deputy	5
+жизнь	жизнь	угроза	True	(^угроз)	life	life	5
+нанести	нанести	угроза	True	(^угроз)	Apply	apply	6
+закрытие	закрытие	угроза	True	(^угроз)	Closing	closing	6
+мнимый	мнимый	угроза	True	(^угроз)	imaginary	imaginary	6
+прекращение	прекращение	угроза	True	(^угроз)	termination	termination	6
+китай	китай	угроза	True	(^угроз)	China	china	7
+отключить	отключить	угроза	True	(^угроз)	Disconnect	disconnect	7
+ес	ес	угроза	True	(^угроз)	EU	eu	7
+против	против	угроза	True	(^угроз)	against	against	7
+нападение	нападение	угроза	True	(^угроз)	attack	attack	7
+несмотря	несмотря	угроза	True	(^угроз)	despite	despite	7
+расти	расти	угроза	True	(^угроз)	grow	grow	7
+обход	обход	угроза	True	(^угроз)	Bypass	bypass	4
+отключение	отключение	угроза	True	(^угроз)	Disconnect	disconnect	4
+петербург	петербург	угроза	True	(^угроз)	Petersburg	petersburg	4
+основный	основный	угроза	True	(^угроз)	basic	basic	4
+глава	глава	угроза	True	(^угроз)	chapter	chapter	4
+позиция	позиция	угроза	True	(^угроз)	position	position	4
+потенциальный	потенциальный	угроза	True	(^угроз)	potential	potential	4
+потеря	потеря	угроза	True	(^угроз)	the loss	loss	4
+оружие	оружие	угроза	True	(^угроз)	weapon	weapon	4
+освоение	освоение	угроза	True	(^угроз)	Mastering	mastering	5
+россиянин	россиянин	угроза	True	(^угроз)	Russian	russian	5
+непосредственный	непосредственный	угроза	True	(^угроз)	direct	direct	5
+рынок	рынок	угроза	True	(^угроз)	market	market	5
+поступать	поступать	угроза	True	(^угроз)	to act	act	5
+глобальный	глобальный	угроза	True	(^угроз)	global	global	7
+главный	главный	угроза	True	(^угроз)	main	main	64
+лукашенко	лукашенко	угроза	True	(^угроз)	Lukashenko	lukashenko	4
+москва	москва	угроза	True	(^угроз)	Moscow	moscow	4
+зеленскому	зеленскому	угроза	True	(^угроз)	Zelensky	zelensky	4
+запрет	запрет	угроза	True	(^угроз)	ban	ban	4
+кибербезопасности	кибербезопасности	угроза	True	(^угроз)	cybersecurity	cybersecurity	4
+дипломат	дипломат	угроза	True	(^угроз)	diplomat	diplomat	4

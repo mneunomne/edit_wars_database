@@ -1,0 +1,48 @@
+﻿text	text ru/en	head	OR Filter 2	Regex String (OR)	text eng	text eng shortened	count
+мост	мост	денацифицировали	True	(денациф)	bridge	bridge	1
+мединский	мединский	денацификация	True	(денациф)	Medinsky	medinsky	1
+народный	народный	денацификация	True	(денациф)	People's	people's	1
+путинский	путинский	денацификация	True	(денациф)	Putinsky	putinsky	1
+пигмей	пигмей	денацификация	True	(денациф)	Pygmy	pygmy	1
+россия	россия	денацификация	True	(денациф)	Russia	russia	1
+сербия	сербия	денацификация	True	(денациф)	Serbia	serbia	1
+сша	сша	денацификация	True	(денациф)	USA	usa	1
+район	район	денацификация	True	(денациф)	area	area	1
+автор	автор	денацификация	True	(денациф)	author	author	1
+беспилотный	беспилотный	денацификация	True	(денациф)	unmanned	unmanned	1
+наносить	наносить	денацифицировать	True	(денациф)	apply	apply	1
+лавр	лавр	денацификация	True	(денациф)	laurel	laurel	1
+наёмник	наёмник	денацифицирован	True	(денациф)	mercenary	mercenary	1
+наёмник	наёмник	денацифицированы	True	(денациф)	mercenary	mercenary	1
+новый	новый	денацификация	True	(денациф)	new	new	1
+страна	страна	денацификация	True	(денациф)	country	country	1
+восторг	восторг	денацификация	True	(денациф)	delight	delight	1
+европа	европа	денацификация	True	(денациф)	Europe	europe	3
+полный	полный	денацификация	True	(денациф)	full	full	3
+германия	германия	денацификация	True	(денациф)	Germany	germany	4
+украина	украина	денацификация	True	(денациф)	Ukraine	ukraine	53
+полянский	полянский	денацификация	True	(денациф)	Polyansky	polyansky	2
+подлежать	подлежать	денацификация	True	(денациф)	Support	support	2
+демилитаризация	демилитаризация	денацификация	True	(денациф)	demilitarization	demilitarization	4
+украина	украина	денацифицировать	True	(денациф)	Ukraine	ukraine	3
+дебандеризация	дебандеризация	денацификация	True	(денациф)	Debanderization	debanderization	1
+киселёв	киселёв	денацификация	True	(денациф)	Kiselev	kiselev	1
+ход	ход	денацификация	True	(денациф)	move	move	1
+часть	часть	денацификация	True	(денациф)	part	part	1
+отставка	отставка	денацификация	True	(денациф)	resignation	resignation	1
+школа	школа	денацификация	True	(денациф)	school	school	1
+соцсеть	соцсеть	денацификация	True	(денациф)	social network	social network	1
+статус	статус	денацификация	True	(денациф)	status	status	1
+состояться	состояться	денацификация	True	(денациф)	take place	take place	1
+бандера	бандера	денацифицировать	True	(денациф)	Bandera	bandera	1
+правильно	правильно	денацифицировать	True	(денациф)	right	right	1
+крым	крым	денацифицируют	True	(денациф)	Crimea	crimea	1
+дмитрий	дмитрий	денацифицированы	True	(денациф)	Dmitry	dmitry	1
+практика	практика	денацифицировать	True	(денациф)	practice	practice	1
+область	область	денацифицировали	True	(денациф)	region	region	1
+название	название	денацифицируют	True	(денациф)	title	title	1
+война	война	денацификация	True	(денациф)	war	war	1
+какова	какова	денацификация	True	(денациф)	what	what	1
+начавшаяся	начавшаяся	денацификация	True	(денациф)	which has begun	which has begun	1
+украина	украина	денацифицирован	True	(денациф)	Ukraine	ukraine	1
+впервые	впервые	денацифицирован	True	(денациф)	first	first	1

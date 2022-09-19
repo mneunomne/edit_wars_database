@@ -1,0 +1,94 @@
+﻿text	text ru/en	head	OR Filter 2	Regex String (OR)	text eng	text eng shortened	count
+перелом	перелом	беженец	True	(бежен)	Fracture	fracture	2
+нелегал	нелегал	беженец	True	(бежен)	Imaginal	imaginal	2
+ижевск	ижевск	беженец	True	(бежен)	Izhevsk	izhevsk	2
+одесса	одесса	беженец	True	(бежен)	Odessa	odessa	2
+недовольный	недовольный	беженец	True	(бежен)	dissatisfied	dissatisfied	2
+застрять	застрять	беженец	True	(бежен)	get stuck	get stuck	2
+нелегальный	нелегальный	беженец	True	(бежен)	illegal	illegal	2
+пострадавшим	пострадавшим	беженец	True	(бежен)	victims	victims	2
+зона	зона	беженец	True	(бежен)	zone	zone	2
+днр	днр	беженка	True	(бежен)	DPR	dpr	3
+донецк	донецк	беженка	True	(бежен)	Donetsk	donetsk	3
+разлучница	разлучница	беженка	True	(бежен)	Minor	minor	2
+заманивать	заманивать	беженец	True	(бежен)	entice	entice	4
+москва	москва	беженец	True	(бежен)	Moscow	moscow	5
+летний	летний	беженка	True	(бежен)	Summer	summer	5
+донбасский	донбасский	беженец	True	(бежен)	Donbass	donbass	6
+новый	новый	беженец	True	(бежен)	new	new	6
+приютить	приютить	беженец	True	(бежен)	shelter	shelter	6
+въехать	въехать	беженец	True	(бежен)	Enter	enter	2
+вынужденный	вынужденный	беженец	True	(бежен)	compelled	compelled	2
+полумиллиона	полумиллиона	беженец	True	(бежен)	half a million	half million	2
+покидать	покидать	беженец	True	(бежен)	leave	leave	2
+эвакуировать	эвакуировать	беженец	True	(бежен)	evacuate	evacuate	5
+афганский	афганский	беженец	True	(бежен)	Afghan	afghan	6
+hronika	hronika	беженец	True	(бежен)	Hronika	hronika	6
+украинским	украинским	беженкам	True	(бежен)	Ukrainian	ukrainian	6
+болгария	болгария	беженец	True	(бежен)	Bulgaria	bulgaria	9
+украинские	украинские	беженка	True	(бежен)	Ukrainian	ukrainian	11
+украинской	украинской	беженка	True	(бежен)	Ukrainian	ukrainian	12
+украинская	украинская	беженка	True	(бежен)	Ukrainian	ukrainian	18
+украина	украина	беженка	True	(бежен)	Ukraine	ukraine	19
+украинскими	украинскими	беженец	True	(бежен)	Ukrainian	ukrainian	38
+украинским	украинским	беженец	True	(бежен)	Ukrainian	ukrainian	116
+украинские	украинские	беженец	True	(бежен)	Ukrainian	ukrainian	162
+тысяча	тысяча	беженец	True	(бежен)	one thousand	one thousand	184
+украина	украина	беженец	True	(бежен)	Ukraine	ukraine	287
+донецкий	донецкий	беженец	True	(бежен)	Donetsk	donetsk	2
+мир	мир	беженец	True	(бежен)	world	world	6
+сирийский	сирийский	беженец	True	(бежен)	Syrian	syrian	7
+прибывать	прибывать	беженец	True	(бежен)	arrive	arrive	7
+принять	принять	беженец	True	(бежен)	to accept	accept	8
+приехать	приехать	беженец	True	(бежен)	come	come	9
+область	область	беженец	True	(бежен)	region	region	10
+донецк	донецк	беженец	True	(бежен)	Donetsk	donetsk	14
+каждый	каждый	беженец	True	(бежен)	each	each	14
+млн	млн	беженец	True	(бежен)	Mill	mill	17
+республика	республика	беженец	True	(бежен)	republic	republic	17
+житель	житель	беженец	True	(бежен)	a citizen	citizen	20
+лднр	лднр	беженец	True	(бежен)	LDNR	ldnr	22
+миллион	миллион	беженец	True	(бежен)	million	million	31
+прибыть	прибыть	беженец	True	(бежен)	Arrive	arrive	48
+лнр	лнр	беженец	True	(бежен)	LPR	lpr	110
+днр	днр	беженец	True	(бежен)	DPR	dpr	316
+украинский	украинский	беженец	True	(бежен)	Ukrainian	ukrainian	3
+безработный	безработный	беженец	True	(бежен)	unemployed	unemployed	3
+британия	британия	беженец	True	(бежен)	Britannia	britannia	4
+убить	убить	беженец	True	(бежен)	Kill	kill	4
+украинскую	украинскую	беженка	True	(бежен)	Ukrainian	ukrainian	4
+украинского	украинского	беженец	True	(бежен)	Ukrainian	ukrainian	4
+афганистан	афганистан	беженец	True	(бежен)	Afghanistan	afghanistan	2
+африканский	африканский	беженец	True	(бежен)	African	african	2
+covid	covid	беженец	True	(бежен)	Covid	covid	2
+спасшиеся	спасшиеся	беженец	True	(бежен)	Saved	saved	2
+юго	юго	беженец	True	(бежен)	South	south	2
+tverlife	tverlife	беженец	True	(бежен)	Tverlife	tverlife	2
+украинец	украинец	беженец	True	(бежен)	Ukrainian	ukrainian	2
+страна	страна	беженец	True	(бежен)	country	country	2
+сми	сми	беженец	True	(бежен)	mass media	mass media	2
+собственный	собственный	беженец	True	(бежен)	own	own	2
+бедный	бедный	беженец	True	(бежен)	poor	poor	2
+шесть	шесть	беженец	True	(бежен)	six	six	2
+ветеран	ветеран	беженец	True	(бежен)	veteran	veteran	2
+украина	украина	беженкам	True	(бежен)	Ukraine	ukraine	2
+украинскими	украинскими	беженками	True	(бежен)	Ukrainian	ukrainian	2
+казахстан	казахстан	беженец	True	(бежен)	Kazakhstan	kazakhstan	3
+киев	киев	беженец	True	(бежен)	Kyiv	kyiv	3
+разместить	разместить	беженец	True	(бежен)	Place	place	3
+рубежного	рубежного	беженец	True	(бежен)	Rubezhnaya	rubezhnaya	3
+русский	русский	беженец	True	(бежен)	Russian	russian	3
+обратиться	обратиться	беженец	True	(бежен)	Turn	turn	3
+ребёнок	ребёнок	беженец	True	(бежен)	child	child	3
+изюм	изюм	беженец	True	(бежен)	raisin	raisin	3
+граница	граница	беженец	True	(бежен)	the border	border	3
+рф	рф	беженец	True	(бежен)	RF	rf	4
+пострадать	пострадать	беженец	True	(бежен)	get injured	get injured	4
+болгария	болгария	беженка	True	(бежен)	Bulgaria	bulgaria	2
+норвегия	норвегия	беженец	True	(бежен)	Norway	norway	5
+россия	россия	беженец	True	(бежен)	Russia	russia	5
+порядка	порядка	беженец	True	(бежен)	order	order	5
+переселенец	переселенец	беженец	True	(бежен)	Migrant	migrant	6
+россиянин	россиянин	беженец	True	(бежен)	Russian	russian	2
+саратов	саратов	беженец	True	(бежен)	Saratov	saratov	2
+против	против	беженец	True	(бежен)	against	against	2
