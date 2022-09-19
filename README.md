@@ -1,6 +1,5 @@
 # edit wars database
 
-## converting the data files
 
 ### converting .csv files to utf-8
 
@@ -20,3 +19,15 @@ for file in *.csv; do
     mv "$file.tmp" "$file"
 done
 ```
+
+### list exports 
+
+```sh 
+find ./export -type f -name "*.json" > exports.txt
+```
+
+### download all exports to local folder
+
+```sh
+wget -i ./exports.txt
+``` 
