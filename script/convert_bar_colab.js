@@ -3,9 +3,8 @@ const { parse } = require("csv-parse");
 var path = require('path')
 
 const csv=require('csvtojson')
-
-const dataFolder = 'data/BarChart/';
-const outputFolder = 'export/BarChart/'
+const dataFolder = 'data/colab/';
+const outputFolder = 'export/colab/'
 
 
 fs.readdir(dataFolder, (err, files) => {
@@ -17,17 +16,11 @@ fs.readdir(dataFolder, (err, files) => {
 });
 
 const readCsvFile = (filename) => 
-  csv({delimiter: '\t'})
+  csv({delimiter: ','})
     .fromFile(dataFolder + filename)
     .then((jsonObj)=>{
       var outputData = {}
-      // console.log(`reading file ${filename}`)
-      // check if its weekly
-      if (Object.keys(jsonObj[0])[0] == "Week of fetchdate_orig") {
-        outputData = processWeeklyStackedChart(jsonObj)
-      } else {
-        outputData = processDailyStackedChart(jsonObj)
-      }
+      outputData = generateCountArray(processColabChart(jsonObj))
       saveJsonFile(filename.replace('.csv', '.json'), JSON.stringify(outputData))
     })
   
@@ -41,34 +34,55 @@ const saveJsonFile = (filename, jsonString) => {
   });
 }
 
-const processWeeklyStackedChart = (jsonObj) => {
+
+const processColabChart = (jsonObj) => {
   return jsonObj.map((obj) => {
     return {
-      "fetchdata_orig": formatDate(obj["Week of fetchdate_orig"]),
-      "page_domain_root": obj["page_domain_root"],
-      "page_url": obj["page_url"],
-      "title": obj["title"],
-      "id": obj["ID"]
+      "id": obj["id"],
+      "frequency": obj["Frequency"],
+      "timestamp": formatDate(obj["Timestamp"]),
+      "topic": obj["Topic"],
+      "words": obj["Words"]
     }
   })
 }
 
-const processDailyStackedChart = (jsonObj) => {
-  return jsonObj.map((obj) => {
-    return {
-      "fetchdata_orig": formatDate(obj["fetchdate_orig"].replace(" 00:00:00", "")),
-      "page_domain_root": obj["page_domain_root"],
-      "page_url": obj["page_url"],
-      "title": obj["title"],
-      "id": obj["ID"]
-    }
+const generateCountArray = (jsonObj) => {
+
+  var datasets = []
+
+  // unique topics
+  var topics = [...new Set(jsonObj.map(obj => obj["topic"]))]
+  console.log("topics" ,topics)
+  // unique dates for the labels
+  var dates = [...new Set(jsonObj.map(obj => obj["timestamp"]))]
+
+  // create object for each dataset
+  topics.map((topic) => {
+    datasets.push({
+      'labels': `topic ${topic}`, // e.g. topic 19
+      'borderColor': ``,
+      'backgroundColor': '',
+      'data': [],
+    })
   })
+  
+  // populate datasets with data
+  jsonObj.map((d) => {
+    let index = topics.indexOf(d["topic"]) // pick correct dataset
+    datasets[index]['data'].push(parseInt(d["frequency"]))
+  })
+  
+  // return in chartjs format 
+  return {
+    "labels": dates,
+    "datasets": datasets
+  }
 }
+
 
 const formatDate = (dateString) => {
-  dateString = dateString.slice(0, dateString.length - 9) 
-  var dateParts = dateString.split("/");
-  // month is 0-based, that's why we need dataParts[1] - 1
-  var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]).toString();
-  return dateObject
+  //console.log("dateString", dateString)
+  var dateObject = new Date(dateString)
+  return dateObject.toISOString()
 }

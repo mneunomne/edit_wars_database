@@ -21,6 +21,7 @@ const readCsvFile = (filename) =>
   csv({delimiter: '\t'})
     .fromFile(dataFolder + filename)
     .then((jsonObj)=>{
+      let nameId = filename.replace('.csv', '.json')
       var outputData = {}
       // console.log(`reading file ${filename}`)
       // check if its weekly
@@ -32,7 +33,7 @@ const readCsvFile = (filename) =>
       // save stacked data
       saveJsonFile(outputStackedFolder + filename.replace('.csv', '.json'), JSON.stringify(outputData))
       // save unstacked counts data
-      var dataCounts = generateCountArray(outputData)
+      var dataCounts = generateCountArray(outputData, filename.replace('.csv', ''))
       saveJsonFile(outputUnstackedFolder + filename.replace('.csv', '.json'), JSON.stringify(dataCounts))
     })
   
@@ -72,7 +73,7 @@ const processDailyStackedChart = (jsonObj) => {
 
 
 
-const generateCountArray = (jsonObj) => {
+const generateCountArray = (jsonObj, nameId) => {
   //console.log("jsonObj", jsonObj)
   var dates = [...new Set(jsonObj.map(obj => obj["fetchdate_orig"]))]
   var dataValues = dates.map(d => 0)
@@ -82,11 +83,13 @@ const generateCountArray = (jsonObj) => {
     dataValues[index] = dataValues[index]+1
   })
   return {
-    "dates": dates,
-    "counts": dataValues
+    "labels": dates,
+    "datasets": [{
+      "label": nameId,
+      "data": dataValues
+    }]
   }
 }
-
 
 const formatDateDaily = (dateString) => {
   dateString = dateString.slice(0, dateString.length - 9)  // to remove " 00:00:00"
