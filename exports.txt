@@ -40,3 +40,12 @@
 ./export/Colab/protecting_chart_refugees_0.json
 ./export/Colab/sanctions_chart_0.json
 ./export/Colab/protecting_chart_heros.json
+./export/WordCloud/nazis_cloud_denazification.json
+./export/WordCloud/protecting_cloud_protection.json
+./export/WordCloud/cold_war_2_cloud_mistake.json
+./export/WordCloud/sanctions_cloud_iso.json
+./export/WordCloud/protecting_cloud_veteran.json
+./export/WordCloud/protecting_cloud_refugees.json
+./export/WordCloud/protecting_cloud_shelling.json
+./export/WordCloud/protecting_cloud_genocid.json
+./export/WordCloud/cold_war_2_cloud_weapons.json
