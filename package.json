@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "convert_bar_chart": "node ./script/convert_bar_chart.js",
-    "convert_bar_colab": "node ./script/convert_bar_colab.js"
+    "convert_bar_colab": "node ./script/convert_bar_colab.js",
+    "convert_word_cloud": "node ./script/convert_word_cloud.js"
   },
   "repository": {
     "type": "git",
