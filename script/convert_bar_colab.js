@@ -69,8 +69,13 @@ const generateCountArray = (jsonObj) => {
   
   // populate datasets with data
   jsonObj.map((d) => {
-    let index = topics.indexOf(d["topic"]) // pick correct dataset
-    datasets[index]['data'].push(parseInt(d["frequency"]))
+    let topic_index = topics.indexOf(d["topic"]) // pick correct dataset
+    datasets[topic_index]['data'].push(
+      {
+        x: obj["timestamp"],
+        y: parseInt(d["frequency"]) 
+      }
+    )
   })
   
   // return in chartjs format 

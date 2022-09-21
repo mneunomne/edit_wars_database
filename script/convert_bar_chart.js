@@ -76,11 +76,16 @@ const processDailyStackedChart = (jsonObj) => {
 const generateCountArray = (jsonObj, nameId) => {
   //console.log("jsonObj", jsonObj)
   var dates = [...new Set(jsonObj.map(obj => obj["fetchdate_orig"]))]
-  var dataValues = dates.map(d => 0)
+  var dataValues = dates.map(d => {
+    return {
+      x: d,
+      y: 0
+    }
+  })
   jsonObj.map((d) => {
     var date = d.fetchdate_orig
     var index = dates.indexOf(date)
-    dataValues[index] = dataValues[index]+1
+    dataValues[index].y = dataValues[index].y+1
   })
   return {
     "labels": dates,
