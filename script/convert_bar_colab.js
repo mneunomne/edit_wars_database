@@ -60,7 +60,7 @@ const generateCountArray = (jsonObj) => {
   // create object for each dataset
   topics.map((topic) => {
     datasets.push({
-      'labels': `topic ${topic}`, // e.g. topic 19
+      'label': `topic ${topic}`, // e.g. topic 19
       'borderColor': ``,
       'backgroundColor': '',
       'data': [],
