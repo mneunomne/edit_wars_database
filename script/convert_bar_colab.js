@@ -72,7 +72,7 @@ const generateCountArray = (jsonObj) => {
     let topic_index = topics.indexOf(d["topic"]) // pick correct dataset
     datasets[topic_index]['data'].push(
       {
-        x: obj["timestamp"],
+        x: d["timestamp"],
         y: parseInt(d["frequency"]) 
       }
     )
