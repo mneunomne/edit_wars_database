@@ -5,8 +5,8 @@ var path = require('path')
 const csv=require('csvtojson')
 
 const dataFolder = 'data/BarChart/';
-const outputStackedFolder = 'export/BarChart/stacked/'
-const outputUnstackedFolder = 'export/BarChart/unstacked/'
+const outputStackedFolder = 'export/'
+const outputUnstackedFolder = 'export/'
 
 
 fs.readdir(dataFolder, (err, files) => {
@@ -31,7 +31,7 @@ const readCsvFile = (filename) =>
         outputData = processDailyStackedChart(jsonObj)
       }
       // save stacked data
-      saveJsonFile(outputStackedFolder + filename.replace('.csv', '.json'), JSON.stringify(outputData))
+      saveJsonFile(outputStackedFolder + 'stacked_' + filename.replace('.csv', '.json'), JSON.stringify(outputData))
       // save unstacked counts data
       var dataCounts = generateCountArray(outputData, filename.replace('.csv', ''))
       saveJsonFile(outputUnstackedFolder + filename.replace('.csv', '.json'), JSON.stringify(dataCounts))

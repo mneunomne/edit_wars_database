@@ -4,7 +4,7 @@ var path = require('path')
 
 const csv=require('csvtojson')
 const dataFolder = 'data/WordCloud/';
-const outputFolder = 'export/WordCloud/'
+const outputFolder = 'export/'
 
 
 var mergedNodes = []

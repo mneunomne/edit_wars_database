@@ -4,7 +4,7 @@ var path = require('path')
 
 const csv=require('csvtojson')
 const dataFolder = 'data/colab/';
-const outputFolder = 'export/colab/'
+const outputFolder = 'export/'
 
 
 fs.readdir(dataFolder, (err, files) => {
