@@ -69,11 +69,10 @@ const collectNarrativeNodes = (nodes, links, narrative, jsonObj) => {
           let target = obj["target"]
           obj["source"] = snowball.stemword(source, 'russian')
           obj["target"] = snowball.stemword(target, 'russian')
-          console.log("source", source, obj["source"])
-
+          
           links.push(obj)
-
           mergedLinks.push(obj)
+          
           var existing_node = nodes.find(n => n.id == obj["source"])
           if (!existing_node) {
             nodes.push({
