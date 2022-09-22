@@ -88,16 +88,15 @@
         .enableNodeDrag(false)
         .showNavInfo(false)
         .nodeAutoColorBy('group')
-        .linkAutoColorBy('group')
-        //.backgroundColor("#ffffff")
         //.linkWidth(1)
         //.linkOpacity(1.0)
-        .backgroundColor("#ffffff")
+        .backgroundColor("rgba(0, 0, 0, 0)")
+        //.backgroundColor("#000000")
         //.linkWidth(1)
         //.linkCurvature(0.1)
         //.linkAutoColorBy(function (link) { return "#f542c8"})
         .linkOpacity(0.05)
-        
+        .linkColor(() => "#000000")
         //.onNodeHover()
         .nodeThreeObject(node => {
           //console.log("node", node)l
@@ -136,7 +135,7 @@
         });
 
       // Spread nodes a little wider
-      Graph.d3Force('charge').strength(-300);
+      Graph.d3Force('charge').strength(-200);
     }, 1000)
 
 
