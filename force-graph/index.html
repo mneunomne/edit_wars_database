@@ -99,14 +99,13 @@
         .linkColor(() => "#000000")
         //.onNodeHover()
         .nodeThreeObject(node => {
-          //console.log("node", node)l
           const group = new THREE.Group();
           const geometry = new THREE.SphereGeometry(2, 32, 64);
           const material = new THREE.MeshBasicMaterial({ color: node.color });
           const sphere = new THREE.Mesh(geometry, material);
           group.add(sphere);
 
-          const sprite = new SpriteText(node.ru);
+          const sprite = new SpriteText(node.en);
           sprite.position.set(2, 10, 0);
           
           sprite.fontFace = "roboto-mono";
@@ -119,7 +118,6 @@
             sprite.textHeight =  18
             //sprite.color = "red";
             //sprite.fontWeight = 500
-            console.log("key node", node)
             //sprite.textHeight = 40;
             sprite.fontWeight = 'bold';
           } else {
