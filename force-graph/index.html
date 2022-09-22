@@ -99,7 +99,6 @@
         .linkColor(() => "#000000")
         //.onNodeHover()
         .nodeThreeObject(node => {
-          //console.log("node", node)l
           const group = new THREE.Group();
           const geometry = new THREE.SphereGeometry(2, 32, 64);
           const material = new THREE.MeshBasicMaterial({ color: node.color });
@@ -119,7 +118,6 @@
             sprite.textHeight =  18
             //sprite.color = "red";
             //sprite.fontWeight = 500
-            console.log("key node", node)
             //sprite.textHeight = 40;
             sprite.fontWeight = 'bold';
           } else {
