@@ -3,11 +3,14 @@ const { parse } = require("csv-parse");
 var path = require('path')
 
 const csv=require('csvtojson')
+var snowball = require('node-snowball');
+
 const dataFolder = 'data/WordCloud/';
 const outputFolder = 'export/narratives_word_graphs/'
 
 const path_full_connections_data = 'data/full_connections_data/full_data.csv'
 const path_narratives_keywords = 'data/narratives_keywords.json'
+
 
 var mergedNodes = []
 var mergedLinks = []
@@ -59,33 +62,44 @@ const collectNarrativeNodes = (nodes, links, narrative, jsonObj) => {
       // check for each keyword
       keywords.map((keyword, index) => {
         let regex = new RegExp(keyword, 'g');
-        if (parseInt(obj["count"]) < 10) return false
+        if (parseInt(obj["count"]) < 5) return false
         if (regex.exec(obj["source"]) || regex.exec(obj["target"])) {
+
+          let source = obj["source"]
+          let target = obj["target"]
+          obj["source"] = snowball.stemword(source, 'russian')
+          obj["target"] = snowball.stemword(target, 'russian')
+          console.log("source", source, obj["source"])
+
           links.push(obj)
+
           mergedLinks.push(obj)
-          // only give count to the header 
           var existing_node = nodes.find(n => n.id == obj["source"])
           if (!existing_node) {
             nodes.push({
               "id": obj["source"],
+              "ru": source,
               "en": obj["source_en"],
               "group": index, // if is keyword, group 1, if not group 0
               "value": parseInt(obj["count"]),
-              "keyword": keyword
+              "keyword": keyword,
+              "isKeyword": regex.exec(obj["source"]) ? true : false
             })
           } else {
             // add count to node if it already exists
             existing_node.value += parseInt(obj["count"])
           }
-
+          
           existing_node = nodes.find(n => n.id == obj["target"])
           if (!nodes.some(n => n.id == obj["target"])) {
             nodes.push({
               "id": obj["target"],
               "en": obj["target_ru"],
+              "ru": target,
               "group": index, // if is keyword, group 1, if not group 0
               "value": parseInt(obj["count"]),
-              "keyword": keyword
+              "keyword": keyword,
+              "isKeyword": regex.exec(obj["target"]) ? true : false
             })
           } else {
             // add count to node if it already exists

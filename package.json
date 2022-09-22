@@ -23,6 +23,7 @@
   "dependencies": {
     "convert-array-to-csv": "^2.0.0",
     "csv-parse": "^5.3.0",
-    "csvtojson": "^2.0.10"
+    "csvtojson": "^2.0.10",
+    "node-snowball": "^0.6.0"
   }
 }
