@@ -69,7 +69,7 @@ const collectNarrativeNodes = (nodes, links, narrative, jsonObj) => {
           let target = obj["target"]
           obj["source"] = snowball.stemword(source, 'russian')
           obj["target"] = snowball.stemword(target, 'russian')
-          
+
           links.push(obj)
           mergedLinks.push(obj)
           
@@ -130,104 +130,3 @@ const saveJsonFile = (path, jsonObj) => {
 }
 
 readFullData()
-
-
-/*
-
-fs.readdir(dataFolder, (err, files) => {
-  files_length = files.length
-  files.forEach((file ,index) => {
-    if (path.extname(file) == '.csv') {
-      readCsvFile(file, index)
-    }
-  });
-});
-
-
-const cleanDataObject = (dataObject) => {
-  return dataObject.map(obj => {
-    return {
-      "source": obj["text"],
-      "target": obj["head"],
-      "keyword": obj["Regex String (OR)"].replace(/\^|\(|\)/g, ''), // from (всу|обстрел) to всу|обстрел
-      "value": parseInt(obj["count"]),
-      "source_en": "",
-      "target_en": ""
-    }
-  })
-}
-
-const processWordCloud = (dataObject, index) => {
-
-  var nodes = []
-  var links = []
-
-  // nodes for local file
-  nodes = collectNodes(dataObject, nodes, index)
-  
-  // all nodes merged
-  mergedNodes = collectNodes(dataObject, mergedNodes, index)
-
-  // array of each link
-  links = dataObject.map(obj => {
-    return {
-      "source": obj["source"],
-      "target": obj["target"],
-      "source_en": "",
-      "target_en": ""
-    }
-  })
-
-  // merged links
-  mergedLinks = mergedLinks.concat(links)
-
-  return {
-    "nodes": nodes,
-    "links": links
-  }
-}
-
-
-const saveMergedFile = (path, jsonString) => {
-
-}
-
-const collectNodes = (dataObject, nodes, index) => {
-  // collect all sources
-  dataObject.map(obj => {
-    const re = new RegExp(obj.keyword, 'g');
-    nodes.push({
-      "id": obj["source"],
-      "group": re.exec(obj["source"]) ? index+100+"" : index+"", // if is keyword, group 1, if not group 0
-      "value": obj["value"],
-      "keyword": obj["keyword"]
-    })
-  })
-
-  // collect all targets
-  dataObject.map(obj => {
-    const re = new RegExp(obj.keyword, 'g');
-    node = nodes.find(n => n["id"] == obj["target"])
-    if (node !== undefined) {
-      node["value"] += obj["value"]
-    } else {
-      nodes.push({
-        "id": obj["target"],
-        "group": re.exec(obj["target"]) ? index+100+"" : index+"", // if is keyword, group 1, if not group 0
-        "value": obj["value"],
-        "keyword": obj["keyword"]
-      })
-    }
-  })
-  return nodes
-}
-
-
-const uniqueObjectArray = (dataObject) => {
-  return dataObject.filter((value, index, self) =>
-    index === self.findIndex((t) => (
-      t.text === value.text 
-    ))
-  )
-}
-*/
