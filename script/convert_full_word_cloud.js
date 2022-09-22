@@ -59,7 +59,7 @@ const collectNarrativeNodes = (nodes, links, narrative, jsonObj) => {
       // check for each keyword
       keywords.map((keyword, index) => {
         let regex = new RegExp(keyword, 'g');
-        if (parseInt(obj["count"]) < 3) return false
+        if (parseInt(obj["count"]) < 10) return false
         if (regex.exec(obj["source"]) || regex.exec(obj["target"])) {
           links.push(obj)
           mergedLinks.push(obj)
