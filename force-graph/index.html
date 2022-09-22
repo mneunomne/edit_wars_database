@@ -1,0 +1,77 @@
+<head>
+  <style> body { margin: 0; } </style>
+
+  <script src="//unpkg.com/three"></script>
+  <script src="//unpkg.com/three-spritetext"></script>
+
+  <script src="//unpkg.com/3d-force-graph"></script>
+  <!--<script src="../../dist/3d-force-graph.js"></script>-->
+  <style>
+    @font-face {
+        font-family: 'space-mono';
+        src:  url('./fonts/SpaceMono-Regular.ttf') format('truetype');
+      }
+
+      /* roboto-mono-regular - latin_cyrillic */
+      @font-face {
+        font-family: 'roboto-mono';
+        font-style: normal;
+        font-weight: 400;
+        src: url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.eot'); /* IE9 Compat Modes */
+        src: local(''),
+            url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+            url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+            url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+            url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.svg#RobotoMono') format('svg'); /* Legacy iOS */
+      }
+                  
+
+      h1 {
+        position: fixed;
+        color: white;
+        z-index: 9999;
+        top: 0;
+        left: 10px;
+        font-family: 'roboto-mono';
+      }
+  </style>
+</head>
+
+<body>
+  <div id="3d-graph"></div>
+  <!--<h1 style="position: fixed; color: white; z-index: 9999; top: 0; left: 10px;">тестетст</h1>-->
+
+  <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical_nazis'
+
+    const Graph = ForceGraph3D()
+      (document.getElementById('3d-graph'))
+        .jsonUrl(`../export/${narrative}.json`)
+        .nodeAutoColorBy('group')
+        //.backgroundColor("#ffffff")
+        //.linkWidth(1)
+        //.linkOpacity(1.0)
+        //.backgroundColor("#ffffff")
+        //.linkWidth("2px")
+        //.linkCurvature(0.1)
+        //.linkAutoColorBy(function (link) { return "#f542c8"})
+        .linkOpacity(0.1)
+        //.linkColor(() => "#000000")
+        .nodeThreeObject(node => {
+          console.log("node", node)
+          const sprite = new SpriteText(node.en);
+          sprite.fontFace = "roboto-mono";
+          sprite.material.depthWrite = false; // make sprite background transparent
+          sprite.color = node.color;
+          sprite.textHeight = 2 + Math.min(20, parseInt(node.value));
+          return sprite;
+        });
+
+    // Spread nodes a little wider
+    Graph.d3Force('charge').strength(-300);
+
+  </script>
+</body>
