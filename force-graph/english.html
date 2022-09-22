@@ -44,7 +44,7 @@
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
         .jsonUrl(`../export/narratives_word_graphs/${narrative}.json`)
-        //.nodeAutoColorBy('group')
+        .nodeAutoColorBy('group')
         //.backgroundColor("#ffffff")
         .linkWidth(1)
         //.linkOpacity(0.05)
@@ -55,12 +55,21 @@
         .linkOpacity(0.05)
         .linkColor(() => "#000000")
         .nodeThreeObject(node => {
-          console.log("node", node)
           const sprite = new SpriteText(node.en);
           sprite.fontFace = "roboto-mono";
           sprite.material.depthWrite = false; // make sprite background transparent
           sprite.color = node.color;
           sprite.textHeight = 1 + Math.min(10, parseInt(node.value));
+          
+          if (node.isKeyword) {
+            console.log("node", node)
+            sprite.textHeight = 1 + Math.min(14, parseInt(node.value));
+            sprite.fontWeight = 'bold'
+            sprite.color = node.color;
+          } else {
+            sprite.color = "#000000";
+          }
+
           return sprite;
         });
 

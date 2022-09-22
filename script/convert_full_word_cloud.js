@@ -67,8 +67,8 @@ const collectNarrativeNodes = (nodes, links, narrative, jsonObj) => {
 
           let source = obj["source"]
           let target = obj["target"]
-          obj["source"] = snowball.stemword(source, 'russian')
-          obj["target"] = snowball.stemword(target, 'russian')
+          //obj["source"] = snowball.stemword(source, 'russian')
+          //obj["target"] = snowball.stemword(target, 'russian')
 
           links.push(obj)
           mergedLinks.push(obj)
@@ -82,7 +82,7 @@ const collectNarrativeNodes = (nodes, links, narrative, jsonObj) => {
               "group": index, // if is keyword, group 1, if not group 0
               "value": parseInt(obj["count"]),
               "keyword": keyword,
-              "isKeyword": regex.exec(obj["source"]) ? true : false
+              "isKeyword": regex.exec(source) ? true : false
             })
           } else {
             // add count to node if it already exists
@@ -90,7 +90,7 @@ const collectNarrativeNodes = (nodes, links, narrative, jsonObj) => {
           }
           
           existing_node = nodes.find(n => n.id == obj["target"])
-          if (!nodes.some(n => n.id == obj["target"])) {
+          if (!existing_node) {
             nodes.push({
               "id": obj["target"],
               "en": obj["target_ru"],
@@ -98,7 +98,7 @@ const collectNarrativeNodes = (nodes, links, narrative, jsonObj) => {
               "group": index, // if is keyword, group 1, if not group 0
               "value": parseInt(obj["count"]),
               "keyword": keyword,
-              "isKeyword": regex.exec(obj["target"]) ? true : false
+              "isKeyword": regex.exec(target) ? true : false
             })
           } else {
             // add count to node if it already exists

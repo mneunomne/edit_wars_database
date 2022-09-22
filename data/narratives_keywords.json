@@ -3,19 +3,26 @@
     "title": "“No plans of any aggressive actions”",
     "subtitle": "- initial contradictions in the goal setting of the invasion",
     "id": "no_plans_of_any_aggressive_actions",
-    "keywords": []
+    "keywords": ["цель","задача","миссия"]
   },
   {
     "title": "Mythical “Nazis”",
     "subtitle": "- constructing an enemy through the exploitation of historical memory",
     "id": "mythical_nazis",
-    "keywords": ["победа","борьба","^наци","националист","нацик","национализм","фашизм","фашист","бандер","реабилитац","денациф","киев","режим","жесток","убийств","убив","мариупол","азовстал","всу","зверств","уничтож"]
+    "keywords": ["борьба","^наци","националист","национализм","фашизм","фашист","бандер","реабилитац","денациф","жесток","убийств","убив","мариупол","азовстал","всу","зверств","уничтож"]
+  },
+  {
+    "title": "“Protecting the Russian World”",
+    "subtitle": "- a populist idea of paternal concern for the nation",
+    "id": "protecting_russian_world",
+    "keywords": ["защита","защища","геноцид","русскоязычн","освобож","освобо","беженц","гуманитар$","эвакуаци","эвакуиро","ветеран"]
+
   },
   {
     "title": "“Ukrainian crisis”",
     "subtitle": "- denial of the state's right to sovereignty",
     "id": "ukrainian_crisis",
-    "keywords": []
+    "keywords": ["кризис","референдум","вхождение","признание","призна","присоедин","негосударство","днр","лнр","херсон","режим","агония","агонизир","конец"]
   },
   {
     "title": "“High-precision missiles vs. fakes”",
@@ -34,12 +41,6 @@
     "subtitle": "- myths and propaganda about sanctions against Russia in connection with the invasion of Ukraine",
     "id": "freezing_europe",
     "keywords": ["^газ$","^газовы","^газе$","кризис","^зависи","^нефть$","санкция","санкции","^изолир","^изоляц","дефицит","актив$","замороз","голод","swift","импорт","инфляц","эмбарг"]
-  },
-  {
-    "title": "“Traditional Values vs. Decadence”",
-    "subtitle": "- constructing an ideological confrontation between the West and Russia",
-    "id": "traditional_values_vs_decadence",
-    "keywords": []
   },
   {
     "title": "“Internal contradictions of the West”",
