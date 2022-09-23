@@ -47,6 +47,15 @@ const Graph = ForceGraph3D()(document.getElementById('3d-graph'))
     //return sprite;
   });
 
+
+  // no scroll zoom
+  Graph.controls().noZoom = true
+
+const disableScroll = function () {
+  var canvas = document.querySelector("canvas")
+
+} 
+
 const functions = {
   autoRotate: function () {
     // Spread nodes a little wider
@@ -81,7 +90,7 @@ const functions = {
       3000  // ms transition duration
     );
   },
-  highlightNodeConnections: function (data) {
+  xf: function (data) {
     var data = Graph.graphData()
     if (node == null) {
       data.nodes.map(n => {
