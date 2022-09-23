@@ -1,9 +1,4 @@
 <head>
-  <style>
-    body {
-      margin: 0;
-    }
-  </style>
   <script src="//unpkg.com/3d-force-graph"></script>
 
   <script src="//unpkg.com/three"></script>
@@ -11,6 +6,10 @@
 
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
   <style>
+    body {
+      margin: 0;
+    }
+
     @font-face {
       font-family: 'roboto-mono';
       src: url('./fonts/SpaceMono-Regular.ttf') format('truetype');
@@ -49,93 +48,7 @@
 
 <body>
   <div id="3d-graph"></div>
-  <h1 style="position: fixed; color: white; z-index: 9999; top: 0; left: 10px;">тестетст</h1>
+  <h1 style="opacity: 0;">тестетст</h1>
 
-  <script>
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical_nazis'
-    setTimeout(() => {
-      const highlightNodeConnections = function (node) {
-        var data = Graph.graphData()
-        if (node == null) {
-          data.nodes.map(n => {
-            //console.log()
-            n.__threeObj.material.opacity = parseInt(n.value) / 50
-            // sprite.color = "color";
-          })
-          return
-        }
-        var connections = data.links.filter(l => l.target.id == node.id || l.source.id == node.id).map(l => l)
-        var nodes = data.nodes.filter(n => {
-          return connections.some(l => (l.target.id == n.id || l.source.id == n.id))
-        })
-        data.nodes.map(n => {
-          n.__threeObj.material.opacity = 0.1
-        })
-        nodes.map(n => {
-          //console.log()
-          n.__threeObj.material.opacity = 1
-          // sprite.color = "color";
-        })
-        console.log("connections", connections)
-        console.log("nodes", nodes)
-      }
-
-      const Graph = ForceGraph3D()
-        (document.getElementById('3d-graph'))
-        .jsonUrl(`../export/narratives_word_graphs/${narrative}.json`)
-        .enableNodeDrag(false)
-        .showNavInfo(false)
-        .nodeAutoColorBy('group')
-        //.linkWidth(1)
-        //.linkOpacity(1.0)
-        .backgroundColor("rgba(0, 0, 0, 0)")
-        //.backgroundColor("#000000")
-        //.linkWidth(1)
-        //.linkCurvature(0.1)
-        //.linkAutoColorBy(function (link) { return "#f542c8"})
-        .linkOpacity(0.05)
-        .linkColor(() => "#000000")
-        //.onNodeHover()
-        .nodeThreeObject(node => {
-          const group = new THREE.Group();
-          const geometry = new THREE.SphereGeometry(2, 32, 64);
-          const material = new THREE.MeshBasicMaterial({ color: node.color });
-          const sphere = new THREE.Mesh(geometry, material);
-          group.add(sphere);
-
-          const sprite = new SpriteText(node.en);
-          sprite.position.set(2, 10, 0);
-          
-          sprite.fontFace = "roboto-mono";
-          sprite.material.depthWrite = false; // make sprite background transparent
-          sprite.color = "#000000";
-          sprite.strokeColor = node.color;
-          // sprite.position.set(0, 100, 100);
-
-          if (node.isKeyword) {
-            sprite.textHeight =  18
-            //sprite.color = "red";
-            //sprite.fontWeight = 500
-            //sprite.textHeight = 40;
-            sprite.fontWeight = 'bold';
-          } else {
-            sprite.textHeight = 1 + Math.min(10, parseInt(node.value));
-
-            sprite.fontWeight = 'normal';
-            //sprite.textHeight = 2 + Math.min(40, parseInt(node.value)/7);
-            //sprite.material.opacity = parseInt(node.value) / 50
-          }
-          group.add(sprite);
-          return group;
-          //return sprite;
-        });
-
-      // Spread nodes a little wider
-      Graph.d3Force('charge').strength(-200);
-    }, 1000)
-
-
-  </script>
+  <script src="./script.js"></script>
 </body>
