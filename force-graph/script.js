@@ -61,13 +61,14 @@ const functions = {
       angle += Math.PI / 3000;
     }, 10);
   },
-  focusOnNode: function (node_id) {
+  focusOnNode: function (params) {
+    let node_id = params.node_id
+    let distance = params.distance
     var node = Graph.graphData().nodes.find(n => {
       return n.id == node_id
     })
     if (!node) return
     // Aim at node from outside it
-    const distance = 300;
     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
   
     const newPos = node.x || node.y || node.z
@@ -80,7 +81,7 @@ const functions = {
       3000  // ms transition duration
     );
   },
-  highlightNodeConnections: function (node) {
+  highlightNodeConnections: function (data) {
     var data = Graph.graphData()
     if (node == null) {
       data.nodes.map(n => {
