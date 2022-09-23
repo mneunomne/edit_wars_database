@@ -3,8 +3,29 @@ const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical_nazis'
 const distance = 1000;
 
-const Graph = ForceGraph3D()(document.getElementById('3d-graph'))
-  .jsonUrl(`../export/narratives_word_graphs/${narrative}.json`)
+let hoverNode = null;
+const highlightNodes = new Set();
+const highlightLinks = new Set();
+var Graph = null
+
+fetch(`../export/narratives_word_graphs/${narrative}.json`)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data)
+    init(data)
+  });
+
+function updateHighlight() {
+  // trigger update of highlighted objects in scene
+  Graph
+    .nodeColor(Graph.nodeColor())
+    .linkWidth(Graph.linkWidth())
+    .linkDirectionalParticles(Graph.linkDirectionalParticles());
+}
+const init = function (gData) {
+  Graph = ForceGraph3D()(document.getElementById('3d-graph'))
+  .graphData(gData)
+  //.graphData(function (d) { console.log("d", d)})
   .enableNodeDrag(false)
   .showNavInfo(false)
   .nodeAutoColorBy('group')
@@ -29,18 +50,19 @@ const Graph = ForceGraph3D()(document.getElementById('3d-graph'))
     sprite.strokeColor = node.color;
     // sprite.position.set(0, 100, 100);
 
-    if (node.isKeyword) {
+    if (node.isKeyword || parseInt(node.value) > 100) {
       sprite.textHeight = 18
       //sprite.color = "red";
       //sprite.fontWeight = 500
       //sprite.textHeight = 40;
       sprite.fontWeight = 'bold';
+      sprite.material.opacity = 0.9
     } else {
       sprite.textHeight = 1 + Math.min(10, parseInt(node.value));
+      sprite.material.opacity = 0.4
 
       sprite.fontWeight = 'normal';
       //sprite.textHeight = 2 + Math.min(40, parseInt(node.value)/7);
-      //sprite.material.opacity = parseInt(node.value) / 50
     }
     group.add(sprite);
     return group;
@@ -50,6 +72,9 @@ const Graph = ForceGraph3D()(document.getElementById('3d-graph'))
 
   // no scroll zoom
   Graph.controls().noZoom = true
+}
+
+
 
 const disableScroll = function () {
   var canvas = document.querySelector("canvas")
