@@ -106,7 +106,10 @@ const functions = {
     console.log("nodes", nodes)
   },
   fitToCanvas: function (data) {
-    Graph.zoomToFit(400)
+    Graph.zoomToFit(data || 100)
+  },
+  setZoom: function (data) {
+    // 
   }
 }
 
