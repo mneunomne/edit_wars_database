@@ -115,7 +115,7 @@ const functions = {
 
 window.addEventListener("message", (event) => {
   //console.log("window message", event)
-  console.log("window message", event.data)
+  console.log("window message", event)
   var fn = event.data.function
   var data = event.data.data
   if (functions[fn] !== undefined) {
