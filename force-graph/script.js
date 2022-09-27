@@ -41,6 +41,7 @@ const init = function (gData) {
     Graph.pauseAnimation()
   })
   .onNodeHover(node => {
+    return null
     // console.log("node", node)
     if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
     highlightNodes.clear();
@@ -187,3 +188,14 @@ window.addEventListener("message", (event) => {
     functions[fn](data)
   }
 }, false);
+
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+  console.log()
+  Graph.width(window.innerWidth)
+  Graph.height(window.innerHeight)
+  //camera.aspect = window.innerWidth / window.innerHeight;
+  //camera.updateProjectionMatrix();
+  //renderer.setSize( window.innerWidth, window.innerHeight );
+}
