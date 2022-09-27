@@ -7,7 +7,6 @@
 ./export/stacked_cold_war_2_chart_weapons.json
 ./export/stacked_nazis_chart_azov.json
 ./export/nazis_chart_azov.json
-./export/mergedConnections.json
 ./export/nazis_chart_regime.json
 ./export/sanctions_chart_assets_0.json
 ./export/protecting_chart_liberation_1.json
@@ -23,6 +22,15 @@
 ./export/protecting_chart_liberation.json
 ./export/sanctions_chart_assets_1.json
 ./export/protecting_cloud_refugees.json
+./export/narratives_word_graphs/ukrainian_crisis.json
+./export/narratives_word_graphs/cold_war_ii.json
+./export/narratives_word_graphs/mythical_nazis.json
+./export/narratives_word_graphs/protecting_russian_world.json
+./export/narratives_word_graphs/freezing_europe.json
+./export/narratives_word_graphs/mergedNarrativesConnections.json
+./export/narratives_word_graphs/no_plans_of_any_aggressive_actions.json
+./export/narratives_word_graphs/high_precision_missiles_vs_fakes.json
+./export/narratives_word_graphs/internal_contradictions_of_the_west.json
 ./export/stacked_sanctions_chart_swift.json
 ./export/stacked_nazis_chart_demilitarization.json
 ./export/stacked_nazis_chart_human_shield.json

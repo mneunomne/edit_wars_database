@@ -3,10 +3,37 @@ const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical_nazis'
 const distance = 1000;
 
-let hoverNode = null;
+let focusNode = null;
 const highlightNodes = new Set();
 const highlightLinks = new Set();
+
 var Graph = null
+
+/*
+console.log("FontLoader", THREE.FontLoader)
+const loader = new THREE.FontLoader();
+
+const font = loader.load(
+	// resource URL
+	'../fonts/Roboto Mono_Regular.json',
+
+	// onLoad callback
+	function ( font ) {
+		// do something with the font
+		console.log( font );
+	},
+
+	// onProgress callback
+	function ( xhr ) {
+		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+	},
+
+	// onError callback
+	function ( err ) {
+		console.log( 'An error happened' );
+	}
+);
+*/
 
 fetch(`../export/narratives_word_graphs/${narrative}.json`)
   .then((response) => response.json())
@@ -15,25 +42,40 @@ fetch(`../export/narratives_word_graphs/${narrative}.json`)
     init(data)
   });
 
-function updateHighlight() {
-  // trigger update of highlighted objects in scene
-  Graph
-    .nodeColor(Graph.nodeColor())
-    .linkWidth(Graph.linkWidth())
-    .linkDirectionalParticles(Graph.linkDirectionalParticles());
-}
 const init = function (gData) {
   Graph = ForceGraph3D()(document.getElementById('3d-graph'))
   .graphData(gData)
+  // .nodeColor(node => highlightNodes.has(node.id) ? node === focusNode ? 'rgb(255,0,0,1)' : 'rgba(255,160,0,0.8)' : 'rgba(0,255,255,0.6)')
   //.graphData(function (d) { console.log("d", d)})
   .enableNodeDrag(false)
   .showNavInfo(false)
+  .nodeVisibility(node => 
+    highlightNodes.size == 0 || highlightNodes.has(node.id))
+  .linkVisibility(link =>
+    highlightNodes.size == 0 || (focusNode !== null && (link.source.id == focusNode.id || link.target.id == focusNode.id))
+  )
   .nodeAutoColorBy('group')
   .enableNavigationControls(true)
   .backgroundColor("rgba(0, 0, 0, 0)")
   .linkOpacity(0.05)
   .linkColor(() => "#000000")
   //.onNodeHover()
+  .onEngineStop(() => {
+    console.log("onEngineStop!")
+    Graph.pauseAnimation()
+  })
+  .onNodeHover(node => {
+    // console.log("node", node)
+    if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
+    highlightNodes.clear();
+    if (node) {
+      highlightNodes.add(node.id);
+      node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+      //node.links.forEach(link => highlightLinks.add(link));
+    }
+    focusNode = node || null;
+    updateHighlight();
+  })
   .nodeThreeObject(node => {
     const group = new THREE.Group();
     const geometry = new THREE.SphereGeometry(2, 32, 64);
@@ -49,6 +91,14 @@ const init = function (gData) {
     sprite.color = "#000000";
     sprite.strokeColor = node.color;
     // sprite.position.set(0, 100, 100);
+
+    if (highlightNodes.size > 0) {
+      if (highlightNodes.has(node.id)) {
+        sprite.material.opacity = 0.9
+      } else {
+        sprite.material.opacity = 0
+      }
+    }
 
     if (node.isKeyword || parseInt(node.value) > 100) {
       sprite.textHeight = 18
@@ -78,8 +128,16 @@ const init = function (gData) {
 
 const disableScroll = function () {
   var canvas = document.querySelector("canvas")
-
 } 
+
+const updateHighlight = function () {
+  console.log("nodeThreeObject", highlightNodes)
+  // trigger update of highlighted objects in scene
+  Graph.nodeVisibility(Graph.nodeVisibility())
+  Graph.linkVisibility(Graph.linkVisibility())
+    //.nodeThreeObject(Graph.nodeThreeObject())
+    // .linkDirectionalParticles(Graph.linkDirectionalParticles());
+}
 
 const functions = {
   autoRotate: function () {

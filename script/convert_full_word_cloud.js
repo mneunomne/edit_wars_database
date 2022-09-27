@@ -107,11 +107,28 @@ const collectNarrativeNodes = (nodes, links, narrative, jsonObj) => {
         }
       })
     })
-    // console.log("nodes", nodes)
-    return {
+    var gData = {
       "nodes": nodes,
       "links": links
     }
+    links.map(link => {
+      const target = gData.nodes.find(n => n.id == link["target"])
+      const source = gData.nodes.find(n => n.id == link["source"])
+      // add neighbors
+      !target.neighbors && (target.neighbors = []);
+      !source.neighbors && (source.neighbors = []);
+      target.neighbors.push(source.id);
+      source.neighbors.push(target.id);
+      // add links
+      /*
+      !target.links && (target.links = []);
+      !source.links && (source.links = []);
+      target.links.push(link);
+      source.links.push(link);
+      */
+    })
+    console.log("gData", gData)
+    return gData
   } else {
     return null
   }
