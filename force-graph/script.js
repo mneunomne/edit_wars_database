@@ -9,31 +9,7 @@ const highlightLinks = new Set();
 
 var Graph = null
 
-/*
-console.log("FontLoader", THREE.FontLoader)
-const loader = new THREE.FontLoader();
-
-const font = loader.load(
-	// resource URL
-	'../fonts/Roboto Mono_Regular.json',
-
-	// onLoad callback
-	function ( font ) {
-		// do something with the font
-		console.log( font );
-	},
-
-	// onProgress callback
-	function ( xhr ) {
-		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-	},
-
-	// onError callback
-	function ( err ) {
-		console.log( 'An error happened' );
-	}
-);
-*/
+var fontFace = null
 
 fetch(`../export/narratives_word_graphs/${narrative}.json`)
   .then((response) => response.json())
@@ -45,7 +21,7 @@ fetch(`../export/narratives_word_graphs/${narrative}.json`)
 const init = function (gData) {
   Graph = ForceGraph3D()(document.getElementById('3d-graph'))
   .graphData(gData)
-  // .nodeColor(node => highlightNodes.has(node.id) ? node === focusNode ? 'rgb(255,0,0,1)' : 'rgba(255,160,0,0.8)' : 'rgba(0,255,255,0.6)')
+  //.nodeColor(node => highlightNodes.has(node.id) ? node === focusNode ? 'rgb(255,0,0,1)' : 'rgba(255,160,0,0.8)' : 'rgba(0,255,255,0.6)')
   //.graphData(function (d) { console.log("d", d)})
   .enableNodeDrag(false)
   .showNavInfo(false)
@@ -76,7 +52,7 @@ const init = function (gData) {
     focusNode = node || null;
     updateHighlight();
   })
-  .nodeThreeObject(node => {
+  .nodeThreeObject(node => {    
     const group = new THREE.Group();
     const geometry = new THREE.SphereGeometry(2, 32, 64);
     const material = new THREE.MeshBasicMaterial({ color: node.color });
@@ -102,27 +78,23 @@ const init = function (gData) {
 
     if (node.isKeyword || parseInt(node.value) > 100) {
       sprite.textHeight = 18
-      //sprite.color = "red";
-      //sprite.fontWeight = 500
-      //sprite.textHeight = 40;
       sprite.fontWeight = 'bold';
       sprite.material.opacity = 0.9
     } else {
       sprite.textHeight = 1 + Math.min(10, parseInt(node.value));
       sprite.material.opacity = 0.4
-
       sprite.fontWeight = 'normal';
-      //sprite.textHeight = 2 + Math.min(40, parseInt(node.value)/7);
     }
     group.add(sprite);
     return group;
-    //return sprite;
   });
 
 
   // no scroll zoom
   Graph.controls().noZoom = true
 }
+
+
 
 
 
