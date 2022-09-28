@@ -15,10 +15,6 @@ const maxNumNodes = 250
 
 var mergedNodes = []
 var mergedLinks = []
-var mergedConnections = {}
-
-var files_length = 0
-var saved_file_index = 0
 
 
 const readFullData = () => {
