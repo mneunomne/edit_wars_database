@@ -7,6 +7,8 @@ let focusNode = null;
 const highlightNodes = new Set();
 const highlightLinks = new Set();
 
+var node_index = 0
+
 var Graph = null
 
 var fontFace = null
@@ -33,15 +35,16 @@ const init = function (gData) {
   .nodeAutoColorBy('group')
   .enableNavigationControls(true)
   .backgroundColor("rgba(0, 0, 0, 0)")
-  .linkOpacity(0.05)
-  .linkColor(() => "#000000")
+  .linkColor((link) => {
+    return "#000000"
+  })
   //.onNodeHover()
   .onEngineStop(() => {
     console.log("onEngineStop!")
     Graph.pauseAnimation()
   })
   .onNodeHover(node => {
-    return null
+    //return null
     // console.log("node", node)
     if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
     highlightNodes.clear();
@@ -77,22 +80,23 @@ const init = function (gData) {
       }
     }
 
-    if (node.isKeyword || parseInt(node.value) > 100) {
-      sprite.textHeight = 18
-      sprite.fontWeight = 'bold';
-      sprite.material.opacity = 0.9
-    } else {
-      sprite.textHeight = 1 + Math.min(10, parseInt(node.value));
-      sprite.material.opacity = 0.4
-      sprite.fontWeight = 'normal';
-    }
+    sprite.textHeight = 7 + 3 * (node_index / gData.nodes.length);
+    //sprite.material.opacity = Math.max(0.35, (node_index / gData.nodes.length))
+    sprite.material.opacity = 0.8
+    console.log("node_index / gData.nodes.length", node_index / gData.nodes.length)
+    sprite.fontWeight = 'normal';
+
     group.add(sprite);
+    node_index++
     return group;
   });
 
 
   // no scroll zoom
-  Graph.controls().noZoom = true
+  //Graph.controls().noZoom = true
+
+  // Spread nodes a little wider
+  Graph.d3Force('charge').strength(-300);
 }
 
 
@@ -105,6 +109,7 @@ const disableScroll = function () {
 
 const updateHighlight = function () {
   console.log("nodeThreeObject", highlightNodes)
+  node_index=0
   // trigger update of highlighted objects in scene
   Graph.nodeVisibility(Graph.nodeVisibility())
   Graph.linkVisibility(Graph.linkVisibility())
@@ -114,8 +119,6 @@ const updateHighlight = function () {
 
 const functions = {
   autoRotate: function () {
-    // Spread nodes a little wider
-    Graph.d3Force('charge').strength(-500);
     // camera orbit
     let angle = 0;
     setInterval(() => {
