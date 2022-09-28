@@ -1,6 +1,7 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical_nazis'
+const lang = urlParams.get('lang') ? urlParams.get('lang') : 'en'
 const distance = 1000;
 
 let focusNode = null;
