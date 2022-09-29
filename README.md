@@ -1,5 +1,47 @@
-# edit wars database
+# Edit Wars Database API 
 
+## Installation
+
+```
+npm install
+```
+
+## Run
+
+- **Convert all data exported from tableau in order to be compatible with [ChartJS](https://www.chartjs.org/):**
+
+    ```sh
+    npm run convert_bar_chart
+    ```
+
+- **Convert all data exported from google colab in order to be compatible with [ChartJS](https://www.chartjs.org/):**
+
+    ```sh
+    npm run convert_bar_colab
+    ```
+
+- **Convert all tableau word connection data into [3d-force-graph](https://github.com/vasturiano/3d-force-graph) data structure:**
+
+    ```sh
+    npm run convert_full_word_cloud
+    ```
+
+## Datapaths:
+
+Parse the [exports.txt](https://raw.githubusercontent.com/EditWarsTeam/edit_wars_api/main/exports.txt) file in order to access the json data files, with the following prefix: 
+
+```sh
+https://cdn.jsdelivr.net/gh/mneunomne/EditWarsTeam/export/${path_to_file}
+```
+
+## 3d-force-graph
+
+The Word Connection Graph is rendered using the [3d-force-graph](https://github.com/vasturiano/3d-force-graph) library:
+
+<img width="600" alt="Screenshot 2022-09-29 at 17 48 12" src="https://user-images.githubusercontent.com/4967860/193078452-49805368-5c76-4a6c-afae-ed04bb79deca.png">
+
+
+## Other Commands 
 
 ### converting .csv files to utf-8
 
