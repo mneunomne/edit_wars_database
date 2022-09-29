@@ -45,7 +45,7 @@ The Word Connection Graph is rendered using the [3d-force-graph](https://github.
 
 ## Other Commands 
 
-### converting .csv files to utf-8
+__converting .csv files to utf-8:__
 
 Tableau apparently exports the .csv files in utf-16le encoding. So they need to be converted to utf-8. 
 
@@ -64,13 +64,13 @@ for file in *.csv; do
 done
 ```
 
-### list exports 
+__list exports:__
 
 ```sh 
 find ./export -type f -name "*.json" > exports.txt
 ```
 
-### download all exports to local folder
+__download all exports to local folder:__
 
 ```sh
 wget -i ./exports.txt
