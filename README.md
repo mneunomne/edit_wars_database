@@ -1,5 +1,7 @@
 # Edit Wars Database API 
 
+The Edit Wars Database API server to convert all the data files into the desired data-structures for the front-end of the project website.
+
 ## Installation
 
 ```
