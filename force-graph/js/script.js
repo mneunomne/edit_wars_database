@@ -77,7 +77,7 @@ const init = function (gData) {
   });
 
   // no scroll zoom
-  // Graph.controls().noZoom = true
+  Graph.controls().noZoom = true
 
   // Spread nodes a little wider
   Graph.d3Force('charge').strength(-300);
