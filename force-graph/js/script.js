@@ -13,10 +13,10 @@ var Graph = null
 var fontFace = null
 var savedCameraPos = null
 
-fetch(`../../export/narratives_word_graphs/${narrative}.json`)
+fetch(`../export/narratives_word_graphs/${narrative}.json`)
   .then((response) => response.json())
   .then((data) => {
-    console.log(data)
+    //console.log(data)
     init(data)
   });
 
