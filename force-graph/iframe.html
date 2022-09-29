@@ -4,10 +4,40 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>iframe test</title>
+
+  <style>
+    body {
+      margin: 0;
+    }
+    
+    #controls {
+      position: absolute;
+      display: block;
+      top: 20px;
+      left: 10px;
+    }
+
+    iframe {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
 </head>
 <body style="width: 100vw;height: 100vh;">
+
+  <div id="controls">
+    <button>initialPosition</button><br>
+    <button>focusOnNode</button><br>
+    <div>
+      <input type="checkbox" id="scales" name="scales" checked>
+      <label for="scales">autoRotate</label>
+    </div>
+
+  </div>
+
   <iframe width="100%" height="100%" src="./index.html"></iframe>
-  <script></script>
 </body>
 </html>
