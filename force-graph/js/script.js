@@ -40,17 +40,7 @@ const init = function (gData) {
     console.log("onEngineStop!")
     Graph.pauseAnimation()
   })
-  .onNodeHover(node => {
-    if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
-    highlightNodes.clear();
-    if (node) {
-      highlightNodes.add(node.id);
-      node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
-      //node.links.forEach(link => highlightLinks.add(link));
-    }
-    focusNode = node || null;
-    updateHighlight();
-  })
+  //.onNodeHover(onNodeHover)
   .nodeThreeObject((node) => {
     const group = new THREE.Group();
     const geometry = new THREE.SphereGeometry(2, 32, 64);
@@ -96,6 +86,18 @@ const init = function (gData) {
   savedCameraPos = myGraph.cameraPosition();
 
 }
+
+const onNodeHover = (node => {
+  if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
+  highlightNodes.clear();
+  if (node) {
+    highlightNodes.add(node.id);
+    node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+    //node.links.forEach(link => highlightLinks.add(link));
+  }
+  focusNode = node || null;
+  updateHighlight();
+})
 
 const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
