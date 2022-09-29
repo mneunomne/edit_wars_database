@@ -26,7 +26,7 @@ npm install
     npm run convert_full_word_cloud
     ```
 
-## Datapaths:
+## Datapaths
 
 Parse the [exports.txt](https://raw.githubusercontent.com/EditWarsTeam/edit_wars_api/main/exports.txt) file in order to access the json data files, with the following prefix: 
 
