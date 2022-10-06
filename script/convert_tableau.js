@@ -5,27 +5,53 @@ var path = require('path')
 const csv=require('csvtojson')
 
 const dataFolder = 'data/BarChart/';
+const narrativesFolder = 'data/narratives/';
 const outputStackedFolder = 'export/'
 const outputUnstackedFolder = 'export/'
 
 
-fs.readdir(dataFolder, (err, files) => {
+const getDirectories = (source) => {
+  console.log("getDirectories", source)
+  var folders = fs.readdirSync(source, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name)
+  return folders
+}
+
+const init = () => {
+  var narratives = getDirectories(narrativesFolder)
+  narratives.forEach(narrative => {
+    console.log("narrative", narrative)
+    var folder = narrativesFolder + narrative
+    var files = fs.readdirSync(folder).filter(file => path.extname(file) == '.csv').map(file => narrativesFolder + file );
+  })
+}
+
+init()
+
+/*
+fs.readdir(dataFolder, { withFileTypes: true }, (err, files) => {
   files.forEach(file => {
     if (path.extname(file) == '.csv') {
       readCsvFile(file)
     }
   });
 });
+*/
 
-const readCsvFile = (filename) => 
+const readTableauFile = (filepath, narrative) => {
+  var filename = filepath.split("/")[filepath.split("/").length - 1]
+  // console.log("filename", filename, narrative)
   csv({delimiter: '\t'})
-    .fromFile(dataFolder + filename)
+    .fromFile(filepath)
     .then((jsonObj)=>{
       let nameId = filename.replace('.csv', '.json')
       var outputData = {}
       // console.log(`reading file ${filename}`)
       // check if its weekly
-      if (Object.keys(jsonObj[0])[0] == "Week of fetchdate_orig") {
+      let str = Object.keys(jsonObj[0])[0].replace(/[^a-zA-Z ]/g, "")
+      let isWeekly = str.includes("Week")
+      if (isWeekly) {
         outputData = processWeeklyStackedChart(jsonObj)
       } else {
         outputData = processDailyStackedChart(jsonObj)
@@ -36,7 +62,7 @@ const readCsvFile = (filename) =>
       var dataCounts = generateCountArray(outputData, filename.replace('.csv', ''))
       saveJsonFile(outputUnstackedFolder + filename.replace('.csv', '.json'), JSON.stringify(dataCounts))
     })
-  
+}
 const saveJsonFile = (path, jsonString) => {
   fs.writeFile(path, jsonString, 'utf8', function (err) {
     if (err) {
@@ -48,6 +74,7 @@ const saveJsonFile = (path, jsonString) => {
 }
 
 const processWeeklyStackedChart = (jsonObj) => {
+  console.log("processWeeklyStackedChart", jsonObj)
   return jsonObj.map((obj) => {
     return {
       "fetchdate_orig": formatDateWeekly(obj["Week of fetchdate_orig"]),
@@ -118,3 +145,5 @@ function getFormattedDateString(date) {
   day = day.length > 1 ? day : '0' + day;
   return day + '/' + month + '/' + year;
 }
+
+exports.readTableauFile = readTableauFile

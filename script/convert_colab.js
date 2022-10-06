@@ -6,7 +6,7 @@ const csv=require('csvtojson')
 const dataFolder = 'data/colab/';
 const outputFolder = 'export/'
 
-
+/*
 fs.readdir(dataFolder, (err, files) => {
   files.forEach(file => {
     if (path.extname(file) == '.csv') {
@@ -14,15 +14,19 @@ fs.readdir(dataFolder, (err, files) => {
     }
   });
 });
+*/
 
-const readCsvFile = (filename) => 
+const readColabFile = (filepath, narrative) => {
+  var filename = filepath.split("/")[filepath.split("/").length - 1]
+  // console.log("filename", filename, narrative)
   csv({delimiter: ','})
-    .fromFile(dataFolder + filename)
+    .fromFile(filepath)
     .then((jsonObj)=>{
       var outputData = {}
       outputData = generateCountArray(processColabChart(jsonObj))
       saveJsonFile(filename.replace('.csv', '.json'), JSON.stringify(outputData))
     })
+  }
   
 const saveJsonFile = (filename, jsonString) => {
   fs.writeFile(outputFolder + filename, jsonString, 'utf8', function (err) {
@@ -91,3 +95,5 @@ const formatDate = (dateString) => {
   var dateObject = new Date(dateString)
   return dateObject.toISOString()
 }
+
+exports.readColabFile = readColabFile
