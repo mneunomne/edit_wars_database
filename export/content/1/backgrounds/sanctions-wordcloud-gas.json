@@ -1,1 +1,1 @@
-{"narrative":1,"identifier":"sanctions-wordcloud-gas","order":12,"component":"WordCloud","keywords":"газ","steps":"22","data":"","events":"","headlines":"","uuid":"260e390c-45ca-11ed-9a50-11fd84f03d42"}
+{"narrative":1,"narrativeName":"freezing-europe","path":"export/content/1/backgrounds/sanctions-wordcloud-gas.json","identifier":"sanctions-wordcloud-gas-22-22","order":12,"component":"WordCloud","keywords":"газ","data":"missing","events":"","headlines":"","uuid":"dcff1741-4626-11ed-94a5-175ede3b1965","stepstart":22,"stepend":22,"name":"sanctions-wordcloud-gas"}

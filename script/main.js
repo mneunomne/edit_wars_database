@@ -32,10 +32,6 @@ const init = () => {
 
     backgrounds.forEach(background => {
       console.log("background.identifier", background)
-      if (background.identifier.includes('wordcloud')) {
-        // process WordCloud later
-        return
-      }
       // save background files
       const datapath = `${narrativesFolder}${background.narrativeName}/${background.identifier}.csv`
       const exportpath = `${outputDataFolder}${background.identifier}.json`
@@ -59,6 +55,8 @@ const init = () => {
       let background_steps = background.steps.split('-')
       background.stepstart = parseInt(background_steps[0])
       background.stepend = parseInt(background_steps[1] || background_steps[0])
+      background.name = background.identifier
+      background.identifier = `${background.identifier}-${background.stepstart}-${background.stepend}`
       // remove unused parameters
       delete background.steps
       // save background .json file 
