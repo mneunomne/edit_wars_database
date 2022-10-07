@@ -16,16 +16,20 @@ fs.readdir(dataFolder, (err, files) => {
 });
 */
 
-const readColabFile = (filepath, narrative) => {
-  var filename = filepath.split("/")[filepath.split("/").length - 1]
-  // console.log("filename", filename, narrative)
-  csv({delimiter: ','})
-    .fromFile(filepath)
-    .then((jsonObj)=>{
-      var outputData = {}
-      outputData = generateCountArray(processColabChart(jsonObj))
-      saveJsonFile(filename.replace('.csv', '.json'), JSON.stringify(outputData))
-    })
+const readColabFile = (filepath) => {
+  return new Promise((resolve, reject) => {
+    var filename = filepath.split("/")[filepath.split("/").length - 1]
+    // console.log("filename", filename, narrative)
+    csv({delimiter: ','})
+      .fromFile(filepath)
+      .then((jsonObj)=>{
+        //console.log("readColabFile", jsonObj)
+        var outputData = {}
+        outputData = generateCountArray(processColabChart(jsonObj))
+        resolve(outputData)
+        //saveJsonFile(filename.replace('.csv', '.json'), JSON.stringify(outputData))
+      })
+  })
   }
   
 const saveJsonFile = (filename, jsonString) => {
@@ -57,7 +61,7 @@ const generateCountArray = (jsonObj) => {
 
   // unique topics
   var topics = [...new Set(jsonObj.map(obj => obj["topic"]))]
-  console.log("topics" ,topics)
+  // console.log("topics" ,topics)
   // unique dates for the labels
   var dates = [...new Set(jsonObj.map(obj => obj["timestamp"]))]
 

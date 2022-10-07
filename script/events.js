@@ -17,7 +17,6 @@ const readEventsFile = () => {
 const getGraphEvents = (graph_id) => {
   return new Promise((resolve, reject) => {
     readEventsFile().then((events)=>{
-      console.log("events[0]", events[0])
       if (events[0][graph_id] == null || events[0][graph_id] == undefined) return resolve([])
       events = events.filter(h => h[graph_id] == '1')
       events = cleanEventData(events)
@@ -37,9 +36,10 @@ const cleanEventData = (events) => {
   ))
 }
 
-
+/*
 getGraphEvents('cold_war_ii-china').then((data) => {
   console.log("data", data)
 })
+*/
 
 exports.getGraphEvents = getGraphEvents

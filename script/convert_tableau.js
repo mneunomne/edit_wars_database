@@ -11,7 +11,7 @@ const outputUnstackedFolder = 'export/'
 
 
 const getDirectories = (source) => {
-  console.log("getDirectories", source)
+  //console.log("getDirectories", source)
   var folders = fs.readdirSync(source, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
@@ -21,13 +21,13 @@ const getDirectories = (source) => {
 const init = () => {
   var narratives = getDirectories(narrativesFolder)
   narratives.forEach(narrative => {
-    console.log("narrative", narrative)
+    //console.log("narrative", narrative)
     var folder = narrativesFolder + narrative
     var files = fs.readdirSync(folder).filter(file => path.extname(file) == '.csv').map(file => narrativesFolder + file );
   })
 }
 
-init()
+// init()
 
 /*
 fs.readdir(dataFolder, { withFileTypes: true }, (err, files) => {
@@ -39,29 +39,35 @@ fs.readdir(dataFolder, { withFileTypes: true }, (err, files) => {
 });
 */
 
-const readTableauFile = (filepath, narrative) => {
-  var filename = filepath.split("/")[filepath.split("/").length - 1]
-  // console.log("filename", filename, narrative)
-  csv({delimiter: '\t'})
-    .fromFile(filepath)
-    .then((jsonObj)=>{
-      let nameId = filename.replace('.csv', '.json')
-      var outputData = {}
-      // console.log(`reading file ${filename}`)
-      // check if its weekly
-      let str = Object.keys(jsonObj[0])[0].replace(/[^a-zA-Z ]/g, "")
-      let isWeekly = str.includes("Week")
-      if (isWeekly) {
-        outputData = processWeeklyStackedChart(jsonObj)
-      } else {
-        outputData = processDailyStackedChart(jsonObj)
-      }
-      // save stacked data
-      saveJsonFile(outputStackedFolder + 'stacked_' + filename.replace('.csv', '.json'), JSON.stringify(outputData))
-      // save unstacked counts data
-      var dataCounts = generateCountArray(outputData, filename.replace('.csv', ''))
-      saveJsonFile(outputUnstackedFolder + filename.replace('.csv', '.json'), JSON.stringify(dataCounts))
-    })
+const readTableauFile = (filepath) => {
+  console.log("readTableauFile", filepath)
+  return new Promise((resolve, reject) => {
+    var filename = filepath.split("/")[filepath.split("/").length - 1]
+    // console.log("filename", filename, narrative)
+    csv({delimiter: '\t'})
+      .fromFile(filepath)
+      .then((jsonObj)=>{
+        let nameId = filename.replace('.csv', '.json')
+        var outputData = {}
+        //console.log(`readTableauFile`, jsonObj)
+        // check if its weekly
+        let str = Object.keys(jsonObj[0])[0].replace(/[^a-zA-Z ]/g, "")
+        let isWeekly = str.includes("Week")
+        if (isWeekly) {
+          outputData = processWeeklyStackedChart(jsonObj)
+        } else {
+          outputData = processDailyStackedChart(jsonObj)
+        }
+        resolve(outputData)
+        /*
+        // save stacked data
+        saveJsonFile(outputStackedFolder + 'stacked_' + filename.replace('.csv', '.json'), JSON.stringify(outputData))
+        // save unstacked counts data
+        var dataCounts = generateCountArray(outputData, filename.replace('.csv', ''))
+        saveJsonFile(outputUnstackedFolder + filename.replace('.csv', '.json'), JSON.stringify(dataCounts))
+        */
+      })
+  })
 }
 const saveJsonFile = (path, jsonString) => {
   fs.writeFile(path, jsonString, 'utf8', function (err) {
@@ -74,7 +80,6 @@ const saveJsonFile = (path, jsonString) => {
 }
 
 const processWeeklyStackedChart = (jsonObj) => {
-  console.log("processWeeklyStackedChart", jsonObj)
   return jsonObj.map((obj) => {
     return {
       "fetchdate_orig": formatDateWeekly(obj["Week of fetchdate_orig"]),
@@ -88,6 +93,7 @@ const processWeeklyStackedChart = (jsonObj) => {
 
 const processDailyStackedChart = (jsonObj) => {
   return jsonObj.map((obj) => {
+    if (!obj["fetchdate_orig"]) console.log(obj)
     return {
       "fetchdate_orig": formatDateDaily(obj["fetchdate_orig"]),
       "page_domain_root": obj["page_domain_root"],
@@ -124,6 +130,7 @@ const generateCountArray = (jsonObj, nameId) => {
 }
 
 const formatDateDaily = (dateString) => {
+  //if (!dateString) console.log("dateString", dateString)
   dateString = dateString.slice(0, dateString.length - 9)  // to remove " 00:00:00"
   var dateParts = dateString.split("/");
   // month is 0-based, that's why we need dataParts[1] - 1
