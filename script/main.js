@@ -53,7 +53,7 @@ const init = () => {
         background.data = 'missing'
       }
       // save background .json file 
-      utils.saveJsonFile(exportpath, JSON.stringify(background))
+      utils.saveJsonFile(background.path, JSON.stringify(background))
     })
   })
 }

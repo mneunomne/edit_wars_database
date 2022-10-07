@@ -58,12 +58,12 @@ const readTableauFile = (filepath) => {
         } else {
           outputData = processDailyStackedChart(jsonObj)
         }
-        resolve(outputData)
+        var dataCounts = generateCountArray(outputData, filename.replace('.csv', ''))
+        resolve(dataCounts)
         /*
         // save stacked data
         saveJsonFile(outputStackedFolder + 'stacked_' + filename.replace('.csv', '.json'), JSON.stringify(outputData))
         // save unstacked counts data
-        var dataCounts = generateCountArray(outputData, filename.replace('.csv', ''))
         saveJsonFile(outputUnstackedFolder + filename.replace('.csv', '.json'), JSON.stringify(dataCounts))
         */
       })
