@@ -10,6 +10,7 @@
     "convert_word_cloud": "node ./script/convert_word_cloud.js",
     "convert_full_word_cloud": "node ./script/convert_full_word_cloud.js",
     "main": "node ./script/main.js",
+    "move": "cp -R /Users/albertoharres/edit_wars_database/export/content /Users/albertoharres/edit_wars/",
     "headlines": "node ./script/headlines.js",
     "events": "node ./script/events.js",
     "content_table": "node ./script/content_table.js"

@@ -11,11 +11,14 @@ const utils = require('./utils')
 
 const csv=require('csvtojson')
 
-const dataFolder = 'data/BarChart/';
 const narrativesFolder = 'data/narratives/';
-const outputStackedFolder = 'export/'
-const outputUnstackedFolder = 'export/'
-const outputDataFolder = 'export/data/'
+var outputDataFolder = 'export/data/'
+//const editWarsRepo = '/Users/albertoharres/edit_wars/content/'
+
+process.argv.forEach(function (val, index, array) {
+  console.log(index + ': ' + val);
+});
+
 
 const init = () => {
   getContent().then(data => {
