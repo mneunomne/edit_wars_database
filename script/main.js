@@ -28,6 +28,7 @@ const init = () => {
     */
 
     backgrounds.forEach(background => {
+      console.log("background.identifier", background)
       if (background.identifier.includes('wordcloud')) {
         // process WordCloud later
         return
@@ -42,9 +43,9 @@ const init = () => {
             backgroundData.events = events
             getGraphHeadlines(background.identifier).then(headlines => {
               backgroundData.headlines = headlines
-              console.log("backgroundData.headlines", backgroundData.headlines)
+              // console.log("backgroundData.headlines", backgroundData.headlines)
               // save backgroundData file
-              utils.saveJsonFile(exportpath, JSON.stringify(backgroundData))
+              // utils.saveJsonFile(exportpath, JSON.stringify(backgroundData))
             })
           })
         })
@@ -52,6 +53,11 @@ const init = () => {
         // missing data file
         background.data = 'missing'
       }
+      let background_steps = background.steps.split('-')
+      background.stepstart = parseInt(background_steps[0])
+      background.stepend = parseInt(background_steps[1] || background_steps[0])
+      // remove unused parameters
+      delete background.steps
       // save background .json file 
       utils.saveJsonFile(background.path, JSON.stringify(background))
     })

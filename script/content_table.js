@@ -36,7 +36,7 @@ const getContent = () => {
         const stepName = `${content.narrative}-${parseInt(content.step_idx)}-${content.text_component}`
         const stepData = {
           narrative: narrativeId,
-          path: `/${narrativeFolder}/steps/${stepName}.json`,
+          path: `${narrativeFolder}/steps/${stepName}.json`,
           narrativeName: content.narrative,
           order: parseInt(content.step_idx),
           component: content.text_component,
@@ -53,7 +53,7 @@ const getContent = () => {
           const backgroundData = {
             narrative: narrativeId,
             narrativeName: content.narrative,
-            path: `/${narrativeFolder}/backgrounds/${content.identifier}.json`,
+            path: `${narrativeFolder}/backgrounds/${content.identifier}.json`,
             identifier: content.identifier,
             order: parseInt(content.bg_idx),
             component: content.graph_component,
@@ -72,29 +72,6 @@ const getContent = () => {
     })
   })
 }
-
-const saveStepData = (stepData) => {
-  const filepath = stepData.path
-  utils.saveJsonFile(filepath, JSON.stringify(stepData))
-}
-
-const saveBackgroundData = (backgroundData) => {
-  const filepath = backgroundData.path
-  utils.saveJsonFile(filepath, JSON.stringify(backgroundData))
-}
-
-const cleanEventData = (content) => {
-  return content.map(event => (
-    {
-      date: utils.parseGermanDate(event.Date).toISOString(),
-      text: event.text,
-      link: event.Source
-    }
-  ))
-}
-
-
-
 
 exports.getContent = getContent
 

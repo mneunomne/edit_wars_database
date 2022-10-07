@@ -11,7 +11,7 @@ exports.sortByDate = function(a,b){
 }
 
 exports.saveJsonFile = (path, jsonString) => {
-  fs.writeFile(path, jsonString, 'utf8', function (err) {
+  fs.writeFile(path, jsonString, {encoding:'utf8',flag:'w'}, function (err) {
     if (err) {
         console.log("An error occured while writing JSON Object to File.");
         return console.log(err);
