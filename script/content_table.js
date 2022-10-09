@@ -34,7 +34,7 @@ const getContent = () => {
           fs.mkdirSync(`${narrativeFolder}/backgrounds`);
         }
         const stepName = `${content.narrative}-${parseInt(content.step_idx)}-${content.text_component}`
-        const stepData = {
+        var stepData = {
           narrative: narrativeId,
           path: `${narrativeFolder}/steps/${stepName}.json`,
           narrativeName: content.narrative,
