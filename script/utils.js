@@ -19,3 +19,7 @@ exports.saveJsonFile = (path, jsonString) => {
     console.log(`${path} file has been saved.`);
   });
 }
+
+exports.dateIsValid = (date) => {
+  return !Number.isNaN(new Date(date).getTime());
+}

@@ -47,6 +47,10 @@ const getContent = () => {
           chart_comment: content.comment,
           chart_description: content.comment,
         }
+        // filter date for graph
+        var filterDate = processStepComments(content.comments)
+        if (filterDate) stepData.filterDate = filterDate
+
         contentData.steps.push(stepData)
         //saveStepData(stepData, narrativeFolder)
 
@@ -75,6 +79,23 @@ const getContent = () => {
       resolve(contentData)
     })
   })
+}
+
+const processStepComments = (str) => {
+  if (str.length > 3 && str.includes('-')) {
+    let startDate = new Date(str.split('-')[0])
+    let endDate = new Date(str.split('-')[1])
+    if (utils.dateIsValid(startDate) && utils.dateIsValid(endDate)) {
+      return {
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString()
+      }
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
 }
 
 exports.getContent = getContent

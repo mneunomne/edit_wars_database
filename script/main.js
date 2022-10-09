@@ -41,7 +41,6 @@ const init = () => {
             backgroundData.events = events
             getGraphHeadlines(background.identifier).then(headlines => {
               backgroundData.headlines = headlines
-              // console.log("backgroundData.headlines", backgroundData.headlines)
               // save backgroundData file
               utils.saveJsonFile(exportpath, JSON.stringify(backgroundData))
             })
