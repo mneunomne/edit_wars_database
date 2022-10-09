@@ -70,7 +70,7 @@ cold-war-ii,,,,,,,,,,,,015,TextCenter,"There was also a KGB program aimed at del
 cold-war-ii,,,,,,,,,,,,016,TextCenter,"In the modern Russian press, one can also often find reports of biological laboratories near the Russian border, where various dangerous diseases are tested on people.",
 cold-war-ii,,,,,,,,,,,,017,TextCenter,"Russian propaganda throws in such fakes, but they do not live long. The fictitious plot does not develop in any way and lacks details. There is no intelligible confirmation of the facts described by the defense ministry. In the case of propaganda work, they are not needed. Nevertheless, instead of creating fictional stories, they are much more likely to distort real facts or present them in the key needed for propaganda narratives.",
 cold-war-ii,013,cold_war_ii-colab-alies,BarChart,,"The graph depicts the result of cluster analysis based on relevant Russian-language media headlines. Timeframe: 01.01.2022 – 31.07.2022. Data source: GDELT.
-","Frequency of the ""Russia is not alone"" topics in Russian media.","Topics (6,85,174),13,38",018,ok,missing,ok,018,DefaultText,"""Russia is not alone""
+","Frequency of the ""Russia is not alone"" topics in Russian media.","Topics (6,85,174),13,38",18-19,ok,missing,ok,018,DefaultText,"""Russia is not alone""
 
 The propaganda media claim that Western pressure on Russia is only accelerating the formation of a multipolar world and hastening the end of Western hegemony. Reports of diplomatic successes with other countries reinforce this thesis. Russia is not a pariah – the central message of propaganda. Media publications show Russia has three geopolitical allies – China, Belarus and Serbia. 
 ",
