@@ -52,7 +52,9 @@ const processColabChart = (jsonObj) => {
       "topic": obj["Topic"],
       "words": obj["Words"]
     }
-  })
+  }).filter(obj => 
+    obj.timestamp >= new Date ("01/01/2022")
+  )
 }
 
 const generateCountArray = (jsonObj) => {

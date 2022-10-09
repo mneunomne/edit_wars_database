@@ -88,7 +88,9 @@ const processWeeklyStackedChart = (jsonObj) => {
       "title": obj["title"],
       "id": obj["ID"]
     }
-  })
+  }).filter(obj => 
+    obj.fetchdate_orig >= new Date ("01/01/2022")
+  )
 }
 
 const processDailyStackedChart = (jsonObj) => {

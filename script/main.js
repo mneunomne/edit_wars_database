@@ -23,12 +23,11 @@ process.argv.forEach(function (val, index, array) {
 const init = () => {
   getContent().then(data => {
     const { backgrounds, steps } = data
-    /*
+
     steps.forEach(step => {
       // save step files
       utils.saveJsonFile(step.path, JSON.stringify(step))
     })
-    */
 
     backgrounds.forEach(background => {
       console.log("background.identifier", background)
@@ -44,7 +43,7 @@ const init = () => {
               backgroundData.headlines = headlines
               // console.log("backgroundData.headlines", backgroundData.headlines)
               // save backgroundData file
-              // utils.saveJsonFile(exportpath, JSON.stringify(backgroundData))
+              utils.saveJsonFile(exportpath, JSON.stringify(backgroundData))
             })
           })
         })
