@@ -128,7 +128,10 @@ const functions = {
     var node = Graph.graphData().nodes.find(n => {
       return n.id == node_id
     })
-    if (!node) return
+    if (!node) {
+      this.resetZoom()
+      return
+    }
     // Aim at node from outside it
     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
   
@@ -173,7 +176,7 @@ const functions = {
       3000  // ms transition duration
     );
   },
-  setZoom: function (data) {
+  resetZoom: function () {
     // 
     Graph.cameraPosition(
       savedCameraPos, // new position
