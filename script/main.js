@@ -30,7 +30,7 @@ const init = () => {
     })
 
     backgrounds.forEach(background => {
-      console.log("background.identifier", background)
+      //console.log("background.identifier", background)
       // save background files
       const datapath = `${narrativesFolder}${background.narrativeName}/${background.identifier}.csv`
       const exportpath = `${outputDataFolder}${background.identifier}.json`

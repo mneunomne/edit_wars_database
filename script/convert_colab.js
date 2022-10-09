@@ -53,7 +53,7 @@ const processColabChart = (jsonObj) => {
       "words": obj["Words"]
     }
   }).filter(obj => 
-    obj.timestamp >= new Date ("01/01/2022")
+    new Date (obj.timestamp) >= new Date ("01/01/2022")
   )
 }
 

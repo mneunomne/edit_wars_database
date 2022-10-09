@@ -44,12 +44,12 @@ const getContent = () => {
           body_ru: content.body_ru,
           name: `${content.narrative}-${parseInt(content.step_idx)}-${content.text_component}`,
           uuid: uuid.v1(),
-          chart_comment: content.comment,
+          chart_comment: content.comments,
           chart_description: content.comment,
         }
         // filter date for graph
-        var filterDate = processStepComments(content.comments)
-        if (filterDate) stepData.filterDate = filterDate
+        //var filterDate = processStepComments(content.comments)
+        //if (filterDate) stepData.filterDate = filterDate
 
         contentData.steps.push(stepData)
         //saveStepData(stepData, narrativeFolder)

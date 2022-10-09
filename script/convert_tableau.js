@@ -89,7 +89,7 @@ const processWeeklyStackedChart = (jsonObj) => {
       "id": obj["ID"]
     }
   }).filter(obj => 
-    obj.fetchdate_orig >= new Date ("01/01/2022")
+    new Date (obj.fetchdate_orig) >= new Date ("01/01/2022")
   )
 }
 
