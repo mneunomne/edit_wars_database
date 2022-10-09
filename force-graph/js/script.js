@@ -1,8 +1,8 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical_nazis'
+const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
 const lang = urlParams.get('lang') ? urlParams.get('lang') : 'en'
-const distance = 1000;
+const default_distance = 1000;
 
 let focusNode = null;
 const highlightNodes = new Set();
@@ -83,7 +83,7 @@ const init = function (gData) {
   Graph.d3Force('charge').strength(-300);
 
   // save initial camera position
-  savedCameraPos = myGraph.cameraPosition();
+  savedCameraPos = Graph.cameraPosition();
 
 }
 
@@ -123,8 +123,8 @@ const functions = {
     }, 10);
   },
   focusOnNode: function (params) {
-    let node_id = params.node_id
-    let distance = params.distance
+    let node_id = params.node_id || params
+    let distance = params.distance || default_distance 
     var node = Graph.graphData().nodes.find(n => {
       return n.id == node_id
     })
@@ -168,8 +168,8 @@ const functions = {
   fitToCanvas: function (data) {
     // Graph.zoomToFit(data || 100)
     Graph.cameraPosition(
-      newPos, // new position
-      node, // lookAt ({ x, y, z })
+      {}, // new position
+      {x: 0, y: 0, z: 0}, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
   },
