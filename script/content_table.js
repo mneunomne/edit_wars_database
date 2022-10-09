@@ -48,8 +48,8 @@ const getContent = () => {
           chart_description: content.comment,
         }
         // filter date for graph
-        //var filterDate = processStepComments(content.comments)
-        //if (filterDate) stepData.filterDate = filterDate
+        var filterDate = processStepComments(content.comments)
+        if (filterDate) stepData.filterDate = filterDate
 
         contentData.steps.push(stepData)
         //saveStepData(stepData, narrativeFolder)
