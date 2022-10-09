@@ -68,8 +68,7 @@ const init = function (gData) {
       }
     }
 
-    console.log("node.isKeyword", (node_index / gData.nodes.length))
-  
+    //console.log("node.isKeyword", (node_index / gData.nodes.length))
     //sprite.textHeight = 7 + 3 * (node_index / gData.nodes.length);
     //sprite.material.opacity = Math.max(0.35, (node_index / gData.nodes.length))
     sprite.material.opacity = 0.8
