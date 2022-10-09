@@ -43,7 +43,9 @@ const getContent = () => {
           body_en: content.body_en,
           body_ru: content.body_ru,
           name: `${content.narrative}-${parseInt(content.step_idx)}-${content.text_component}`,
-          uuid: uuid.v1()
+          uuid: uuid.v1(),
+          chart_comment: content.comment,
+          chart_description: content.comment,
         }
         contentData.steps.push(stepData)
         //saveStepData(stepData, narrativeFolder)

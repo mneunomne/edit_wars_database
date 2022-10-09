@@ -32,8 +32,6 @@ const readCsvFile = (filename) => {
   .then((jsonObj)=>{
     const narrativeKeywords = readNarrativeKeywords()
     narrativeKeywords.map(n => {n})
-    
-    //console.log("jsonObj", jsonObj)
 
     var mergedKeywords = []
     narrativeKeywords.map(narrative => {
@@ -53,7 +51,6 @@ const readCsvFile = (filename) => {
 
     saveJsonFile(`${outputFolder}mergedNarrativesConnections.json`, mergedConnectionData)
 
-    //console.log("connectionsObj", connectionsObj)
   })
 }
 
@@ -66,7 +63,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
 
     jsonObj = jsonObj.sort(sortByCount).slice(0, maxNumNodes);
 
-    console.log("links", links.length)
+    // console.log("links", links.length)
     
     jsonObj.map(obj => {
       // check for each keyword

@@ -13,6 +13,8 @@ var Graph = null
 var fontFace = null
 var savedCameraPos = null
 
+const options = {}//{ controlType: 'fly' }
+
 fetch(`../export/narratives_word_graphs/${narrative}.json`)
   .then((response) => response.json())
   .then((data) => {
@@ -21,7 +23,7 @@ fetch(`../export/narratives_word_graphs/${narrative}.json`)
   });
 
 const init = function (gData) {
-  Graph = ForceGraph3D()(document.getElementById('3d-graph'))
+  Graph = ForceGraph3D(options)(document.getElementById('3d-graph'))
   .graphData(gData)
   .enableNodeDrag(false)
   .showNavInfo(false)
@@ -42,19 +44,20 @@ const init = function (gData) {
   })
   //.onNodeHover(onNodeHover)
   .nodeThreeObject((node) => {
+
     const group = new THREE.Group();
-    const geometry = new THREE.SphereGeometry(2, 32, 64);
-    const material = new THREE.MeshBasicMaterial({ color: node.color });
+    const geometry = new THREE.SphereGeometry(3, 32, 64);
+    const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
     const sphere = new THREE.Mesh(geometry, material);
     group.add(sphere);
   
     const sprite = new SpriteText(node[lang]);
-    sprite.position.set(2, 10, 0);
-  
+    sprite.position.set(2, 14, 0);
     sprite.fontFace = "roboto-mono";
     sprite.material.depthWrite = false; // make sprite background transparent
     sprite.color = "#000000";
     sprite.strokeColor = node.color;
+    //sprite.textHeight = 45
     // sprite.position.set(0, 100, 100);
   
     if (highlightNodes.size > 0) {
@@ -64,8 +67,10 @@ const init = function (gData) {
         sprite.material.opacity = 0
       }
     }
+
+    console.log("node.isKeyword", (node_index / gData.nodes.length))
   
-    sprite.textHeight = 7 + 3 * (node_index / gData.nodes.length);
+    //sprite.textHeight = 7 + 3 * (node_index / gData.nodes.length);
     //sprite.material.opacity = Math.max(0.35, (node_index / gData.nodes.length))
     sprite.material.opacity = 0.8
     //console.log("node_index / gData.nodes.length", node_index / gData.nodes.length)
@@ -165,8 +170,6 @@ const functions = {
     nodes.map(n => {
       n.__threeObj.material.opacity = 1
     })
-    console.log("connections", connections)
-    console.log("nodes", nodes)
   },
   fitToCanvas: function (data) {
     // Graph.zoomToFit(data || 100)
