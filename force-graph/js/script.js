@@ -2,7 +2,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
 const lang = urlParams.get('lang') ? urlParams.get('lang') : 'en'
-const default_distance = 1000;
+const default_distance = 300;
 
 let focusNode = null;
 const highlightNodes = new Set();
