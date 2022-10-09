@@ -68,7 +68,7 @@ const init = function (gData) {
     sprite.textHeight = 7 + 3 * (node_index / gData.nodes.length);
     //sprite.material.opacity = Math.max(0.35, (node_index / gData.nodes.length))
     sprite.material.opacity = 0.8
-    console.log("node_index / gData.nodes.length", node_index / gData.nodes.length)
+    //console.log("node_index / gData.nodes.length", node_index / gData.nodes.length)
     sprite.fontWeight = 'normal';
   
     group.add(sprite);
