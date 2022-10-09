@@ -62,6 +62,8 @@ const getContent = () => {
             data: content.data,
             events: content.events,
             headlines: content.headlines,
+            description: content.description,
+            chart_title: content.chart_title,
             uuid: uuid.v1()
           }
           contentData.backgrounds.push(backgroundData)
