@@ -87,8 +87,8 @@ const processStepComments = (str) => {
     let endDate = new Date(str.split('-')[1])
     if (utils.dateIsValid(startDate) && utils.dateIsValid(endDate)) {
       return {
-        startDate: startDate.toISOString(),
-        endDate: endDate.toISOString()
+        "startDate": startDate.toISOString(),
+        "endDate": endDate.toISOString()
       }
     } else {
       return false

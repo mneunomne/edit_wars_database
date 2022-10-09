@@ -47,6 +47,7 @@ const init = () => {
           })
         })
       } else {
+        console.log("missing datafile!", datapath)
         // missing data file
         background.data = 'missing'
       }
