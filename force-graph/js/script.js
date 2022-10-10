@@ -158,7 +158,7 @@ const functions = {
     );
     setTimeout(() => {
       isTransitioning = false
-    })
+    }, 3000)
   },
   xf: function () {
     var data = Graph.graphData()
