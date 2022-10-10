@@ -14,6 +14,7 @@ var fontFace = null
 var savedCameraPos = null
 window.interval = null
 var isTransitioning = false 
+var isRotating = false
 const options = {}//{ controlType: 'fly' }
 
 fetch(`../export/narratives_word_graphs/${narrative}.json`)
@@ -114,14 +115,16 @@ const updateHighlight = function () {
   node_index=0
   // trigger update of highlighted objects in scene
   Graph
-    .nodeVisibility(Graph.nodeVisibility())
+    //.nodeVisibility(Graph.nodeVisibility())
     .linkVisibility(Graph.linkVisibility())
-    //.nodeThreeObject(Graph.nodeThreeObject())
+    .nodeThreeObject(Graph.nodeThreeObject())
   //.linkDirectionalParticles(Graph.linkDirectionalParticles());
 }
 
 const functions = {
   autoRotate: function () {
+    if (isRotating) return 
+    isRotating=true
     highlightNodes.clear();
     updateHighlight()
     if (isTransitioning) return;
@@ -139,6 +142,7 @@ const functions = {
   },
   focusOnNode: function (params) {
     clearInterval(window.interval)
+    isRotating=false
     isTransitioning = true
     let node_id = params.node_id || params
     let distance = params.distance || default_distance 
@@ -202,6 +206,7 @@ const functions = {
   resetZoom: function () {
     highlightNodes.clear();
     clearInterval(window.interval)
+    isRotating = false
     // 
     Graph.cameraPosition(
       savedCameraPos, // new position
