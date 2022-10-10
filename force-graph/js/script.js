@@ -110,6 +110,20 @@ const hightlightNode = (node => {
   updateHighlight();
 })
 
+const setHightlightNodes = (nodes => {
+  if (!nodes && !highlightNodes.size) return;
+  highlightNodes.clear();
+  if (nodes) {
+    for (let i in nodes) {
+      highlightNodes.add(nodes[i].id);
+      nodes[i].neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+    }
+    //node.links.forEach(link => highlightLinks.add(link));
+  }
+  focusNode = nodes[0] || null;
+  updateHighlight();
+})
+
 const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
   node_index=0
@@ -140,14 +154,59 @@ const functions = {
       angle += Math.PI / 5000;
     }, 10);
   },
+  focusOnNodes: function (params) {
+    let nodes_id = (params.node_ids || params)
+    clearInterval(window.interval)
+    isRotating=false
+    isTransitioning = true
+    let distance = params.distance || default_distance 
+    var nodes = []
+    for(let i in nodes_id) {
+      var node = Graph.graphData().nodes.find(n => {
+        return n.id.toLowerCase() == nodes_id[i].toLowerCase()
+      })
+      if (node) nodes.push(node)
+    }
+
+    setHightlightNodes(nodes)
+
+    if (nodes.length == 0) {
+      this.resetZoom()
+      return
+    }
+    
+    var node = nodes[0]
+    
+    // Aim at node from outside it
+    const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+  
+    const newPos = node.x || node.y || node.z
+      ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
+      : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
+  
+    Graph.cameraPosition(
+      newPos, // new position
+      node, // lookAt ({ x, y, z })
+      3000  // ms transition duration
+    );
+    setTimeout(() => {
+      isTransitioning = false
+      //highlightNodes.clear();
+      //updateHighlight()
+    }, 3000)
+  },
   focusOnNode: function (params) {
+    let data = (params.node_id || params)
+    if ((params.node_id || params).includes(',')) {
+      this.focusOnNodes(data.split(','))
+    }
     clearInterval(window.interval)
     isRotating=false
     isTransitioning = true
     let node_id = params.node_id || params
-    let distance = params.distance || default_distance 
+    let distance = params.distance || default_distance * 1.5 
     var node = Graph.graphData().nodes.find(n => {
-      return n.id == node_id
+      return n.id.toLowerCase() == node_id.toLowerCase()
     })
 
     hightlightNode(node)
