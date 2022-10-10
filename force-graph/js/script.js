@@ -88,6 +88,8 @@ const init = function (gData) {
 
   // save initial camera position
   savedCameraPos = Graph.cameraPosition();
+  
+  functions.autoRotate()
 
 }
 
@@ -116,14 +118,16 @@ const updateHighlight = function () {
 
 const functions = {
   autoRotate: function () {
+    //console.log("Graph.cameraPosition()", )
     // camera orbit
+    var dist = Graph.cameraPosition().z
     let angle = 0;
     setInterval(() => {
       Graph.cameraPosition({
-        x: distance * Math.sin(angle),
-        z: distance * Math.cos(angle)
+        x: dist * Math.sin(angle),
+        z: dist * Math.cos(angle)
       });
-      angle += Math.PI / 3000;
+      angle += Math.PI / 5000;
     }, 10);
   },
   focusOnNode: function (params) {
