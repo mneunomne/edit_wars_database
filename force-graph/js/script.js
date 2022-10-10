@@ -13,7 +13,7 @@ var Graph = null
 var fontFace = null
 var savedCameraPos = null
 window.interval = null
-
+var isTransitioning = false 
 const options = {}//{ controlType: 'fly' }
 
 fetch(`../export/narratives_word_graphs/${narrative}.json`)
@@ -119,6 +119,7 @@ const updateHighlight = function () {
 
 const functions = {
   autoRotate: function () {
+    if (isTransitioning) return;
     //console.log("Graph.cameraPosition()", )
     // camera orbit
     var dist = Graph.cameraPosition().z
@@ -132,6 +133,7 @@ const functions = {
     }, 10);
   },
   focusOnNode: function (params) {
+    isTransitioning = true
     clearInterval(window.interval)
     let node_id = params.node_id || params
     let distance = params.distance || default_distance 
@@ -154,6 +156,9 @@ const functions = {
       node, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
+    setTimeout(() => {
+      isTransitioning = false
+    })
   },
   xf: function () {
     var data = Graph.graphData()
