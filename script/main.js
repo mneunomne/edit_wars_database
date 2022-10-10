@@ -39,8 +39,9 @@ const init = () => {
         processBackgroundData(background, datapath).then(backgroundData => {
           getGraphEvents(background.events).then(events => {
             backgroundData.events = events
-            getGraphHeadlines(background.identifier).then(headlines => {
+            getGraphHeadlines(background.name).then(headlines => {
               backgroundData.headlines = headlines
+              console.log("backgroundData.headlines", background)
               // save backgroundData file
               utils.saveJsonFile(exportpath, JSON.stringify(backgroundData))
             })
