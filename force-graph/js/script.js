@@ -70,9 +70,6 @@ const init = function (gData) {
         sprite.material.opacity = 0.3
       }
     }
-
-    console.log("nodeThreeObject", highlightNodes.size)
-
     //console.log("node.isKeyword", (node_index / gData.nodes.length))
     //sprite.textHeight = 7 + 3 * (node_index / gData.nodes.length);
     //sprite.material.opacity = Math.max(0.35, (node_index / gData.nodes.length))
@@ -120,7 +117,6 @@ const setHightlightNodes = (nodes => {
     }
     //node.links.forEach(link => highlightLinks.add(link));
   }
-  console.log("setHightlightNodes", nodes)
   focusNode = nodes[0] || null;
   updateHighlight();
 })
