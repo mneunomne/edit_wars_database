@@ -3,6 +3,7 @@ var fs = require('fs');
 
 exports.parseGermanDate = (input) => {
   var parts = input.match(/(\d+)/g);
+  if (parts == null) return null
   return new Date(parts[2], parts[1]-1, parts[0]);
 }
 

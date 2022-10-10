@@ -82,10 +82,13 @@ const getContent = () => {
 }
 
 const processStepComments = (str) => {
+  console.log("str", str)
   if (str.length > 3 && str.includes('-')) {
-    let startDate = new Date(str.split('-')[0])
-    let endDate = new Date(str.split('-')[1])
-    if (utils.dateIsValid(startDate) && utils.dateIsValid(endDate)) {
+    console.log("str.split('-')[0]", str.split('-')[0], str.split('-')[1])
+    let startDate = utils.parseGermanDate(str.split('-')[0])
+    let endDate = utils.parseGermanDate(str.split('-')[1])
+    console.log(str, "startDate, endDate", startDate, endDate)
+    if (startDate && endDate && utils.dateIsValid(startDate) && utils.dateIsValid(endDate)) {
       return {
         "startDate": startDate.toISOString(),
         "endDate": endDate.toISOString()
