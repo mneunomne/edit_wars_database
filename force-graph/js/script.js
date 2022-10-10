@@ -12,6 +12,7 @@ var node_index = 0
 var Graph = null
 var fontFace = null
 var savedCameraPos = null
+window.interval = null
 
 const options = {}//{ controlType: 'fly' }
 
@@ -89,7 +90,7 @@ const init = function (gData) {
   // save initial camera position
   savedCameraPos = Graph.cameraPosition();
   
-  functions.autoRotate()
+  //functions.autoRotate()
 
 }
 
@@ -122,7 +123,7 @@ const functions = {
     // camera orbit
     var dist = Graph.cameraPosition().z
     let angle = 0;
-    setInterval(() => {
+    window.interval = setInterval(() => {
       Graph.cameraPosition({
         x: dist * Math.sin(angle),
         z: dist * Math.cos(angle)
@@ -131,6 +132,7 @@ const functions = {
     }, 10);
   },
   focusOnNode: function (params) {
+    clearInterval(window.interval)
     let node_id = params.node_id || params
     let distance = params.distance || default_distance 
     var node = Graph.graphData().nodes.find(n => {
@@ -183,6 +185,7 @@ const functions = {
     );
   },
   resetZoom: function () {
+    clearInterval(window.interval)
     // 
     Graph.cameraPosition(
       savedCameraPos, // new position
