@@ -123,6 +123,7 @@ const updateHighlight = function () {
 const functions = {
   autoRotate: function () {
     highlightNodes.clear();
+    updateHighlight()
     if (isTransitioning) return;
     //console.log("Graph.cameraPosition()", )
     // camera orbit
@@ -137,8 +138,8 @@ const functions = {
     }, 10);
   },
   focusOnNode: function (params) {
-    isTransitioning = true
     clearInterval(window.interval)
+    isTransitioning = true
     let node_id = params.node_id || params
     let distance = params.distance || default_distance 
     var node = Graph.graphData().nodes.find(n => {
@@ -165,7 +166,8 @@ const functions = {
     );
     setTimeout(() => {
       isTransitioning = false
-      highlightNodes.clear();
+      //highlightNodes.clear();
+      //updateHighlight()
     }, 3000)
   },
   xf: function () {
