@@ -75,7 +75,7 @@ const processBackgroundData = (background, datapath) => {
     // readTableau
     //console.log("readTableau", datapath)
     return readTableauFile(datapath)
-  } else if (identifier.includes('wordcloud')) {
+  } else {
     //console.log("wordcloud", datapath)
     return new Promise((res, rej) => rej([]))
   }
