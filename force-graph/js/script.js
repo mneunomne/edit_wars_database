@@ -28,6 +28,7 @@ const init = function (gData) {
   .graphData(gData)
   .enableNodeDrag(false)
   .showNavInfo(false)
+  
   .nodeVisibility(node => 
     highlightNodes.size == 0 || highlightNodes.has(node.id))
   .linkVisibility(link =>
@@ -43,7 +44,7 @@ const init = function (gData) {
     console.log("onEngineStop!")
     Graph.pauseAnimation()
   })
-  //.onNodeHover(onNodeHover)
+  //.onNodeHover(hightlightNode)
   .nodeThreeObject((node) => {
 
     const group = new THREE.Group();
@@ -65,9 +66,11 @@ const init = function (gData) {
       if (highlightNodes.has(node.id)) {
         sprite.material.opacity = 0.9
       } else {
-        sprite.material.opacity = 0
+        sprite.material.opacity = 0.3
       }
     }
+
+    console.log("nodeThreeObject", highlightNodes.size)
 
     //console.log("node.isKeyword", (node_index / gData.nodes.length))
     //sprite.textHeight = 7 + 3 * (node_index / gData.nodes.length);
@@ -94,7 +97,7 @@ const init = function (gData) {
 
 }
 
-const onNodeHover = (node => {
+const hightlightNode = (node => {
   if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
   highlightNodes.clear();
   if (node) {
@@ -113,12 +116,13 @@ const updateHighlight = function () {
   Graph
     .nodeVisibility(Graph.nodeVisibility())
     .linkVisibility(Graph.linkVisibility())
-  //.nodeThreeObject(Graph.nodeThreeObject())
+    //.nodeThreeObject(Graph.nodeThreeObject())
   //.linkDirectionalParticles(Graph.linkDirectionalParticles());
 }
 
 const functions = {
   autoRotate: function () {
+    highlightNodes.clear();
     if (isTransitioning) return;
     //console.log("Graph.cameraPosition()", )
     // camera orbit
@@ -140,6 +144,9 @@ const functions = {
     var node = Graph.graphData().nodes.find(n => {
       return n.id == node_id
     })
+
+    hightlightNode(node)
+
     if (!node) {
       this.resetZoom()
       return
@@ -158,6 +165,7 @@ const functions = {
     );
     setTimeout(() => {
       isTransitioning = false
+      highlightNodes.clear();
     }, 3000)
   },
   xf: function () {
@@ -190,6 +198,7 @@ const functions = {
     );
   },
   resetZoom: function () {
+    highlightNodes.clear();
     clearInterval(window.interval)
     // 
     Graph.cameraPosition(
