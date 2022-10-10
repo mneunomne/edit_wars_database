@@ -120,6 +120,7 @@ const setHightlightNodes = (nodes => {
     }
     //node.links.forEach(link => highlightLinks.add(link));
   }
+  console.log("setHightlightNodes", nodes)
   focusNode = nodes[0] || null;
   updateHighlight();
 })
@@ -167,6 +168,8 @@ const functions = {
       })
       if (node) nodes.push(node)
     }
+
+    console.log("nodes", nodes)
 
     setHightlightNodes(nodes)
 
