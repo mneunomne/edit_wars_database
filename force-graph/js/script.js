@@ -9,7 +9,8 @@ const highlightNodes = new Set();
 const highlightLinks = new Set();
 
 var node_index = 0
-var Graph = null
+var link_index = 250
+window.Graph = null
 var fontFace = null
 var savedCameraPos = null
 window.interval = null
@@ -17,19 +18,51 @@ var isTransitioning = false
 var isRotating = false
 const options = {}//{ controlType: 'fly' }
 
+window.guiOptions = {
+  size: 14,
+  showCircle: false
+}
+
 fetch(`../export/narratives_word_graphs/${narrative}.json`)
   .then((response) => response.json())
   .then((data) => {
     //console.log(data)
     init(data)
+    node_index = data.nodes.length
   });
 
 const init = function (gData) {
-  Graph = ForceGraph3D(options)(document.getElementById('3d-graph'))
+  window.Graph = ForceGraph3D(options)(document.getElementById('3d-graph'))
   .graphData(gData)
   .enableNodeDrag(false)
-  .showNavInfo(false)
-  
+  .showNavInfo(true)
+  .linkLabel(link => {
+    console.log("link", link)
+    return `
+      <div class="tooltip-box">
+        <span>source: ${link.source.id}</span><br/>
+        <span>target: ${link.target.id}</span><br/>
+        <span>headline_id: ${link.headline}</span><br/>
+        <span>count: ${link.count}</span>
+      </div>
+    `
+  })
+  .nodeLabel(node => {
+    return `
+      <div class="tooltip-box">
+        <span>source: ${node.ru}</span><br/>
+        <span>count: ${node.value}</span><br/>
+        <span>keyword: ${node.keyword}</span>
+      </div>
+    `
+  })
+  .onNodeHover(node => {
+    console.log("node!", node)
+    //hightlightNode(node)
+  })
+  .onNodeClick(node => {
+    functions.focusOnNode({node_id: node.id, show_all: true})
+  })
   .nodeVisibility(node => 
     highlightNodes.size == 0 || highlightNodes.has(node.id))
   .linkVisibility(link =>
@@ -41,26 +74,55 @@ const init = function (gData) {
   .linkColor((link) => {
     return "#000000"
   })
+  /*
+  .linkWidth(link => {
+    console.log("link", link, link_index, link_index/250)
+    var width = link_index/250 * 2
+    if (link_index > 1) {
+      link_index--
+    } else {
+      link_index = 250
+    }
+    return width
+  })
+  */
   .onEngineStop(() => {
     console.log("onEngineStop!")
     Graph.pauseAnimation()
   })
-  //.onNodeHover(hightlightNode)
-  .nodeThreeObject((node) => {
+  .onNodeHover((node) => {
 
+  })
+  .nodeThreeObject((node, index) => {
+    node_index--
+    if (node_index == 0) {
+      node_index = gData.nodes.length
+    }
     const group = new THREE.Group();
-    const geometry = new THREE.SphereGeometry(3, 32, 64);
+    var size =  guiOptions.size * ( node_index/gData.nodes.length) + 5 //node.index / 230 * 10
+    //console.log("node")
+    
+    const geometry = new THREE.SphereGeometry(size, 32, 64);
     const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
     const sphere = new THREE.Mesh(geometry, material);
-    group.add(sphere);
+    sphere.material.opacity = 1
+    sphere.material.transparent = true
+    if (guiOptions.showCircle) group.add(sphere);
   
     const sprite = new SpriteText(node[lang]);
-    sprite.position.set(2, 14, 0);
+    sprite.position.set(0, 0, 0);
     sprite.fontFace = "roboto-mono";
     sprite.material.depthWrite = false; // make sprite background transparent
-    sprite.color = "#000000";
+    sprite.color = node.color;
     sprite.strokeColor = node.color;
-    //sprite.textHeight = 45
+    sprite.backgroundColor = 'black'
+
+    sprite.renderOrder = 999;
+    sprite.material.depthTest = false;
+    sprite.material.depthWrite = false;
+    sprite.onBeforeRender = function (renderer) { renderer.clearDepth(); };
+
+    sprite.textHeight = size
     // sprite.position.set(0, 100, 100);
   
     if (highlightNodes.size > 0) {
@@ -70,15 +132,10 @@ const init = function (gData) {
         sprite.material.opacity = 0.3
       }
     }
-    //console.log("node.isKeyword", (node_index / gData.nodes.length))
-    //sprite.textHeight = 7 + 3 * (node_index / gData.nodes.length);
-    //sprite.material.opacity = Math.max(0.35, (node_index / gData.nodes.length))
     sprite.material.opacity = 0.8
-    //console.log("node_index / gData.nodes.length", node_index / gData.nodes.length)
     sprite.fontWeight = 'normal';
-  
     group.add(sprite);
-    node_index++
+    //node_index++
     return group;
   });
 
@@ -91,9 +148,8 @@ const init = function (gData) {
   // save initial camera position
   savedCameraPos = Graph.cameraPosition();
   
-  //functions.autoRotate()
-
 }
+
 
 const hightlightNode = (node => {
   if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
@@ -123,7 +179,7 @@ const setHightlightNodes = (nodes => {
 
 const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
-  node_index=0
+  node_index = data.nodes.length
   // trigger update of highlighted objects in scene
   Graph
     //.nodeVisibility(Graph.nodeVisibility())
@@ -194,6 +250,7 @@ const functions = {
   },
   focusOnNode: function (params) {
     let data = (params.node_id || params)
+    let show_all = params.show_all || false
     if ((params.node_id || params).includes(',')) {
       this.focusOnNodes(data.split(','))
     }
@@ -206,15 +263,15 @@ const functions = {
       return n.id.toLowerCase() == node_id.toLowerCase()
     })
 
-    hightlightNode(node)
+    if (!show_all) hightlightNode(node)
 
     if (!node) {
       this.resetZoom()
       return
     }
+
     // Aim at node from outside it
     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
-  
     const newPos = node.x || node.y || node.z
       ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
       : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
@@ -226,8 +283,6 @@ const functions = {
     );
     setTimeout(() => {
       isTransitioning = false
-      //highlightNodes.clear();
-      //updateHighlight()
     }, 3000)
   },
   xf: function () {
