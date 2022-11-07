@@ -113,7 +113,7 @@ const init = function (gData) {
     sprite.position.set(0, 0, 0);
     sprite.fontFace = "roboto-mono";
     sprite.material.depthWrite = false; // make sprite background transparent
-    sprite.color = node.color;
+    sprite.color = 'white'//node.color;
     sprite.strokeColor = node.color;
     sprite.backgroundColor = 'black'
 
