@@ -32,8 +32,6 @@ const readCsvFile = (filename) => {
   .then((jsonObj)=>{
     const narrativeKeywords = readNarrativeKeywords()
     narrativeKeywords.map(n => {n})
-    
-    //console.log("jsonObj", jsonObj)
 
     var mergedKeywords = []
     narrativeKeywords.map(narrative => {
@@ -53,7 +51,6 @@ const readCsvFile = (filename) => {
 
     saveJsonFile(`${outputFolder}mergedNarrativesConnections.json`, mergedConnectionData)
 
-    //console.log("connectionsObj", connectionsObj)
   })
 }
 
@@ -66,56 +63,51 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
 
     jsonObj = jsonObj.sort(sortByCount).slice(0, maxNumNodes);
 
-    console.log("links", links.length)
+    console.log("jsonObj", jsonObj)
+
+    // console.log("links", links.length)
     
     jsonObj.map(obj => {
-      // check for each keyword
-      keywords.map((keyword, index) => {
-        let regex = new RegExp(keyword, 'g');
-        let source = obj["source"]
-        let target = obj["target"]
-        obj["count"] = parseInt(obj["count"])
-        //obj["source"] = snowball.stemword(source, 'russian')
-        //obj["target"] = snowball.stemword(target, 'russian')
+      let source = obj["source"]
+      let target = obj["target"]
+      obj["count"] = parseInt(obj["count"])
 
-        const link =  links.find(link => obj.source == link.source && obj.target == link.target)
-        if (!link) links.push(obj)
-        //mergedLinks.push(obj)
-        
-        var existing_node = nodes.find(n => n.id == obj["source"])
-        if (!existing_node) {
-          nodes.push({
-            "id": obj["source"],
-            "ru": source,
-            "en": obj["source_en"],
-            "group": index, // if is keyword, group 1, if not group 0
-            "value": parseInt(obj["count"]),
-            "keyword": keyword,
-            "isKeyword": regex.exec(source) ? true : false
-          })
-        } else {
-          // add count to node if it already exists
-          existing_node.value += parseInt(obj["count"])
-        }
-        
-        existing_node = nodes.find(n => n.id == obj["target"])
-        if (!existing_node) {
-          nodes.push({
-            "id": obj["target"],
-            "en": obj["target_ru"],
-            "ru": target,
-            "group": index, // if is keyword, group 1, if not group 0
-            "value": parseInt(obj["count"]),
-            "keyword": keyword,
-            "isKeyword": regex.exec(target) ? true : false
-          })
-        } else {
-          // add count to node if it already exists
-          existing_node.value += parseInt(obj["count"])
-        }
-      })
+      const link =  links.find(link => obj.source == link.source && obj.target == link.target)
+      
+      // if link doesnt exist yet, push it 
+      if (!link) links.push(obj)
+
+      var existing_node = nodes.find(n => n.id == obj["source"])
+      if (!existing_node) {
+        nodes.push({
+          "id": obj["source"],
+          "ru": source,
+          "en": obj["source_en"],
+          "group": keywords.indexOf(obj.keyword),
+          "value": parseInt(obj["count"]),
+          "keyword": obj.keyword,
+        })
+      } else {
+        // add count to node if it already exists
+        existing_node.value += parseInt(obj["count"])
+      }
+      
+      existing_node = nodes.find(n => n.id == obj["target"])
+      if (!existing_node) {
+        nodes.push({
+          "id": obj["target"],
+          "en": obj["target_ru"],
+          "ru": target,
+          "group": keywords.indexOf(obj.keyword),
+          "value": parseInt(obj["count"]),
+          "keyword": obj.keyword,
+        })
+      } else {
+        // add count to node if it already exists
+        existing_node.value += parseInt(obj["count"])
+      }
     })
-    console.log("links", links.length)
+
     var gData = {
       "nodes": nodes,
       "links": links
@@ -184,6 +176,7 @@ const filterDataByKeywords = (jsonObj, keywords) =>
     // check for each keyword
     keywords.some((keyword) => {
       let regex = new RegExp(keyword, 'g');
+      obj.keyword = keyword
       return (regex.exec(obj["source"]) || regex.exec(obj["target"]))
     })
   )

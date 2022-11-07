@@ -5,7 +5,8 @@
   {
     "imports": {
       "three": "https://unpkg.com/three@0.138.3/build/three.module.js",
-      "three-spritetext": "https://unpkg.com/three-spritetext@1.6.5/dist/three-spritetext.module.js"
+      "three-spritetext": "https://unpkg.com/three-spritetext@1.6.5/dist/three-spritetext.module.js",
+      "dat.gui": "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js"
     }
   }
 </script>
@@ -43,6 +44,15 @@
       left: 10px;
       font-family: 'roboto-mono';
     }
+
+    .tooltip-box {
+      background: black;
+      opacity: 0.75;
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 4px;
+      user-select: none;
+    }
   </style>
 </head>
 
@@ -50,8 +60,9 @@
   <div id="3d-graph"></div>
   <h1 style="opacity: 0;">тест</h1>
 
-  <script src="//unpkg.com/3d-force-graph"></script>
+  <script src="https://unpkg.com/3d-force-graph"></script>
 
   <script type="module" src="./js/script.js"></script>
+  <!--<script type="module" src="./js/gui.js"></script>-->
 
 </body>

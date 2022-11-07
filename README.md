@@ -60,10 +60,7 @@ iconv -f utf-16le -t utf-8 filename.csv > filename.csv.tmp && mv filename.csv.tm
 
 __converting all files in folder:__
 ```sh
-for file in *.csv; do                                                  
-    iconv -f utf-16le -t utf-8 "$file" > "$file".tmp &&
-    mv "$file.tmp" "$file"
-done
+sh convert_to_utf8.sh
 ```
 
 __list exports:__

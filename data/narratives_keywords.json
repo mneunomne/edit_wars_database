@@ -2,50 +2,50 @@
   {
     "title": "“No plans of any aggressive actions”",
     "subtitle": "- initial contradictions in the goal setting of the invasion",
-    "id": "no_plans_of_any_aggressive_actions",
+    "id": "no-plans-of-any-aggressive-actions",
     "keywords": ["цель","задача","миссия"]
   },
   {
     "title": "Mythical “Nazis”",
     "subtitle": "- constructing an enemy through the exploitation of historical memory",
-    "id": "mythical_nazis",
+    "id": "mythical-nazis",
     "keywords": ["борьба","^наци","националист","национализм","фашизм","фашист","бандер","реабилитац","денациф","жесток","убийств","убив","мариупол","азовстал","всу","зверств","уничтож"]
   },
   {
     "title": "“Protecting the Russian World”",
     "subtitle": "- a populist idea of paternal concern for the nation",
-    "id": "protecting_russian_world",
+    "id": "protecting-russian-world",
     "keywords": ["защита","защища","геноцид","русскоязычн","освобож","освобо","беженц","гуманитар$","эвакуаци","эвакуиро","ветеран"]
 
   },
   {
     "title": "“Ukrainian crisis”",
     "subtitle": "- denial of the state's right to sovereignty",
-    "id": "ukrainian_crisis",
+    "id": "ukrainian-crisis",
     "keywords": ["кризис","референдум","вхождение","признание","призна","присоедин","негосударство","днр","лнр","херсон","режим","агония","агонизир","конец"]
   },
   {
     "title": "“High-precision missiles vs. fakes”",
     "subtitle": "- isolating and contrasting the qualities of belligerents",
-    "id": "high_precision_missiles_vs_fakes",
+    "id": "high-precision-missiles-vs-fakes",
     "keywords": ["^уничтож","всу","обстрел","расстрел","провокац","фейк","буча","бастрык","кременч","высокоточ","нацбат","роддом","гиперзв","ракет","расправ","^пленн","наёмник","военноплен"]
   },
   {
     "title": "“Cold War II”",
     "subtitle": "- cultivating the fear of Western threat ",
-    "id": "cold_war_ii",
+    "id": "cold-war-ii",
     "keywords": ["оруж", "вооруж", "поставк", "накачив", "Украин", "угроз", "угрож", "ядерн", "порядок", "серб", "ошибк", "запад"]
   },
   {
     "title": "“Freezing Europe”",
     "subtitle": "- myths and propaganda about sanctions against Russia in connection with the invasion of Ukraine",
-    "id": "freezing_europe",
-    "keywords": ["^газ$","^газовы","^газе$","кризис","^зависи","^нефть$","санкция","санкции","^изолир","^изоляц","дефицит","актив$","замороз","голод","swift","импорт","инфляц","эмбарг"]
+    "id": "freezing-europe",
+    "keywords": ["^газ$","^газовы","^газе$","кризис","^зависи","^нефть$","санкция","санкции","^изолир","^изоляц","дефицит","актив$","замороз","голод","swift","импорт","инфляц","эмбарг", "антироссийск"]
   },
   {
     "title": "“Internal contradictions of the West”",
     "subtitle": "- lack unanimity as proof of weakness.",
-    "id": "internal_contradictions_of_the_west",
+    "id": "internal-contradictions-of-the-west",
     "keywords": ["вступле","членст","слабост","смочь"]
   }
 ]

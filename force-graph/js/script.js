@@ -1,30 +1,68 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical_nazis'
+const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
 const lang = urlParams.get('lang') ? urlParams.get('lang') : 'en'
-const distance = 1000;
+const default_distance = 500;
 
 let focusNode = null;
 const highlightNodes = new Set();
 const highlightLinks = new Set();
 
 var node_index = 0
-var Graph = null
+var link_index = 250
+window.Graph = null
 var fontFace = null
 var savedCameraPos = null
+window.interval = null
+var isTransitioning = false 
+var isRotating = false
+const options = {}//{ controlType: 'fly' }
+
+window.guiOptions = {
+  size: 14,
+  showCircle: false
+}
 
 fetch(`../export/narratives_word_graphs/${narrative}.json`)
   .then((response) => response.json())
   .then((data) => {
     //console.log(data)
     init(data)
+    node_index = data.nodes.length
   });
 
 const init = function (gData) {
-  Graph = ForceGraph3D()(document.getElementById('3d-graph'))
+  window.Graph = ForceGraph3D(options)(document.getElementById('3d-graph'))
   .graphData(gData)
   .enableNodeDrag(false)
-  .showNavInfo(false)
+  .showNavInfo(true)
+  .linkLabel(link => {
+    console.log("link", link)
+    return `
+      <div class="tooltip-box">
+        <span>source: ${link.source.id}</span><br/>
+        <span>target: ${link.target.id}</span><br/>
+        <span>headline_id: ${link.headline}</span><br/>
+        <span>count: ${link.count}</span>
+      </div>
+    `
+  })
+  .nodeLabel(node => {
+    return `
+      <div class="tooltip-box">
+        <span>source: ${node.ru}</span><br/>
+        <span>count: ${node.value}</span><br/>
+        <span>keyword: ${node.keyword}</span>
+      </div>
+    `
+  })
+  .onNodeHover(node => {
+    console.log("node!", node)
+    //hightlightNode(node)
+  })
+  .onNodeClick(node => {
+    functions.focusOnNode({node_id: node.id, show_all: true})
+  })
   .nodeVisibility(node => 
     highlightNodes.size == 0 || highlightNodes.has(node.id))
   .linkVisibility(link =>
@@ -36,43 +74,68 @@ const init = function (gData) {
   .linkColor((link) => {
     return "#000000"
   })
+  /*
+  .linkWidth(link => {
+    console.log("link", link, link_index, link_index/250)
+    var width = link_index/250 * 2
+    if (link_index > 1) {
+      link_index--
+    } else {
+      link_index = 250
+    }
+    return width
+  })
+  */
   .onEngineStop(() => {
     console.log("onEngineStop!")
     Graph.pauseAnimation()
   })
-  //.onNodeHover(onNodeHover)
-  .nodeThreeObject((node) => {
+  .onNodeHover((node) => {
+
+  })
+  .nodeThreeObject((node, index) => {
+    node_index--
+    if (node_index == 0) {
+      node_index = gData.nodes.length
+    }
     const group = new THREE.Group();
-    const geometry = new THREE.SphereGeometry(2, 32, 64);
-    const material = new THREE.MeshBasicMaterial({ color: node.color });
+    var size =  guiOptions.size * ( node_index/gData.nodes.length) + 5 //node.index / 230 * 10
+    //console.log("node")
+    
+    const geometry = new THREE.SphereGeometry(size, 32, 64);
+    const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
     const sphere = new THREE.Mesh(geometry, material);
-    group.add(sphere);
+    sphere.material.opacity = 1
+    sphere.material.transparent = true
+    if (guiOptions.showCircle) group.add(sphere);
   
     const sprite = new SpriteText(node[lang]);
-    sprite.position.set(2, 10, 0);
-  
+    sprite.position.set(0, 0, 0);
     sprite.fontFace = "roboto-mono";
     sprite.material.depthWrite = false; // make sprite background transparent
-    sprite.color = "#000000";
+    sprite.color = 'white'//node.color;
     sprite.strokeColor = node.color;
+    sprite.backgroundColor = 'black'
+
+    sprite.renderOrder = 999;
+    sprite.material.depthTest = false;
+    sprite.material.depthWrite = false;
+    sprite.onBeforeRender = function (renderer) { renderer.clearDepth(); };
+
+    sprite.textHeight = size
     // sprite.position.set(0, 100, 100);
   
     if (highlightNodes.size > 0) {
       if (highlightNodes.has(node.id)) {
         sprite.material.opacity = 0.9
       } else {
-        sprite.material.opacity = 0
+        sprite.material.opacity = 0.3
       }
     }
-  
-    sprite.textHeight = 7 + 3 * (node_index / gData.nodes.length);
-    //sprite.material.opacity = Math.max(0.35, (node_index / gData.nodes.length))
     sprite.material.opacity = 0.8
-    console.log("node_index / gData.nodes.length", node_index / gData.nodes.length)
     sprite.fontWeight = 'normal';
-  
     group.add(sprite);
-    node_index++
+    //node_index++
     return group;
   });
 
@@ -83,11 +146,12 @@ const init = function (gData) {
   Graph.d3Force('charge').strength(-300);
 
   // save initial camera position
-  savedCameraPos = myGraph.cameraPosition();
-
+  savedCameraPos = Graph.cameraPosition();
+  
 }
 
-const onNodeHover = (node => {
+
+const hightlightNode = (node => {
   if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
   highlightNodes.clear();
   if (node) {
@@ -99,36 +163,73 @@ const onNodeHover = (node => {
   updateHighlight();
 })
 
+const setHightlightNodes = (nodes => {
+  if (!nodes && !highlightNodes.size) return;
+  highlightNodes.clear();
+  if (nodes) {
+    for (let i in nodes) {
+      highlightNodes.add(nodes[i].id);
+      nodes[i].neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+    }
+    //node.links.forEach(link => highlightLinks.add(link));
+  }
+  focusNode = nodes[0] || null;
+  updateHighlight();
+})
+
 const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
-  node_index=0
+  node_index = data.nodes.length
   // trigger update of highlighted objects in scene
   Graph
-    .nodeVisibility(Graph.nodeVisibility())
+    //.nodeVisibility(Graph.nodeVisibility())
     .linkVisibility(Graph.linkVisibility())
-  //.nodeThreeObject(Graph.nodeThreeObject())
+    .nodeThreeObject(Graph.nodeThreeObject())
   //.linkDirectionalParticles(Graph.linkDirectionalParticles());
 }
 
 const functions = {
   autoRotate: function () {
+    if (isRotating) return 
+    isRotating=true
+    highlightNodes.clear();
+    updateHighlight()
+    if (isTransitioning) return;
+    //console.log("Graph.cameraPosition()", )
     // camera orbit
+    var dist = Graph.cameraPosition().z
     let angle = 0;
-    setInterval(() => {
+    window.interval = setInterval(() => {
       Graph.cameraPosition({
-        x: distance * Math.sin(angle),
-        z: distance * Math.cos(angle)
+        x: dist * Math.sin(angle),
+        z: dist * Math.cos(angle)
       });
-      angle += Math.PI / 3000;
+      angle += Math.PI / 5000;
     }, 10);
   },
-  focusOnNode: function (params) {
-    let node_id = params.node_id
-    let distance = params.distance
-    var node = Graph.graphData().nodes.find(n => {
-      return n.id == node_id
-    })
-    if (!node) return
+  focusOnNodes: function (params) {
+    let nodes_id = (params.node_ids || params)
+    clearInterval(window.interval)
+    isRotating=false
+    isTransitioning = true
+    let distance = params.distance || default_distance 
+    var nodes = []
+    for(let i in nodes_id) {
+      var node = Graph.graphData().nodes.find(n => {
+        return n.id.toLowerCase() == nodes_id[i].toLowerCase()
+      })
+      if (node) nodes.push(node)
+    }
+
+    setHightlightNodes(nodes)
+
+    if (nodes.length == 0) {
+      this.resetZoom()
+      return
+    }
+    
+    var node = nodes[0]
+    
     // Aim at node from outside it
     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
   
@@ -141,6 +242,48 @@ const functions = {
       node, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
+    setTimeout(() => {
+      isTransitioning = false
+      //highlightNodes.clear();
+      //updateHighlight()
+    }, 3000)
+  },
+  focusOnNode: function (params) {
+    let data = (params.node_id || params)
+    let show_all = params.show_all || false
+    if ((params.node_id || params).includes(',')) {
+      this.focusOnNodes(data.split(','))
+    }
+    clearInterval(window.interval)
+    isRotating=false
+    isTransitioning = true
+    let node_id = params.node_id || params
+    let distance = params.distance || default_distance * 1.5 
+    var node = Graph.graphData().nodes.find(n => {
+      return n.id.toLowerCase() == node_id.toLowerCase()
+    })
+
+    if (!show_all) hightlightNode(node)
+
+    if (!node) {
+      this.resetZoom()
+      return
+    }
+
+    // Aim at node from outside it
+    const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+    const newPos = node.x || node.y || node.z
+      ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
+      : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
+  
+    Graph.cameraPosition(
+      newPos, // new position
+      node, // lookAt ({ x, y, z })
+      3000  // ms transition duration
+    );
+    setTimeout(() => {
+      isTransitioning = false
+    }, 3000)
   },
   xf: function () {
     var data = Graph.graphData()
@@ -162,18 +305,19 @@ const functions = {
     nodes.map(n => {
       n.__threeObj.material.opacity = 1
     })
-    console.log("connections", connections)
-    console.log("nodes", nodes)
   },
   fitToCanvas: function (data) {
     // Graph.zoomToFit(data || 100)
     Graph.cameraPosition(
-      newPos, // new position
-      node, // lookAt ({ x, y, z })
+      {}, // new position
+      {x: 0, y: 0, z: 0}, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
   },
-  setZoom: function (data) {
+  resetZoom: function () {
+    highlightNodes.clear();
+    clearInterval(window.interval)
+    isRotating = false
     // 
     Graph.cameraPosition(
       savedCameraPos, // new position
