@@ -10,6 +10,7 @@ const highlightLinks = new Set();
 
 var node_index = 0
 var link_index = 250
+var nodes_length
 window.Graph = null
 var fontFace = null
 var savedCameraPos = null
@@ -28,7 +29,8 @@ fetch(`../export/narratives_word_graphs/${narrative}.json`)
   .then((data) => {
     //console.log(data)
     init(data)
-    node_index = data.nodes.length
+    nodes_length = data.nodes.length
+    node_index = nodes_length
   });
 
 const init = function (gData) {
@@ -179,7 +181,7 @@ const setHightlightNodes = (nodes => {
 
 const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
-  node_index = data.nodes.length
+  node_index = nodes_length
   // trigger update of highlighted objects in scene
   Graph
     //.nodeVisibility(Graph.nodeVisibility())
