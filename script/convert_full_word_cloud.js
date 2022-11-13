@@ -11,7 +11,7 @@ const outputFolder = 'export/narratives_word_graphs/'
 const path_full_connections_data = 'data/full_connections_data/full_data.csv'
 const path_narratives_keywords = 'data/narratives_keywords.json'
 
-const maxNumNodes = 250
+const maxNumNodes = 500
 
 var mergedNodes = []
 var mergedLinks = []

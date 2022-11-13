@@ -8,6 +8,36 @@ let focusNode = null;
 const highlightNodes = new Set();
 const highlightLinks = new Set();
 
+const colors = [
+  "#fc3e3e",
+  "#f1ff2c",
+  "#d400ff",
+  "#ff00f7",
+  "#4339ff",
+  "#007bff",
+  "#386869",
+  "#00ff99",
+  "#1aff00",
+  "#51ff00",
+  "#ff0000",
+  "#ffd900",
+]
+
+/*
+  "#c50000",
+  "#c0002a",
+  "#a000c4",
+  "#b600ad",
+  "#0800fc",
+  "#0062d1",
+  "#00b5bb",
+  "#00b469",
+  "#16b900",
+  "#3ab600",
+  "#7c7c7c",
+  "#535353",
+*/
+
 var node_index = 0
 var link_index = 250
 var nodes_length
@@ -102,7 +132,7 @@ const init = function (gData) {
     }
     const group = new THREE.Group();
     var size =  guiOptions.size * ( node_index/gData.nodes.length) + 5 //node.index / 230 * 10
-    //console.log("node")
+    console.log("node", colors[node.group % colors.length])
     
     const geometry = new THREE.SphereGeometry(size, 32, 64);
     const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
@@ -115,9 +145,9 @@ const init = function (gData) {
     sprite.position.set(0, 0, 0);
     sprite.fontFace = "roboto-mono";
     sprite.material.depthWrite = false; // make sprite background transparent
-    sprite.color = 'white'//node.color;
-    sprite.strokeColor = node.color;
-    sprite.backgroundColor = 'black'
+    sprite.color = 'black'//node.color;
+    sprite.strokeColor = colors[node.group % colors.length]//node.color;
+    sprite.backgroundColor = colors[node.group % colors.length]//node.color//'black'
 
     sprite.renderOrder = 999;
     sprite.material.depthTest = false;
@@ -134,7 +164,7 @@ const init = function (gData) {
         sprite.material.opacity = 0.3
       }
     }
-    sprite.material.opacity = 0.8
+    sprite.material.opacity = 0.9
     sprite.fontWeight = 'normal';
     group.add(sprite);
     //node_index++
