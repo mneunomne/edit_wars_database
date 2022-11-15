@@ -9,6 +9,7 @@ const highlightNodes = new Set();
 const highlightLinks = new Set();
 
 const colors = [
+  /*
   "#fc3e3e",
   "#f1ff2c",
   "#d400ff",
@@ -21,22 +22,21 @@ const colors = [
   "#51ff00",
   "#ff0000",
   "#ffd900",
+  */
+ "#c50000",
+ "#c0002a",
+ "#a000c4",
+ "#b600ad",
+ "#0800fc",
+ "#0062d1",
+ "#00b5bb",
+ "#00b469",
+ "#16b900",
+ "#3ab600",
+ "#7c7c7c",
+ "#535353",
 ]
 
-/*
-  "#c50000",
-  "#c0002a",
-  "#a000c4",
-  "#b600ad",
-  "#0800fc",
-  "#0062d1",
-  "#00b5bb",
-  "#00b469",
-  "#16b900",
-  "#3ab600",
-  "#7c7c7c",
-  "#535353",
-*/
 
 var node_index = 0
 var link_index = 250
@@ -50,7 +50,7 @@ var isRotating = false
 const options = {}//{ controlType: 'fly' }
 
 window.guiOptions = {
-  size: 14,
+  size: 18,
   showCircle: false
 }
 
@@ -69,7 +69,6 @@ const init = function (gData) {
   .enableNodeDrag(false)
   .showNavInfo(true)
   .linkLabel(link => {
-    console.log("link", link)
     return `
       <div class="tooltip-box">
         <span>source: ${link.source.id}</span><br/>
@@ -87,10 +86,6 @@ const init = function (gData) {
         <span>keyword: ${node.keyword}</span>
       </div>
     `
-  })
-  .onNodeHover(node => {
-    console.log("node!", node)
-    //hightlightNode(node)
   })
   .onNodeClick(node => {
     functions.focusOnNode({node_id: node.id, show_all: true})
@@ -131,8 +126,7 @@ const init = function (gData) {
       node_index = gData.nodes.length
     }
     const group = new THREE.Group();
-    var size =  guiOptions.size * ( node_index/gData.nodes.length) + 5 //node.index / 230 * 10
-    console.log("node", colors[node.group % colors.length])
+    var size =  guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
     
     const geometry = new THREE.SphereGeometry(size, 32, 64);
     const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
@@ -145,7 +139,7 @@ const init = function (gData) {
     sprite.position.set(0, 0, 0);
     sprite.fontFace = "roboto-mono";
     sprite.material.depthWrite = false; // make sprite background transparent
-    sprite.color = 'black'//node.color;
+    sprite.color = 'white'//node.color;
     sprite.strokeColor = colors[node.group % colors.length]//node.color;
     sprite.backgroundColor = colors[node.group % colors.length]//node.color//'black'
 
@@ -175,7 +169,7 @@ const init = function (gData) {
   Graph.controls().noZoom = true
 
   // Spread nodes a little wider
-  Graph.d3Force('charge').strength(-300);
+  Graph.d3Force('charge').strength(-400);
 
   // save initial camera position
   savedCameraPos = Graph.cameraPosition();
@@ -244,7 +238,7 @@ const functions = {
     clearInterval(window.interval)
     isRotating=false
     isTransitioning = true
-    let distance = params.distance || default_distance 
+    let distance = params.distance || default_distance * 1.5 
     var nodes = []
     for(let i in nodes_id) {
       var node = Graph.graphData().nodes.find(n => {
