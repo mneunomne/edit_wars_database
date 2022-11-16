@@ -205,11 +205,12 @@ const functions = {
     // camera orbit
     var dist = Graph.cameraPosition().z
     let angle = 0;
+    
     window.interval = setInterval(() => {
       Graph.cameraPosition({
         x: dist * Math.sin(angle),
         z: dist * Math.cos(angle)
-      });
+      }, 100);
       angle += Math.PI / 5000;
     }, 10);
   },
