@@ -103,7 +103,7 @@ const init = function (gData) {
   })
   /*
   .linkWidth(link => {
-    console.log("link", link, link_index, link_index/250)
+    // console.log("link", link, link_index, link_index/250)
     var width = link_index/250 * 2
     if (link_index > 1) {
       link_index--
