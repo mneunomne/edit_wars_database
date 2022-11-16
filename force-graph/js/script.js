@@ -9,32 +9,18 @@ const highlightNodes = new Set();
 const highlightLinks = new Set();
 
 const colors = [
-  /*
-  "#fc3e3e",
-  "#f1ff2c",
-  "#d400ff",
-  "#ff00f7",
-  "#4339ff",
-  "#007bff",
-  "#386869",
-  "#00ff99",
-  "#1aff00",
-  "#51ff00",
-  "#ff0000",
-  "#ffd900",
-  */
- "#c50000",
- "#c0002a",
- "#a000c4",
- "#b600ad",
- "#0800fc",
- "#0062d1",
- "#00b5bb",
- "#00b469",
- "#16b900",
- "#3ab600",
- "#7c7c7c",
- "#535353",
+  "#EA5545",
+  "#F46A9B",
+  "#EDBF33",
+  "#F5C243",
+  "#EDE15B",
+  "#BDCF32",
+  "#87BC45",
+  "#27AEEF",
+  "#B33DC6",
+  "#FF69EB",
+  "#F7A9A8",
+  "#FF9F1C",
 ]
 
 
@@ -139,7 +125,7 @@ const init = function (gData) {
     sprite.position.set(0, 0, 0);
     sprite.fontFace = "roboto-mono";
     sprite.material.depthWrite = false; // make sprite background transparent
-    sprite.color = 'white'//node.color;
+    sprite.color = 'black'//node.color;
     sprite.strokeColor = colors[node.group % colors.length]//node.color;
     sprite.backgroundColor = colors[node.group % colors.length]//node.color//'black'
 
