@@ -194,29 +194,32 @@ const functions = {
   autoRotate: function () {
     if (isRotating) return 
     Graph.pauseAnimation();
-    console.log('autorotate received');
-    highlightNodes.clear();
-    updateHighlight()
-    isRotating = true
-    isTransitioning = false;
-    if (window.interval) {
-      clearInterval(window.interval);
-    }
-    //console.log("Graph.cameraPosition()", )
-    // camera orbit
-    var dist = Graph.cameraPosition().z
-    let angle = 0;
-    
-    window.interval = setInterval(() => {
-      if (!isRotating) {
-        return;
+    setTimeout(() => {
+      Graph.startAnimation()
+      console.log('autorotate received');
+      highlightNodes.clear();
+      updateHighlight()
+      isRotating = true
+      isTransitioning = false;
+      if (window.interval) {
+        clearInterval(window.interval);
       }
-      Graph.cameraPosition({
-        x: dist * Math.sin(angle),
-        z: dist * Math.cos(angle)
+      //console.log("Graph.cameraPosition()", )
+      // camera orbit
+      var dist = Graph.cameraPosition().z
+      let angle = 0;
+
+      window.interval = setInterval(() => {
+        if (!isRotating) {
+          return;
+        }
+        Graph.cameraPosition({
+          x: dist * Math.sin(angle),
+          z: dist * Math.cos(angle)
+        }, 10);
+        angle += Math.PI / 5000;
       }, 10);
-      angle += Math.PI / 5000;
-    }, 10);
+    }, 10)
   },
   focusOnNodes: function (params) {
     let nodes_id = (params.node_ids || params)
