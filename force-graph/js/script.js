@@ -192,11 +192,10 @@ const updateHighlight = function () {
 
 const functions = {
   autoRotate: function () {
-    if (isRotating) return 
+    if (isRotating || isTransitioning) return 
     isRotating=true
     highlightNodes.clear();
     updateHighlight()
-    if (isTransitioning) return;
     //console.log("Graph.cameraPosition()", )
     // camera orbit
     var dist = Graph.cameraPosition().z
