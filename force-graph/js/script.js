@@ -207,12 +207,15 @@ const functions = {
     let angle = 0;
     
     window.interval = setInterval(() => {
+      if (!isRotating) {
+        return;
+      }
       Graph.cameraPosition({
         x: dist * Math.sin(angle),
         z: dist * Math.cos(angle)
-      }, 100);
-      angle += Math.PI / 5000;
-    }, 10);
+      }, 1000);
+      angle += Math.PI / 100;
+    }, 1000);
   },
   focusOnNodes: function (params) {
     let nodes_id = (params.node_ids || params)
