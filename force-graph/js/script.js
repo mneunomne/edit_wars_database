@@ -193,11 +193,7 @@ const updateHighlight = function () {
 const functions = {
   autoRotate: function () {
     if (isRotating) return 
-    Graph.cameraPosition(
-    savedCameraPos, // new position
-      {x: 0, y: 0, z: 0}, // lookAt ({ x, y, z })
-      1  // ms transition duration
-    );
+    Graph.pauseAnimation();
     console.log('autorotate received');
     highlightNodes.clear();
     updateHighlight()
