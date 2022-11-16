@@ -199,6 +199,7 @@ const functions = {
       if (isTransitioning) {
         return; 
       }
+      console.log('rodou auto');
       isRotating = true
       isTransitioning = false;
       if (window.interval) {
@@ -210,9 +211,6 @@ const functions = {
       let angle = 0;
 
       window.interval = setInterval(() => {
-        if (!isRotating) {
-          return;
-        }
         Graph.cameraPosition({
           x: dist * Math.sin(angle),
           z: dist * Math.cos(angle)
