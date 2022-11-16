@@ -55,17 +55,10 @@ const readCsvFile = (filename) => {
 
 const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
   if (keywords.length > 0 ) {
-    
     jsonObj = filterDataByKeywords(jsonObj, keywords)
-
     jsonObj = mergeByStemmification(jsonObj)
-
-    jsonObj = jsonObj.sort(sortByCount).slice(0, maxNumNodes);
-
-    console.log("jsonObj", jsonObj)
-
-    // console.log("links", links.length)
-    
+    var topRanked = jsonObj.sort(sortByCount).slice(0, maxNumNodes);
+    jsonObj = filterDataByKeywordsRank(jsonObj, keywords, topRanked)
     jsonObj.map(obj => {
       let source = obj["source"]
       let target = obj["target"]
@@ -180,6 +173,39 @@ const filterDataByKeywords = (jsonObj, keywords) =>
     })
   )
 
+const filterDataByKeywordsRank = (jsonObj, keywords, topRanked) => {
+  var rankNum = 20;
+  var keywordsConnections = {}
+  jsonObj.forEach(obj => {
+    keywords.forEach((k) => {
+      if (typeof keywordsConnections[k] == 'undefined') keywordsConnections[k] = []  
+      let regex = new RegExp(k, 'g');
+      if (regex.exec(obj["source"]) || regex.exec(obj["target"])) {
+        //var object = {...obj, keyword: k}
+        keywordsConnections[k].push(obj)
+      }
+    })
+  })
+  for (var k in keywordsConnections) {
+    keywordsConnections[k] = keywordsConnections[k].sort(sortByCount)
+  }
+  for (var k in keywordsConnections) {
+    if (k.includes('бандер')) { 
+      console.log('keywordsConnections[k]', keywordsConnections[k])
+    }
+    keywordsConnections[k].forEach((w, i) => {
+      if (k.includes('киев')) {
+        console.log('киев', i, w.source, topRanked.some(d => d.source == w.source))
+      }
+      if (i < rankNum) {
+        if (!topRanked.some(d => d.source == w.source)) {
+          topRanked.push(w)
+        }
+      }
+    })
+  }
+  return topRanked
+}
 
 const saveJsonFile = (path, jsonObj) => {
   fs.writeFileSync(path, JSON.stringify(jsonObj), 'utf8', function (err) {

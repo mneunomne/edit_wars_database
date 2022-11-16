@@ -9,7 +9,7 @@
     "title": "Mythical “Nazis”",
     "subtitle": "- constructing an enemy through the exploitation of historical memory",
     "id": "mythical-nazis",
-    "keywords": ["борьба","^наци","националист","национализм","фашизм","фашист","бандер","реабилитац","денациф","жесток","мариупол","азовстал","всу","зверств","уничтож"]
+    "keywords": ["борьба","жесток","национализм","всу","зверств","реабилитац","побед","бандера","киев$", "режим","мариупол","^буч","азовстал"]
   },
   {
     "title": "“Protecting the Russian World”",
@@ -34,13 +34,13 @@
     "title": "“Cold War II”",
     "subtitle": "- cultivating the fear of Western threat ",
     "id": "cold-war-ii",
-    "keywords": ["оруж", "вооруж", "поставк", "накачив", "Украин", "угроз", "угрож", "ядерн", "порядок", "серб", "ошибк", "запад"]
+    "keywords": ["вооруж","поставк","накачив","запад","угроз","оруж","украин","киев","планировать","желать","порядок","ошибк"]
   },
   {
     "title": "“Freezing Europe”",
     "subtitle": "- myths and propaganda about sanctions against Russia in connection with the invasion of Ukraine",
-    "id": "freezing-europe",
-    "keywords": ["^газ$","^газовы","^газе$","кризис","^зависи","^нефть$","санкция","санкции","^изолир","^изоляц","дефицит","актив$","замороз","голод","swift","импорт","инфляц","эмбарг", "антироссийск"]
+    "id": "freezing-europe",  
+    "keywords": ["^газовы","swift","дефицит","санкц","антирос","изоляц","^изолир","замороз","замораж","актив$","изъят","изым","^газ$","^кризис","^нефть$","^голод","антироссийск"]
   },
   {
     "title": "“Internal contradictions of the West”",

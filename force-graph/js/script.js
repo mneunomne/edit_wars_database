@@ -2,7 +2,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
 const lang = urlParams.get('lang') ? urlParams.get('lang') : 'en'
-const default_distance = 500;
+const default_distance = 600;
 
 let focusNode = null;
 const highlightNodes = new Set();
@@ -107,23 +107,25 @@ const init = function (gData) {
 
   })
   .nodeThreeObject((node, index) => {
+    console.log("node", Math.sqrt(node.value))
     node_index--
     if (node_index == 0) {
       node_index = gData.nodes.length
     }
     const group = new THREE.Group();
-    var size =  guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
+    var size =  Math.min(Math.sqrt(node.value)/2 + 6, 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
     
     const geometry = new THREE.SphereGeometry(size, 32, 64);
     const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
     const sphere = new THREE.Mesh(geometry, material);
-    sphere.material.opacity = 1
+    sphere.material.opacity = 0.5
     sphere.material.transparent = true
     if (guiOptions.showCircle) group.add(sphere);
   
-    const sprite = new SpriteText(node[lang]);
+    const sprite = new SpriteText(node[lang].toLowerCase());
     sprite.position.set(0, 0, 0);
     sprite.fontFace = "roboto-mono";
+    sprite.padding = [2, 1]
     sprite.material.depthWrite = false; // make sprite background transparent
     sprite.color = 'black'//node.color;
     sprite.strokeColor = colors[node.group % colors.length]//node.color;
@@ -144,7 +146,7 @@ const init = function (gData) {
         sprite.material.opacity = 0.3
       }
     }
-    sprite.material.opacity = 0.9
+    //sprite.material.opacity = 0.5
     sprite.fontWeight = 'normal';
     group.add(sprite);
     //node_index++
@@ -155,7 +157,7 @@ const init = function (gData) {
   Graph.controls().noZoom = true
 
   // Spread nodes a little wider
-  Graph.d3Force('charge').strength(-400);
+  Graph.d3Force('charge').strength(-300);
 
   // save initial camera position
   savedCameraPos = Graph.cameraPosition();
@@ -224,7 +226,7 @@ const functions = {
     clearInterval(window.interval)
     isRotating=false
     isTransitioning = true
-    let distance = params.distance || default_distance * 1.5 
+    let distance = params.distance || default_distance 
     var nodes = []
     for(let i in nodes_id) {
       var node = Graph.graphData().nodes.find(n => {
@@ -270,7 +272,7 @@ const functions = {
     isRotating=false
     isTransitioning = true
     let node_id = params.node_id || params
-    let distance = params.distance || default_distance * 1.5 
+    let distance = params.distance || default_distance  
     var node = Graph.graphData().nodes.find(n => {
       return n.id.toLowerCase() == node_id.toLowerCase()
     })
