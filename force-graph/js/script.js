@@ -195,7 +195,7 @@ const functions = {
     if (isRotating) return 
     Graph.pauseAnimation();
     setTimeout(() => {
-      Graph.startAnimation()
+      Graph.resumeAnimation()
       console.log('autorotate received');
       highlightNodes.clear();
       updateHighlight()
