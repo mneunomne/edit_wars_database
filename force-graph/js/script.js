@@ -39,7 +39,7 @@ const init = function (gData) {
   .enableNodeDrag(false)
   .showNavInfo(true)
   .linkLabel(link => {
-    console.log("link", link)
+    // console.log("link", link)
     return `
       <div class="tooltip-box">
         <span>source: ${link.source.id}</span><br/>
@@ -59,7 +59,7 @@ const init = function (gData) {
     `
   })
   .onNodeHover(node => {
-    console.log("node!", node)
+    // console.log("node!", node)
     //hightlightNode(node)
   })
   .onNodeClick(node => {
@@ -78,7 +78,7 @@ const init = function (gData) {
   })
   /*
   .linkWidth(link => {
-    console.log("link", link, link_index, link_index/250)
+    // console.log("link", link, link_index, link_index/250)
     var width = link_index/250 * 2
     if (link_index > 1) {
       link_index--
