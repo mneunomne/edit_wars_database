@@ -170,7 +170,9 @@ const hightlightNode = (node => {
   highlightNodes.clear();
   if (node) {
     highlightNodes.add(node.id);
-    node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+    node.neighbors.forEach(neighbor => {
+      highlightNodes.add(neighbor)
+    });
     //node.links.forEach(link => highlightLinks.add(link));
   }
   focusNode = node || null;
