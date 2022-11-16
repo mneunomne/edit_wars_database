@@ -192,12 +192,9 @@ const updateHighlight = function () {
 
 const functions = {
   autoRotate: function () {
-    if (isRotating) return 
-    isRotating = true
+    if (isRotating || isTransitioning) return 
     highlightNodes.clear();
-    if (isTransitioning) {
-      return;
-    }
+    isRotating = true
     clearInterval(window.interval);
     updateHighlight()
     //console.log("Graph.cameraPosition()", )
