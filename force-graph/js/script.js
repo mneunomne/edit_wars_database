@@ -192,9 +192,13 @@ const updateHighlight = function () {
 
 const functions = {
   autoRotate: function () {
-    if (isRotating || isTransitioning) return 
-    isRotating=true
+    if (isRotating) return 
+    isRotating = true
     highlightNodes.clear();
+    if (isTransitioning) {
+      return;
+    }
+    clearInterval(window.interval);
     updateHighlight()
     //console.log("Graph.cameraPosition()", )
     // camera orbit
@@ -211,7 +215,7 @@ const functions = {
   focusOnNodes: function (params) {
     let nodes_id = (params.node_ids || params)
     clearInterval(window.interval)
-    isRotating=false
+    isRotating = false
     isTransitioning = true
     let distance = params.distance || default_distance 
     var nodes = []
