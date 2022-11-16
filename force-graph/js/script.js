@@ -193,6 +193,7 @@ const updateHighlight = function () {
 const functions = {
   autoRotate: function () {
     if (isRotating || isTransitioning) return 
+    console.log('autorotate received');
     highlightNodes.clear();
     isRotating = true
     clearInterval(window.interval);
@@ -231,6 +232,9 @@ const functions = {
     }
     
     var node = nodes[0]
+    if (window.timeout) {
+      clearTimeout(window.timeout);
+    };
     
     // Aim at node from outside it
     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
@@ -244,7 +248,7 @@ const functions = {
       node, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
-    setTimeout(() => {
+    window.timeout = setTimeout(() => {
       isTransitioning = false
     }, 3000)
   },
@@ -269,6 +273,10 @@ const functions = {
       this.resetZoom()
       return
     }
+    
+    if (window.timeout) {
+      clearTimeout(window.timeout);
+    };
 
     // Aim at node from outside it
     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
@@ -281,7 +289,7 @@ const functions = {
       node, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
-    setTimeout(() => {
+    window.timeout = setTimeout(() => {
       isTransitioning = false
     }, 3000)
   },
@@ -319,13 +327,16 @@ const functions = {
     clearInterval(window.interval)
     isRotating = false;
     isTransitioning = true;
+    if (window.timeout) {
+      clearTimeout(window.timeout); 
+    }
     // 
     Graph.cameraPosition(
       savedCameraPos, // new position
       {x: 0, y: 0, z: 0}, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
-    setTimeout(() => {
+    window.timeout = setTimeout(() => {
       isTransitioning = false;
     }, 3000)
     
