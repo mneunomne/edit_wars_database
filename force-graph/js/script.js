@@ -196,11 +196,11 @@ const functions = {
     console.log('autorotate received');
     highlightNodes.clear();
     updateHighlight()
-    if (isTransitioning) {
-      return; 
-    }
     isRotating = true
-    clearInterval(window.interval);
+    isTransitioning = false;
+    if (window.interval) {
+      clearInterval(window.interval);
+    }
     //console.log("Graph.cameraPosition()", )
     // camera orbit
     var dist = Graph.cameraPosition().z
@@ -216,7 +216,10 @@ const functions = {
   },
   focusOnNodes: function (params) {
     let nodes_id = (params.node_ids || params)
-    clearInterval(window.interval)
+    if (window.interval) {
+      clearInterval(window.interval);
+    }
+    
     isRotating = false
     isTransitioning = true
     let distance = params.distance || default_distance 
@@ -262,7 +265,10 @@ const functions = {
     if ((params.node_id || params).includes(',')) {
       this.focusOnNodes(data.split(','))
     }
-    clearInterval(window.interval)
+    
+    if (window.interval) {
+      clearInterval(window.interval);
+    }
     isRotating=false
     isTransitioning = true
     let node_id = params.node_id || params
@@ -328,7 +334,10 @@ const functions = {
   },
   resetZoom: function () {
     highlightNodes.clear();
-    clearInterval(window.interval)
+        
+    if (window.interval) {
+      clearInterval(window.interval);
+    }
     isRotating = false;
     isTransitioning = true;
     if (window.timeout) {
