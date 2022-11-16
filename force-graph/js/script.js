@@ -193,6 +193,11 @@ const updateHighlight = function () {
 const functions = {
   autoRotate: function () {
     if (isRotating) return 
+    Graph.cameraPosition(
+    savedCameraPos, // new position
+      {x: 0, y: 0, z: 0}, // lookAt ({ x, y, z })
+      1  // ms transition duration
+    );
     console.log('autorotate received');
     highlightNodes.clear();
     updateHighlight()
@@ -213,9 +218,9 @@ const functions = {
       Graph.cameraPosition({
         x: dist * Math.sin(angle),
         z: dist * Math.cos(angle)
-      }, 1000);
-      angle += Math.PI / 100;
-    }, 1000);
+      }, 10);
+      angle += Math.PI / 5000;
+    }, 10);
   },
   focusOnNodes: function (params) {
     let nodes_id = (params.node_ids || params)
