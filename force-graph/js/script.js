@@ -193,12 +193,12 @@ const updateHighlight = function () {
 const functions = {
   autoRotate: function () {
     if (isRotating) return 
-    Graph.pauseAnimation();
-    setTimeout(() => {
-      Graph.resumeAnimation()
       console.log('autorotate received');
       highlightNodes.clear();
       updateHighlight()
+      if (isTransitioning) {
+        return; 
+      }
       isRotating = true
       isTransitioning = false;
       if (window.interval) {
@@ -219,7 +219,6 @@ const functions = {
         }, 10);
         angle += Math.PI / 5000;
       }, 10);
-    }, 10)
   },
   focusOnNodes: function (params) {
     let nodes_id = (params.node_ids || params)
