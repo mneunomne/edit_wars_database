@@ -246,8 +246,6 @@ const functions = {
     );
     setTimeout(() => {
       isTransitioning = false
-      //highlightNodes.clear();
-      //updateHighlight()
     }, 3000)
   },
   focusOnNode: function (params) {
@@ -319,13 +317,18 @@ const functions = {
   resetZoom: function () {
     highlightNodes.clear();
     clearInterval(window.interval)
-    isRotating = false
+    isRotating = false;
+    isTransitioning = true;
     // 
     Graph.cameraPosition(
       savedCameraPos, // new position
       {x: 0, y: 0, z: 0}, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 3000)
+    
   },
   noZoom: function (set) {
     Graph.controls().noZoom = set || true
