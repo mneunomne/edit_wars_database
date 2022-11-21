@@ -6,6 +6,9 @@ const csv=require('csvtojson')
 const dataFolder = 'data/colab/';
 const outputFolder = 'export/'
 
+let topic_labels = JSON.parse(fs.readFileSync('data/topic_labels.json'));
+
+
 /*
 fs.readdir(dataFolder, (err, files) => {
   files.forEach(file => {
@@ -42,6 +45,9 @@ const saveJsonFile = (filename, jsonString) => {
   });
 }
 
+const getLabelFromTopic = (topic_id) =>
+  topic_labels.find(topic => topic_id == topic.topic_id).label_en
+
 
 const processColabChart = (jsonObj) => {
   return jsonObj.map((obj) => {
@@ -70,7 +76,7 @@ const generateCountArray = (jsonObj) => {
   // create object for each dataset
   topics.map((topic) => {
     datasets.push({
-      'label': `topic ${topic}`, // e.g. topic 19
+      'label': getLabelFromTopic(topic), // e.g. topic 19
       'borderColor': ``,
       'backgroundColor': '',
       'data': [],

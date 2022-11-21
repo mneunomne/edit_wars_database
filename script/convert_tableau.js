@@ -86,7 +86,8 @@ const processWeeklyStackedChart = (jsonObj) => {
       "page_domain_root": obj["page_domain_root"],
       "page_url": obj["page_url"],
       "title": obj["title"],
-      "id": obj["ID"]
+      "id": obj["ID"],
+      "topic": obj["topic"],
     }
   }).filter(obj => 
     new Date (obj.fetchdate_orig) >= new Date ("01/01/2022")
@@ -101,22 +102,21 @@ const processDailyStackedChart = (jsonObj) => {
       "page_domain_root": obj["page_domain_root"],
       "page_url": obj["page_url"],
       "title": obj["title_new"],
-      "id": obj["ID"]
+      "id": obj["ID"],
+      "topic": obj["topic"],
     }
   })
 }
 
-
-
 const generateCountArray = (jsonObj, nameId) => {
-  //console.log("jsonObj", jsonObj)
+  if (jsonObj[0]["topic"]) { // check if this tableau data has more than one data
+    return generateCountArrayMultiple(jsonObj)
+  }
   var dates = [...new Set(jsonObj.map(obj => obj["fetchdate_orig"]))]
-  var dataValues = dates.map(d => {
-    return {
-      x: d,
-      y: 0
-    }
-  })
+  var dataValues = dates.map(d => ({
+    x: d,
+    y: 0
+  }))
   jsonObj.map((d) => {
     var date = d.fetchdate_orig
     var index = dates.indexOf(date)
@@ -128,6 +128,40 @@ const generateCountArray = (jsonObj, nameId) => {
       "label": nameId,
       "data": dataValues
     }]
+  }
+}
+
+const generateCountArrayMultiple = (jsonObj) => {
+  var dates = [...new Set(jsonObj.map(obj => obj["fetchdate_orig"]))]
+  var datasets = []
+  // add initial topic onbect to data array
+  var dataValues = dates.map(d => ({
+    x: d,
+    y: 0
+  }))
+  jsonObj.forEach(obj => {
+    var date = obj.fetchdate_orig
+    var index = dates.indexOf(date)
+    if (obj.topic !== null && obj.topic !== undefined) {
+      let data_point = {
+        x: obj,
+        y:dataValues[index].y+1
+      }
+      let dataset_index = datasets.findIndex(d => d.label == obj.topic)
+      console.log("dataset_index",dataset_index)
+      // if the dataset of this topic has not yet being added...
+      if (dataset_index == -1) {
+        // add dataset
+        datasets.push({label: obj.topic, data: [data_point]})
+      } else {
+        // [push data to dataset array]
+        datasets[dataset_index].data.push(data_point)
+      }
+    }
+  })
+  return {
+    "labels": dates,
+    "datasets": datasets
   }
 }
 
@@ -146,7 +180,7 @@ const formatDateWeekly = (dateString) => {
 }
 
 // not used because graph js can use time parameter on its graphs
-function getFormattedDateString(date) {
+function getFormattedDateString (date) {
   var year = date.getFullYear();
   var month = (1 + date.getMonth()).toString();
   month = month.length > 1 ? month : '0' + month;
