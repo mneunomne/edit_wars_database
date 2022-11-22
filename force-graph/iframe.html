@@ -16,6 +16,7 @@
       display: block;
       top: 20px;
       left: 10px;
+      z-index: 9999999;
     }
 
     iframe {
@@ -29,15 +30,12 @@
 <body style="width: 100vw;height: 100vh;">
 
   <div id="controls">
-    <button>initialPosition</button><br>
-    <button>focusOnNode</button><br>
-    <div>
-      <input type="checkbox" id="scales" name="scales" checked>
-      <label for="scales">autoRotate</label>
-    </div>
-
+    <button onclick="focusOnNode('')">initialPosition</button><br>
+    <button onclick="focusOnNode('побед')">focusOnNode</button><br>
+    <button onclick="autoRotate()">autoRotate</button><br>
   </div>
 
   <iframe width="100%" height="100%" src="./index.html"></iframe>
+  <script src="iframe.js"></script>
 </body>
 </html>

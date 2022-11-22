@@ -76,11 +76,13 @@ const init = function (gData) {
   .onNodeClick(node => {
     functions.focusOnNode({node_id: node.id, show_all: true})
   })
+  /*
   .nodeVisibility(node => 
     highlightNodes.size == 0 || highlightNodes.has(node.id))
   .linkVisibility(link =>
     highlightNodes.size == 0 || (focusNode !== null && (link.source.id == focusNode.id || link.target.id == focusNode.id))
   )
+  */
   .nodeAutoColorBy('group')
   .enableNavigationControls(true)
   .backgroundColor("rgba(0, 0, 0, 0)")
@@ -138,6 +140,7 @@ const init = function (gData) {
     sprite.textHeight = size
     // sprite.position.set(0, 100, 100);
   
+    
     if (highlightNodes.size > 0) {
       if (highlightNodes.has(node.id)) {
         sprite.material.opacity = 0.9
@@ -198,7 +201,7 @@ const updateHighlight = function () {
   // trigger update of highlighted objects in scene
   Graph
     //.nodeVisibility(Graph.nodeVisibility())
-    .linkVisibility(Graph.linkVisibility())
+    //.linkVisibility(Graph.linkVisibility())
     .nodeThreeObject(Graph.nodeThreeObject())
   //.linkDirectionalParticles(Graph.linkDirectionalParticles());
 }
@@ -296,26 +299,29 @@ const functions = {
 
     if (!show_all) hightlightNode(node)
 
-    if (!node) {
-      this.resetZoom()
-      return
-    }
     
     if (window.timeout) {
       clearTimeout(window.timeout);
     };
+    
+    setTimeout(() => {
+      if (!node) {
+        this.resetZoom()
+        return
+      }
+      // Aim at node from outside it
+      const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+      const newPos = node.x || node.y || node.z
+        ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
+        : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
+    
+      Graph.cameraPosition(
+        newPos, // new position
+        node, // lookAt ({ x, y, z })
+        3000  // ms transition duration
+      );
+    }, 250)
 
-    // Aim at node from outside it
-    const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
-    const newPos = node.x || node.y || node.z
-      ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
-      : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
-  
-    Graph.cameraPosition(
-      newPos, // new position
-      node, // lookAt ({ x, y, z })
-      3000  // ms transition duration
-    );
     window.timeout = setTimeout(() => {
       isTransitioning = false
     }, 3000)
