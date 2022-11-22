@@ -133,30 +133,21 @@ const generateCountArray = (jsonObj, nameId) => {
 
 const generateCountArrayMultiple = (jsonObj) => {
   var dates = [...new Set(jsonObj.map(obj => obj["fetchdate_orig"]))]
-  var datasets = []
-  // add initial topic onbect to data array
-  var dataValues = dates.map(d => ({
-    x: d,
-    y: 0
-  }))
-  jsonObj.forEach(obj => {
-    var date = obj.fetchdate_orig
-    var index = dates.indexOf(date)
-    if (obj.topic !== null && obj.topic !== undefined) {
-      let data_point = {
-        x: obj,
-        y:dataValues[index].y+1
-      }
-      let dataset_index = datasets.findIndex(d => d.label == obj.topic)
-      console.log("dataset_index",dataset_index)
-      // if the dataset of this topic has not yet being added...
-      if (dataset_index == -1) {
-        // add dataset
-        datasets.push({label: obj.topic, data: [data_point]})
-      } else {
-        // [push data to dataset array]
-        datasets[dataset_index].data.push(data_point)
-      }
+  var topics = [...new Set(jsonObj.map(obj => obj["topic"]))]
+  var datasets = topics.map(topic => {
+    // add initial topic onbect to data array
+    var dataValues = dates.map(d => ({
+      x: d,
+      y: 0
+    }))
+    jsonObj.filter(obj => obj.topic == topic).forEach((obj) => {
+      var date = obj.fetchdate_orig
+      var index = dates.indexOf(date)
+      dataValues[index].y = dataValues[index].y+1
+    })
+    return {
+      "label": topic,
+      "data": dataValues
     }
   })
   return {
