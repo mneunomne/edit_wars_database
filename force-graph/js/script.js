@@ -2,11 +2,27 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
 const lang = urlParams.get('lang') ? urlParams.get('lang') : 'en'
-const default_distance = 500;
+const default_distance = 600;
 
 let focusNode = null;
 const highlightNodes = new Set();
 const highlightLinks = new Set();
+
+const colors = [
+  "#EA5545",
+  "#F46A9B",
+  "#EDBF33",
+  "#F5C243",
+  "#EDE15B",
+  "#BDCF32",
+  "#87BC45",
+  "#27AEEF",
+  "#B33DC6",
+  "#FF69EB",
+  "#F7A9A8",
+  "#FF9F1C",
+]
+
 
 var node_index = 0
 var link_index = 250
@@ -20,7 +36,7 @@ var isRotating = false
 const options = {}//{ controlType: 'fly' }
 
 window.guiOptions = {
-  size: 14,
+  size: 18,
   showCircle: false
 }
 
@@ -39,7 +55,6 @@ const init = function (gData) {
   .enableNodeDrag(false)
   .showNavInfo(true)
   .linkLabel(link => {
-    // console.log("link", link)
     return `
       <div class="tooltip-box">
         <span>source: ${link.source.id}</span><br/>
@@ -57,10 +72,6 @@ const init = function (gData) {
         <span>keyword: ${node.keyword}</span>
       </div>
     `
-  })
-  .onNodeHover(node => {
-    // console.log("node!", node)
-    //hightlightNode(node)
   })
   .onNodeClick(node => {
     functions.focusOnNode({node_id: node.id, show_all: true})
@@ -101,23 +112,23 @@ const init = function (gData) {
       node_index = gData.nodes.length
     }
     const group = new THREE.Group();
-    var size =  guiOptions.size * ( node_index/gData.nodes.length) + 5 //node.index / 230 * 10
-    //console.log("node")
+    var size =  Math.min(Math.sqrt(node.value)/2 + 6, 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
     
     const geometry = new THREE.SphereGeometry(size, 32, 64);
     const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
     const sphere = new THREE.Mesh(geometry, material);
-    sphere.material.opacity = 1
+    sphere.material.opacity = 0.5
     sphere.material.transparent = true
     if (guiOptions.showCircle) group.add(sphere);
   
-    const sprite = new SpriteText(node[lang]);
+    const sprite = new SpriteText(node[lang].toLowerCase());
     sprite.position.set(0, 0, 0);
     sprite.fontFace = "roboto-mono";
+    sprite.padding = [2, 1]
     sprite.material.depthWrite = false; // make sprite background transparent
-    sprite.color = 'white'//node.color;
-    sprite.strokeColor = node.color;
-    sprite.backgroundColor = 'black'
+    sprite.color = 'black'//node.color;
+    sprite.strokeColor = colors[node.group % colors.length]//node.color;
+    sprite.backgroundColor = colors[node.group % colors.length]//node.color//'black'
 
     sprite.renderOrder = 999;
     sprite.material.depthTest = false;
@@ -134,7 +145,7 @@ const init = function (gData) {
         sprite.material.opacity = 0.3
       }
     }
-    sprite.material.opacity = 0.8
+    //sprite.material.opacity = 0.5
     sprite.fontWeight = 'normal';
     group.add(sprite);
     //node_index++
@@ -158,7 +169,9 @@ const hightlightNode = (node => {
   highlightNodes.clear();
   if (node) {
     highlightNodes.add(node.id);
-    node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+    node.neighbors.forEach(neighbor => {
+      highlightNodes.add(neighbor)
+    });
     //node.links.forEach(link => highlightLinks.add(link));
   }
   focusNode = node || null;
@@ -276,7 +289,7 @@ const functions = {
     isRotating=false
     isTransitioning = true
     let node_id = params.node_id || params
-    let distance = params.distance || default_distance * 1.5 
+    let distance = params.distance || default_distance  
     var node = Graph.graphData().nodes.find(n => {
       return n.id.toLowerCase() == node_id.toLowerCase()
     })

@@ -1,0 +1,1552 @@
+[
+  {
+    "topic_id": 69,
+    "count": 900,
+    "name": "69_нацист_нацизм_реабилитация_нацистский",
+    "narrative": 1,
+    "label_en": "Rehabilitation of Nazism",
+    "label_ru": "Реабилитация нацизма",
+    "narrative_name": "Mythical “Nazis”",
+    "label_long_ru": "Неонацизм остается глобальной угрозой. Нацистские преступники, дело гитлера живет."
+  },
+  {
+    "topic_id": 83,
+    "count": 754,
+    "name": "83_нацист_нацизм_украинский нацист_нацистский",
+    "narrative": 1,
+    "label_en": "Nazis\" in Ukraine",
+    "label_ru": "Нацисты в Украине",
+    "narrative_name": "Mythical “Nazis”",
+    "label_long_ru": "Неонацизм остается глобальной угрозой. Нацистские преступники, дело гитлера живет."
+  },
+  {
+    "topic_id": 124,
+    "count": 434,
+    "name": "124_националист_мариуполь_азовсталь_мариуполь националист",
+    "narrative": 1,
+    "label_en": "Elimination\" of Nazis in Mariupol",
+    "label_ru": "Уничтожение нацистов в Мариуполе",
+    "narrative_name": "Mythical “Nazis”",
+    "label_long_ru": "Противоположная сторона - не украинцы, а нацисты, совершающие бесчеловечные поступки. Успехи российской армии - через уничтожение националистов."
+  },
+  {
+    "topic_id": 2,
+    "count": 10768,
+    "name": "2_зеленский_зеленский заявить_украина зеленский_офис зеленский",
+    "narrative": 2,
+    "label_en": "Statements and actions of president Zelensky",
+    "label_ru": "Заявления и действия Зеленского",
+    "narrative_name": "“‎Ukrainian crisis”",
+    "label_long_ru": "Президент Зеленский то обладает субъектностью, то нет - в этом случае, о нем говорят в уничижительном тоне."
+  },
+  {
+    "topic_id": 60,
+    "count": 1064,
+    "name": "60_признание_днр лнр_признание днр лнр_признание днр",
+    "narrative": 2,
+    "label_en": "Recognition of the DNR and LNR",
+    "label_ru": "Присоединение анексированных территорий",
+    "narrative_name": "“‎Ukrainian crisis”",
+    "label_long_ru": "Украинские регионы просят РФ о признании. Россия признает независимость украинских регионов (днр, лнр, херсон) и это решение поддерживается союзниками России"
+  },
+  {
+    "topic_id": 135,
+    "count": 379,
+    "name": "135_референдум_вхождение_присоединение_херсонский",
+    "narrative": 2,
+    "label_en": "Referenda on annexation of territories",
+    "label_ru": "Присоединение анексированных территорий",
+    "narrative_name": "“‎Ukrainian crisis”",
+    "label_long_ru": "Планирование референдумов на завоеванных территориях по инициативе местных жителей будет обеспечено Россией"
+  },
+  {
+    "topic_id": 166,
+    "count": 295,
+    "name": "166_аэс_электроэнергия_белоруссия_россия белоруссия",
+    "narrative": 2,
+    "label_en": "",
+    "label_ru": "",
+    "narrative_name": "“‎Ukrainian crisis”",
+    "label_long_ru": "Украина не в состоянии обеспечить собственную энергетическую безопасность - в том числе на АЭС"
+  },
+  {
+    "topic_id": 1,
+    "count": 11228,
+    "name": "1_беженец_гуманитарный_беженец донбасс_гуманитарный помощь",
+    "narrative": 5,
+    "label_en": "Refugees from Ukraine",
+    "label_ru": "Беженцы из Украины",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Россия отправляет масштабную гуманитарную помощь в днр и лнр. Россия и регионы активно принимают и поддерживают беженцев"
+  },
+  {
+    "topic_id": 90,
+    "count": 693,
+    "name": "90_гражданство_паспорт_получение_визовый",
+    "narrative": 5,
+    "label_en": "Russia issues passports to Ukrainians",
+    "label_ru": "Россия выдает паспорта украинцам",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Россия упрощает получение паспортов для жителей Украины"
+  },
+  {
+    "topic_id": 95,
+    "count": 656,
+    "name": "95_концерт_крым россия_воссоединение_отменить",
+    "narrative": 5,
+    "label_en": "Concerts in support of the Russian invasion",
+    "label_ru": "Концерты в поддержку России",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Российское общество поддерживает спецоперацию, устраивая массовые культурные мероприятия"
+  },
+  {
+    "topic_id": 96,
+    "count": 655,
+    "name": "96_наградить_вручить_герой россия_герой",
+    "narrative": 5,
+    "label_en": "Rewarding veterans of the \"special operation",
+    "label_ru": "Помощь ветеранам СВО",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Участники спецоперации - герои, о которых заботится государство"
+  },
+  {
+    "topic_id": 112,
+    "count": 483,
+    "name": "112_площадь_честь_улица_переименовать",
+    "narrative": 5,
+    "label_en": "Remembrance of participants in the 'special operation'",
+    "label_ru": "Память участников СВО",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Россия обеспечивает защиту памяти участников спецоперации - переименовывает площади"
+  },
+  {
+    "topic_id": 117,
+    "count": 463,
+    "name": "117_семья_выплата_погибнуть_погибнуть украина",
+    "narrative": 5,
+    "label_en": "Support for the families of the deceased participants of the \"special operation",
+    "label_ru": "Помощь ветеранам СВО",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Погибшие во время спецоперации россияне и ветераны - герои, о семьях которых заботится государство, давая им выплаты"
+  },
+  {
+    "topic_id": 122,
+    "count": 443,
+    "name": "122_договор_дружба_сотрудничество_соглашение",
+    "narrative": 5,
+    "label_en": "DPR and LPR protection",
+    "label_ru": "Защита ДНР и ЛНР",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Россия защищает ДНР и ЛНР, заключая дипломатическое соглашение о поддержке"
+  },
+  {
+    "topic_id": 161,
+    "count": 305,
+    "name": "161_ребёнок_ребёнок донбасс_лагерь_донбасс",
+    "narrative": 5,
+    "label_en": "Caring for children in the captured territories",
+    "label_ru": "Забота о детях на захваченных территориях",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Российское государство заботится о детях на захваченных территориях, вводит российские образовательные стандарты"
+  },
+  {
+    "topic_id": 178,
+    "count": 274,
+    "name": "178_поздравить_ветеран_профессиональный_праздник",
+    "narrative": 5,
+    "label_en": "Congratulations to veterans of the Great Patriotic War and the security forces",
+    "label_ru": "Поздравления ветеранов ВОВ и силовиков",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Российские власти поздравляют военнослужащих и ветеранов"
+  },
+  {
+    "topic_id": 183,
+    "count": 265,
+    "name": "183_гуманитарный коридор_коридор_гуманитарный_открыть",
+    "narrative": 5,
+    "label_en": "Refugees from Ukraine",
+    "label_ru": "Беженцы из Украины",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Россия отправляет масштабную гуманитарную помощь в днр и лнр. Россия и регионы активно принимают и поддерживают беженцев"
+  },
+  {
+    "topic_id": 194,
+    "count": 247,
+    "name": "194_освобождение_освободить_кадыров_кадыров заявить",
+    "narrative": 5,
+    "label_en": "Liberation\" of the territories of Ukraine",
+    "label_ru": "Освобождение\" территорий Украины",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Россия освобождает территории в Украине"
+  },
+  {
+    "topic_id": 213,
+    "count": 223,
+    "name": "213_ветеран_участник спецоперация_участник_участник спецоперация украина",
+    "narrative": 5,
+    "label_en": "Helping veterans of the 'special operation'",
+    "label_ru": "Помощь ветеранам СВО",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Участники спецоперации - герои, о которых заботится государство, признавая их ветеранами"
+  },
+  {
+    "topic_id": 228,
+    "count": 208,
+    "name": "228_мобильный_связь_оператор_код",
+    "narrative": 5,
+    "label_en": "DPR and LPR protection",
+    "label_ru": "Защита ДНР и ЛНР",
+    "narrative_name": "«‎Protecting the Russian World»",
+    "label_long_ru": "Украина оставляет днр и лнр без мобильной связи, но Россия приходит на помощь жителям, в том числе на вновь захваченных территориях, и вводит российский стандарт номеров."
+  },
+  {
+    "topic_id": 91,
+    "count": 690,
+    "name": "91_смертный_смертный казнь_казнь_мораторий",
+    "narrative": 6,
+    "label_en": "The death penalty",
+    "label_ru": "Смертная казнь",
+    "narrative_name": "“Self-cleansing from public enemies”",
+    "label_long_ru": "Власти днр снимают мораторий на смертную казнь при поддержке России и осуждении международного сообщества. Смертная казнь - справедливый приговор для иностранных наемников, воевавших в Украине."
+  },
+  {
+    "topic_id": 136,
+    "count": 373,
+    "name": "136_оштрафовать_дискредитация_штраф_тысяча рубль",
+    "narrative": 6,
+    "label_en": "Army discrediting",
+    "label_ru": "Дискредитация армии",
+    "narrative_name": "“Self-cleansing from public enemies”",
+    "label_long_ru": "Население массово штрафуют за дискредитацию армии"
+  },
+  {
+    "topic_id": 157,
+    "count": 315,
+    "name": "157_пользователь_meta_страница_экстремистский",
+    "narrative": 6,
+    "label_en": "Extremism and terrorism are threats to Russia",
+    "label_ru": "Экстремизм и терроризм - угрозы России",
+    "narrative_name": "“Self-cleansing from public enemies”",
+    "label_long_ru": "Экстремизм и терроризм - угрозы России, исходящие изнутри и снаружи. С этими угрозами государство эффективно справляются."
+  },
+  {
+    "topic_id": 160,
+    "count": 307,
+    "name": "160_роскомнадзор_сайт_удалить_заблокировать",
+    "narrative": 6,
+    "label_en": "Blocking information",
+    "label_ru": "Блокировка информации",
+    "narrative_name": "“Self-cleansing from public enemies”",
+    "label_long_ru": "Роскомнадзор блокирует фейки и дезинформацию"
+  },
+  {
+    "topic_id": 19,
+    "count": 3331,
+    "name": "19_ядерный_ядерный оружие_оружие_атомный",
+    "narrative": 7,
+    "label_en": "Threat of nuclear weapons",
+    "label_ru": "Угроза ядерного оружия",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Угрозы применения ядерного оружия исходят не из России, а из стран Запада и Украины. Россия способна применить ядерное оружие только в ответ на реальную угрозу."
+  },
+  {
+    "topic_id": 28,
+    "count": 2317,
+    "name": "28_оружие_оружие украина_поставка оружие_поставка",
+    "narrative": 7,
+    "label_en": "West pumping Ukraine with weapons",
+    "label_ru": "Запад накачивает Украину оружием",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Запад накачивает Украину оружием для войны с Россией"
+  },
+  {
+    "topic_id": 30,
+    "count": 2261,
+    "name": "30_запад_россия_война_война россия",
+    "narrative": 7,
+    "label_en": "The threat of World War III",
+    "label_ru": "Угроза третьей мировой",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Противостояние между Россией и Западом может перерасти в военный конфликт"
+  },
+  {
+    "topic_id": 34,
+    "count": 2076,
+    "name": "34_запад_война_восток_мировой война",
+    "narrative": 7,
+    "label_en": "The threat of World War III",
+    "label_ru": "Угроза третьей мировой",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Запад толкает мир к новой большой войне"
+  },
+  {
+    "topic_id": 37,
+    "count": 1903,
+    "name": "37_биологический_лаборатория_сша украина_деятельность",
+    "narrative": 7,
+    "label_en": "Biolaboratories in Ukraine",
+    "label_ru": "Биолаборатории в Украине",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "США создает в мире и Украине биолаборатории для разработки оружия. Запад может быть виновником эпидемий в России"
+  },
+  {
+    "topic_id": 47,
+    "count": 1438,
+    "name": "47_хакер_сайт_атака_причастность",
+    "narrative": 7,
+    "label_en": "Cyber Warfare",
+    "label_ru": "Кибервойны",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Киберпространство - поле глобального противостояния: сильные хакеры есть и в России"
+  },
+  {
+    "topic_id": 55,
+    "count": 1201,
+    "name": "55_израиль_израильский_слово лавров_премьер",
+    "narrative": 7,
+    "label_en": "Unfriendly Israel",
+    "label_ru": "Недружественный Израиль",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Израиль ведёт недружественную политику в отношении России"
+  },
+  {
+    "topic_id": 59,
+    "count": 1113,
+    "name": "59_транзит_литва_калининград_блокада",
+    "narrative": 12,
+    "label_en": "Transport blockade of Kaliningrad",
+    "label_ru": "Блокада Калининграда",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Экономическая блокада Калининграда - эксцесс балтийских стран. Для России подобная мера недопустима, это серьезная угроза суверенитету, на который возможен военный ответ."
+  },
+  {
+    "topic_id": 63,
+    "count": 945,
+    "name": "63_фейк_информационный_информационный война_соцсеть",
+    "narrative": 7,
+    "label_en": "Information war",
+    "label_ru": "Информационная война",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Запад ведет информационную войну против России, распространяет фейки, пропаганду, дезинформацию"
+  },
+  {
+    "topic_id": 71,
+    "count": 887,
+    "name": "71_статус кандидат_кандидат_украина статус_статус",
+    "narrative": 7,
+    "label_en": "Ukraine's accession to the EU",
+    "label_ru": "Вступление Украины в ЕС",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Вступление Украины в Евросоюз не выгодно никому и нарушает ее нейтральный статус"
+  },
+  {
+    "topic_id": 73,
+    "count": 872,
+    "name": "73_дипломат_российский дипломат_высылка_посол",
+    "narrative": 7,
+    "label_en": "Diplomatic crisis",
+    "label_ru": "Дипломатический кризис",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Запад - причина дипломатического кризиса в отношениях с Россией"
+  },
+  {
+    "topic_id": 105,
+    "count": 546,
+    "name": "105_канада_канадский_дальнобойщик_спецназ",
+    "narrative": 7,
+    "label_en": "West pumping Ukraine with weapons",
+    "label_ru": "Запад накачивает Украину оружием",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "канадская помощь украине"
+  },
+  {
+    "topic_id": 125,
+    "count": 432,
+    "name": "125_болгария_дипломат_высылка_посольство",
+    "narrative": 7,
+    "label_en": "Diplomatic crisis",
+    "label_ru": "Дипломатический кризис",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "высылка дипломатов"
+  },
+  {
+    "topic_id": 139,
+    "count": 370,
+    "name": "139_youtube_канал_роскомнадзор_блокировка",
+    "narrative": 7,
+    "label_en": "Information War",
+    "label_ru": "Информационная война",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Youtube - инструмент западной пропаганды. Западный видеосервис нарушает свободу слова, удаляет видео и каналы российских властей. Россия угрожает, но не блокирует, т.к. это важный источник информации."
+  },
+  {
+    "topic_id": 151,
+    "count": 333,
+    "name": "151_арктика_лёд_развитие_учение",
+    "narrative": 7,
+    "label_en": "Confrontation in the Arctic region",
+    "label_ru": "Противостояние в Арктике",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Арктика - зона противостояния России и Запада"
+  },
+  {
+    "topic_id": 163,
+    "count": 301,
+    "name": "163_украинский военный_обучать_обучение_провести учение",
+    "narrative": 7,
+    "label_en": "West trains Ukraine's military",
+    "label_ru": "Запад обучает украинских военных",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Запад ведет руками Украины войну, направляя своих инструкторов"
+  },
+  {
+    "topic_id": 177,
+    "count": 275,
+    "name": "177_бюджет_расход_оборонный_военный помощь",
+    "narrative": 7,
+    "label_en": "West pumping Ukraine with weapons",
+    "label_ru": "Запад накачивает Украину оружием",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Запад накачивает Украину оружием для войны с Россией"
+  },
+  {
+    "topic_id": 190,
+    "count": 253,
+    "name": "190_google_роскомнадзор_реклама_потребовать",
+    "narrative": 7,
+    "label_en": "Information War",
+    "label_ru": "Информационная война",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Google ведет информационную кампанию против России. С ним борется роскомнадзор"
+  },
+  {
+    "topic_id": 198,
+    "count": 241,
+    "name": "198_наёмник_иностранный наёмник_наёмник украина_иностранный",
+    "narrative": 7,
+    "label_en": "West pumping Ukraine with weapons",
+    "label_ru": "Запад накачивает Украину оружием",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": ""
+  },
+  {
+    "topic_id": 205,
+    "count": 234,
+    "name": "205_танк_польша_передать украина_поставить украина",
+    "narrative": 7,
+    "label_en": "West pumping Ukraine with weapons",
+    "label_ru": "Запад накачивает Украину оружием",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "военная помощь украине"
+  },
+  {
+    "topic_id": 211,
+    "count": 226,
+    "name": "211_холодный война_холодный_война_война сша",
+    "narrative": 7,
+    "label_en": "Cold War",
+    "label_ru": "Холодная война",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Холодная война продолжается из-за действий Запада"
+  },
+  {
+    "topic_id": 3,
+    "count": 6960,
+    "name": "3_нефть_российский нефть_нефтяной_эмбарго",
+    "narrative": 8,
+    "label_en": "Oil embargo",
+    "label_ru": "Нефтяное эмбарго",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Нефтяное эмбарго и санкции в отношении России приведут к мировому экономическому коллапсу, но не навредит России"
+  },
+  {
+    "topic_id": 5,
+    "count": 5419,
+    "name": "5_санкция_санкция против_санкция против россия_против россия",
+    "narrative": 8,
+    "label_en": "Russia strangled by sanctions",
+    "label_ru": "Россию душат санкциями",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Запад стремится задушить Россию санкциями, но у России есть союзники, она способна справиться и способна дать симметричный ответ."
+  },
+  {
+    "topic_id": 7,
+    "count": 5227,
+    "name": "7_газ_российский газ_европа_газ рубль",
+    "narrative": 8,
+    "label_en": "Gas Payment by rubles: Western energy dependence",
+    "label_ru": "Оплата газа рублями: западная энергетическая зависимость",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Все российские противники, включая Украину, находятся в полной зависимости от российских энергоносителей - газа и его транзита. Попытки избавиться от зависимости безуспешны."
+  },
+  {
+    "topic_id": 8,
+    "count": 4801,
+    "name": "8_доллар_курс_евро_рубль",
+    "narrative": 8,
+    "label_en": "Currency crisis",
+    "label_ru": "Валютный кризис",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "В ходе экономической борьбы Запада и России наступает закат ведущей роли доллара на мировых рынках и усиление рубля.\nФискальная политика России в условиях санкций эффективна, а Запад двигается к кризису"
+  },
+  {
+    "topic_id": 17,
+    "count": 3511,
+    "name": "17_экономика_экономический_экономика россия_российский экономика",
+    "narrative": 8,
+    "label_en": "Russia overcomes sanctions",
+    "label_ru": "Россия справится с санкциями",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Несмотря на усилия западных стран по введению санкций, Россия справляется"
+  },
+  {
+    "topic_id": 22,
+    "count": 2827,
+    "name": "22_северный поток_поток_северный_вода",
+    "narrative": 8,
+    "label_en": "Nordstream 1 & 2",
+    "label_ru": "Северный поток",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "остановка северного потока, газ в европу"
+  },
+  {
+    "topic_id": 40,
+    "count": 1702,
+    "name": "40_газификация_газопровод_газовый_газпром",
+    "narrative": 8,
+    "label_en": "Gasification of Russia",
+    "label_ru": "Газификация России",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Газификация россии идет ускоренными темпами"
+  },
+  {
+    "topic_id": 46,
+    "count": 1529,
+    "name": "46_япония_японский_кндр_санкция против",
+    "narrative": 8,
+    "label_en": "Sanctions of Japan against Russia",
+    "label_ru": "Санкции Японии против России",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Япония - главный противник России в Азии, где не решен вопрос по Курильским островам. Япония, как всегда, - сателлит США, не обладающий военной силой, но вводит санкции."
+  },
+  {
+    "topic_id": 49,
+    "count": 1423,
+    "name": "49_продовольственный_голод_кризис_продовольствие",
+    "narrative": 8,
+    "label_en": "Food crisis",
+    "label_ru": "Продовольственный кризис",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Миру грозит продовольственный кризис, причина которого в действиях Запада. Россия готова к кризису"
+  },
+  {
+    "topic_id": 65,
+    "count": 919,
+    "name": "65_инфляция_годовой_рекордный_минэкономразвития",
+    "narrative": 8,
+    "label_en": "Inflation in Russia and in the world",
+    "label_ru": "Инфляция в России и в мире",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Фискальная политика России в условиях санкций эффективна, а Запад двигается к кризису"
+  },
+  {
+    "topic_id": 82,
+    "count": 755,
+    "name": "82_млрд рубль_финансирование_млрд_рубль",
+    "narrative": 8,
+    "label_en": "Financing and investment in the Russian economy",
+    "label_ru": "Развитие экономики России",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "финансовые вливания в экономику,инфраструктуру России"
+  },
+  {
+    "topic_id": 87,
+    "count": 746,
+    "name": "87_молдавия_газпром_долг_газ",
+    "narrative": 8,
+    "label_en": "Moldova and the gas issue",
+    "label_ru": "Зависимость от российских энергоресурсов",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "молдавия и газовый вопрос"
+  },
+  {
+    "topic_id": 93,
+    "count": 668,
+    "name": "93_компания_западный компания_бренд_уход",
+    "narrative": 8,
+    "label_en": "Foreign companies leaving Russia",
+    "label_ru": "Уход компаний с российского рынка",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Западные компании покидают российский рынок в контексте антироссийской политики, страдая от этого, но покидают не все, и российские бизнесы легко преодолеют уход компаний."
+  },
+  {
+    "topic_id": 114,
+    "count": 482,
+    "name": "114_условие санкция_бизнес_мера поддержка_условие",
+    "narrative": 8,
+    "label_en": "Supporting business in Russia",
+    "label_ru": "Поддержка бизнеса",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Государство поддерживает бизнес в условиях санкций"
+  },
+  {
+    "topic_id": 134,
+    "count": 382,
+    "name": "134_swift_россия swift_отключение_отключение россия",
+    "narrative": 8,
+    "label_en": "Disconnecting Russian banks from SWIFT",
+    "label_ru": "Отключение российских банков от Swift",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "отключение свифт"
+  },
+  {
+    "topic_id": 140,
+    "count": 369,
+    "name": "140_норвегия_груз_норвежский_мурманск",
+    "narrative": 8,
+    "label_en": "Norway-Russia sanctions conflict",
+    "label_ru": "Антироссийские санкции вредят Западу",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Норвегия - недружественная страна НАТО, конфликтующая с Россией по Арктике, вводящая санкции"
+  },
+  {
+    "topic_id": 141,
+    "count": 359,
+    "name": "141_банк_санкция_против российский_санкция против",
+    "narrative": 8,
+    "label_en": "Sanctions against Russian banks",
+    "label_ru": "Банковские санкции не эффективны",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "санкции против россиийских банков"
+  },
+  {
+    "topic_id": 146,
+    "count": 344,
+    "name": "146_бензин_цена_рекорд_цена газ",
+    "narrative": 8,
+    "label_en": "Rising petrol prices",
+    "label_ru": "Рост цен на топливо",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Рост цен на топливо - серьезная угроза экономике Запада, в которой виноваты их правительства."
+  },
+  {
+    "topic_id": 154,
+    "count": 329,
+    "name": "154_сбербанк_банк_альфа_санкция",
+    "narrative": 8,
+    "label_en": "Sanctions against Russian banks",
+    "label_ru": "Банковские санкции не эффективны",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Санкции в отношении российской банковской системы не влияют на эффективность работы банков в России, но угрожают экономикам Запада"
+  },
+  {
+    "topic_id": 162,
+    "count": 301,
+    "name": "162_минфин_выплатить_выплата_обязательство",
+    "narrative": 8,
+    "label_en": "Russia's debt obligations",
+    "label_ru": "Долговые обязательства России",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Запад чинит России препоны в стремлении платить по долговым обязательствам"
+  },
+  {
+    "topic_id": 167,
+    "count": 294,
+    "name": "167_импортозамещение_импорт_экспорт_экспортный",
+    "narrative": 8,
+    "label_en": "Import substitution",
+    "label_ru": "Импортозамещениие",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": ""
+  },
+  {
+    "topic_id": 169,
+    "count": 293,
+    "name": "169_продовольствие_цена_продукт_продовольственный",
+    "narrative": 8,
+    "label_en": "Food crisis",
+    "label_ru": "Продовольственный кризис",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Миру грозит продовольственный кризис, причина которого в действиях Запада. Россия готова к кризису"
+  },
+  {
+    "topic_id": 172,
+    "count": 289,
+    "name": "172_канада_ввести санкция_ввести санкция против_санкция против",
+    "narrative": 8,
+    "label_en": "Canada-Russia sanctions conflict",
+    "label_ru": "Антироссийские санкции вредят Западу",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "санкции против России Канады и Австралии"
+  },
+  {
+    "topic_id": 173,
+    "count": 287,
+    "name": "173_финляндия_электроэнергия_прекращение поставка_поставка",
+    "narrative": 8,
+    "label_en": "Finland stops importing energy from Russia",
+    "label_ru": "Антироссийские санкции вредят Западу",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "санкции со стороны финляндии"
+  },
+  {
+    "topic_id": 179,
+    "count": 272,
+    "name": "179_энергетический_энергетический кризис_энергокризис_кризис",
+    "narrative": 8,
+    "label_en": "Energy crisis in Europe",
+    "label_ru": "Энергетический кризис в Европе",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Европе грозит энергетический кризис, в котором она сама виновата"
+  },
+  {
+    "topic_id": 184,
+    "count": 264,
+    "name": "184_удобрение_зерно_продовольствие_санкция",
+    "narrative": 8,
+    "label_en": "Sanctions on Russian fertilisers",
+    "label_ru": "Продовольственный кризис",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "В условиях продовольственного кризиса Россия предлагает меры по экспорту удобрений взамен на снятие санкций, но Запад отказывается"
+  },
+  {
+    "topic_id": 185,
+    "count": 261,
+    "name": "185_пакет_шестой_пакет санкция_пакет санкция против",
+    "narrative": 8,
+    "label_en": "Anti-Russian sanctions packages",
+    "label_ru": "Антироссийские санкции вредят Западу",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": ""
+  },
+  {
+    "topic_id": 195,
+    "count": 246,
+    "name": "195_британец_электричество_британия_электроэнергия",
+    "narrative": 8,
+    "label_en": "Britain stops importing energy from Russia",
+    "label_ru": "Британия отказывается от импорта газа и нефти",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Британия столкнется с серьезным энергетическим кризисом из-за санкций"
+  },
+  {
+    "topic_id": 197,
+    "count": 243,
+    "name": "197_китай_монголия_газпром_поставка газ",
+    "narrative": 8,
+    "label_en": "Alternative energy supplies to China and Mongolia",
+    "label_ru": "Замена поставок энергоносителей",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Россия легко находит замену поставкам энергоносителей - вместо Запада - восточным союзникам"
+  },
+  {
+    "topic_id": 199,
+    "count": 240,
+    "name": "199_австрия_австрийский_российский газ_канцлер",
+    "narrative": 8,
+    "label_en": "Austria is dependent on Russian gas",
+    "label_ru": "Балтийские страны отказываются от поставок газа и нефти",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "австрия и отказ от российского газа"
+  },
+  {
+    "topic_id": 200,
+    "count": 240,
+    "name": "200_вино_алкоголь_водка_продажа",
+    "narrative": 8,
+    "label_en": "Alcohol import substitution",
+    "label_ru": "Импортозамещениие",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Россия успешно справляется с санкциями при помощи импортозамещения"
+  },
+  {
+    "topic_id": 202,
+    "count": 239,
+    "name": "202_марка_нефть_превысить_цена",
+    "narrative": 8,
+    "label_en": "Oil prices",
+    "label_ru": "Цены на нефть",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Цены на нефть растут и Россия успешно развивает нефтяную промышленность"
+  },
+  {
+    "topic_id": 210,
+    "count": 226,
+    "name": "210_потребление_ес_газ_страна ес",
+    "narrative": 8,
+    "label_en": "Energy consumption in Europe",
+    "label_ru": "Зависимость от российских энергоресурсов",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": ""
+  },
+  {
+    "topic_id": 212,
+    "count": 225,
+    "name": "212_золото_импорт_золотой_запрет",
+    "narrative": 8,
+    "label_en": "Ban on Russian gold imports",
+    "label_ru": "Антироссийские санкции вредят Западу",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "запрет на импорт золота из россиии"
+  },
+  {
+    "topic_id": 214,
+    "count": 222,
+    "name": "214_сертификация_северный поток_поток_северный",
+    "narrative": 8,
+    "label_en": "Certification of Nord Stream 2",
+    "label_ru": "Северный поток",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Санкции против северного потока и затягиивание сертификации наносят больший удар по экономике Запада, о чем свидетельствует отсутствие единой позиции"
+  },
+  {
+    "topic_id": 217,
+    "count": 218,
+    "name": "217_ниже_впервые_опуститься_курс",
+    "narrative": 8,
+    "label_en": "Currency crisis",
+    "label_ru": "Валютный кризис",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": ""
+  },
+  {
+    "topic_id": 220,
+    "count": 215,
+    "name": "220_латвия_российский газ_газ_литва",
+    "narrative": 8,
+    "label_en": "Baltic states stop importing energy from Russia",
+    "label_ru": "Зависимость от российских энергоресурсов",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "российский газ"
+  },
+  {
+    "topic_id": 222,
+    "count": 213,
+    "name": "222_российский рынок_магазин_m_рынок",
+    "narrative": 8,
+    "label_en": "Foreign companies leaving Russia",
+    "label_ru": "Уход компаний с российского рынка",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": ""
+  },
+  {
+    "topic_id": 229,
+    "count": 207,
+    "name": "229_заморозить_актив_резерв_заморозка",
+    "narrative": 8,
+    "label_en": "Freezing of Russian foreign exchange assets",
+    "label_ru": "Заморозка российских валютных активов",
+    "narrative_name": "«Freezing Europe»",
+    "label_long_ru": "Западные страны вводят антироссийские санкции, цель которых международная изоляция России, однако санкции больше вредят самому Западу"
+  },
+  {
+    "topic_id": 36,
+    "count": 2023,
+    "name": "36_памятник_воин_советский_память",
+    "narrative": 9,
+    "label_en": "Demolishing Soviet monuments in Europe",
+    "label_ru": "Снос памятников",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Запад пытается переписать историю, осквернить подвиг России в вов - сносит памятники"
+  },
+  {
+    "topic_id": 53,
+    "count": 1218,
+    "name": "53_маткапитал_выплата_ребёнок_пособие",
+    "narrative": 9,
+    "label_en": "Supporting the institution of the family",
+    "label_ru": "Поддержка иститута семьи",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Приоритет России - экономическая поддержка института семьи"
+  },
+  {
+    "topic_id": 67,
+    "count": 913,
+    "name": "67_молдавия_румыния_приднестровье_санда",
+    "narrative": 9,
+    "label_en": "Russophobes\" in Eastern Europe",
+    "label_ru": "Русофобы в Восточной Европе",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "роль молдавии в конфликте, приднестровье, низкая субъектность"
+  },
+  {
+    "topic_id": 76,
+    "count": 830,
+    "name": "76_бессмертный_бессмертный полк_полк_бессмертный полка",
+    "narrative": 9,
+    "label_en": "Victory Day activities",
+    "label_ru": "Мероприятия к 9 мая",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Акция \"бессмертный полк\" скрепляет государственную идеологию уважения к победе над фашизмом в вов"
+  },
+  {
+    "topic_id": 84,
+    "count": 754,
+    "name": "84_актив_конфискация_имущество_заморозить",
+    "narrative": 9,
+    "label_en": "Seizure of Russian assets - \"violation of property rights",
+    "label_ru": "Арест российского имущества",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Запад продвигает идею защиты частной собственности, но бандитски поступает с имуществом российских бизнесменов (олигархов) - показатель русофобии в отношении россиян."
+  },
+  {
+    "topic_id": 86,
+    "count": 751,
+    "name": "86_эстония_эстонский_премьер_виза",
+    "narrative": 9,
+    "label_en": "Russophobes\" in Eastern Europe",
+    "label_ru": "Русофобы в Восточной Европе",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Государственная политика Восточноевропейских соседей России (балтийские страны, Польша, Болгария, Чехия)  основана на русофобии и низкой субъектности, и это вредит их интересам"
+  },
+  {
+    "topic_id": 120,
+    "count": 447,
+    "name": "120_парад_парад победа_победа_генеральный",
+    "narrative": 9,
+    "label_en": "Victory Day activities",
+    "label_ru": "Мероприятия к 9 мая",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "подготовка к 9 маю"
+  },
+  {
+    "topic_id": 142,
+    "count": 347,
+    "name": "142_флаг_посольство_здание_краска",
+    "narrative": 9,
+    "label_en": "War of symbols: raising and removing flags",
+    "label_ru": "Война символов",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Война символов: действия с флагами, украинский опускают, российский поднимают"
+  },
+  {
+    "topic_id": 143,
+    "count": 346,
+    "name": "143_совет европа_совет_россия совет_выход россия",
+    "narrative": 9,
+    "label_en": "Russia's withdrawal from the Council of Europe",
+    "label_ru": "Выход России из Совета Европы",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Совет Европы перестал быть легитимной организацией"
+  },
+  {
+    "topic_id": 150,
+    "count": 333,
+    "name": "150_пенсия_пенсионер_военный_закон",
+    "narrative": 9,
+    "label_en": "Military pension increase",
+    "label_ru": "Повышение пенсии военным",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Повышение пенсии военным - забота государства о россиянах"
+  },
+  {
+    "topic_id": 152,
+    "count": 331,
+    "name": "152_православный_священник_патриархия ru_патриарх",
+    "narrative": 9,
+    "label_en": "Orthodox Church split over Ukraine",
+    "label_ru": "Церковный раскол",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Украина способствует новому церковному расколу, РПЦ стремится к единству"
+  },
+  {
+    "topic_id": 155,
+    "count": 320,
+    "name": "155_русофобия_русофобский_расизм_русофоб",
+    "narrative": 9,
+    "label_en": "Russophobes in Eastern Europe",
+    "label_ru": "Русофобы в Восточной Европе",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Русофобии в мире становится больше, так как она поддерживается правительствами западных  стран и международными организациями."
+  },
+  {
+    "topic_id": 156,
+    "count": 319,
+    "name": "156_телеканал_вещание_канал_трансляция",
+    "narrative": 9,
+    "label_en": "Harassment of the Russian language",
+    "label_ru": "Борьба с русским языком",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Санкции против русскоязычного телевидения - проявление западной русофобии"
+  },
+  {
+    "topic_id": 168,
+    "count": 294,
+    "name": "168_визовый_виза_въезд_выдача",
+    "narrative": 9,
+    "label_en": "Visa restrictions for Russians",
+    "label_ru": "Визовые ограничения для россиян",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Запад вводит визовые антироссийские ограничения по национальному признаку"
+  },
+  {
+    "topic_id": 191,
+    "count": 253,
+    "name": "191_z_буква z_буква_символ",
+    "narrative": 9,
+    "label_en": "Z, V - symbols of the \"Special Operation",
+    "label_ru": "Символика СВО",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Символика российской спецоперации пользуется массовой поддержкой среди союзников россии. Противники россии стремятся осквернить новый символ, нападая на людей, запрещая"
+  },
+  {
+    "topic_id": 196,
+    "count": 244,
+    "name": "196_папа_римский_патриарх_патриарх кирилл",
+    "narrative": 9,
+    "label_en": "Russian Orthodox Church supports \"Special Operation",
+    "label_ru": "РПЦ поддерживает СВО",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Церковь молится о мире, при этом западная греховна и призывает прекратить войну, а РПЦ поддерживает спецоперацию"
+  },
+  {
+    "topic_id": 227,
+    "count": 209,
+    "name": "227_книга_библиотека_русский_украина запретить",
+    "narrative": 9,
+    "label_en": "Harassment of the Russian language",
+    "label_ru": "Борьба с русским языком",
+    "narrative_name": "Traditional Values vs. Decadence",
+    "label_long_ru": "Поддержка русского языка в России и его угнетение в Украине"
+  },
+  {
+    "topic_id": 14,
+    "count": 3959,
+    "name": "14_переговоры_переговоры украина_переговоры россия_переговоры россия украина",
+    "narrative": 10,
+    "label_en": "Negotiations between Russia and Ukraine",
+    "label_ru": "Переговоры России и Украины",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Россия занимает активную позицию в переговорах с Украиной. Украина не предлагает конструктива."
+  },
+  {
+    "topic_id": 57,
+    "count": 1169,
+    "name": "57_зерно_вывоз_украинский зерно_порт",
+    "narrative": 10,
+    "label_en": "Grain exports from Ukrainian ports",
+    "label_ru": "Вывоз зерна",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Дипломатическое урегулирование проблемы вывоза украинского зерна: Украина сама не может обеспечить вывоз зерна, Запад занимает неконструктивную позицию, Турция пытается помочь"
+  },
+  {
+    "topic_id": 61,
+    "count": 998,
+    "name": "61_диалог_диалог россия_переговоры россия_переговоры",
+    "narrative": 10,
+    "label_en": "Negotiations on international security guarantees",
+    "label_ru": "Переговоры о гарантиях безопасности",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Запад считает переговоры по безопасности с Россией необходимыми, но не готов предложить ничего, что может удовлетворить ее"
+  },
+  {
+    "topic_id": 104,
+    "count": 551,
+    "name": "104_кремль_лукашенко_путин лукашенко_переговоры путин",
+    "narrative": 10,
+    "label_en": "Negotiations with Putin",
+    "label_ru": "Переговоры с Путиным",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Все мировые политики хотят переговоров с Путиным (и противники, и союзники)"
+  },
+  {
+    "topic_id": 110,
+    "count": 500,
+    "name": "110_телефонный_телефонный разговор_разговор_разговор путин",
+    "narrative": 10,
+    "label_en": "Negotiations on international security guarantees",
+    "label_ru": "Переговоры о гарантиях безопасности",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": ""
+  },
+  {
+    "topic_id": 159,
+    "count": 311,
+    "name": "159_белый дом_белый_дом_байден",
+    "narrative": 10,
+    "label_en": "Negotiations with Putin",
+    "label_ru": "Переговоры с Путиным",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "переговоры с путиным"
+  },
+  {
+    "topic_id": 207,
+    "count": 229,
+    "name": "207_путин зеленский_эрдоган_турция_зеленский",
+    "narrative": 10,
+    "label_en": "Grain exports from Ukrainian ports",
+    "label_ru": "Вывоз зерна",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "переговоры через турцию"
+  },
+  {
+    "topic_id": 6,
+    "count": 5298,
+    "name": "6_китай_тайвань_китайский_цзиньпин",
+    "narrative": 11,
+    "label_en": "Relations with China",
+    "label_ru": "Отношения с Китаем",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "позиция китая в конфликте/ параллель с тайванем"
+  },
+  {
+    "topic_id": 13,
+    "count": 3996,
+    "name": "13_белоруссия_польша_лукашенко_белорусский",
+    "narrative": 11,
+    "label_en": "Relations with Belarus",
+    "label_ru": "Отношения с Беларусью",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Белоруссия - ближайший союзник России, независимый и конструктивный, в том числе как арбитр между Россией и Украиной."
+  },
+  {
+    "topic_id": 38,
+    "count": 1862,
+    "name": "38_сербия_вучича_хорватия_сербский",
+    "narrative": 11,
+    "label_en": "Relations with Serbia",
+    "label_ru": "Отношения с Сербией",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Сербия - европейский союзник России, с общим историческим прошлым, преданный Западом в ходе конфликта в Косово."
+  },
+  {
+    "topic_id": 85,
+    "count": 753,
+    "name": "85_китайский_автомобиль_авто_машина",
+    "narrative": 11,
+    "label_en": "Relations with China",
+    "label_ru": "Отношения с Китаем",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "китайская продукция на российскиий рынок"
+  },
+  {
+    "topic_id": 92,
+    "count": 679,
+    "name": "92_бразилия_латинский америка_латинский_венесуэла",
+    "narrative": 11,
+    "label_en": "Relations with Latin American countries",
+    "label_ru": "Отношения со странами Латинской Америки",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Страны Латинской Америки - союзники России. Запад обеспокоен стремлением России налаживать взаимодействие в Латинской Америке в противовес воинственному дискурсу Вашингтона и Киева"
+  },
+  {
+    "topic_id": 100,
+    "count": 595,
+    "name": "100_смартфон_приложение_китайский_рынок",
+    "narrative": 8,
+    "label_en": "Relations with China",
+    "label_ru": "Отношения с Китаем",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "китайская продукция на российскиий рынок"
+  },
+  {
+    "topic_id": 149,
+    "count": 335,
+    "name": "149_африка_индия_африканский_посол",
+    "narrative": 11,
+    "label_en": "Relations with African countries",
+    "label_ru": "Отношения со странами Африки",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Россия развивает отношения с африкой - потенциальным партнером"
+  },
+  {
+    "topic_id": 174,
+    "count": 284,
+    "name": "174_китай_мид китай_китай сша_мид",
+    "narrative": 11,
+    "label_en": "Relations with China",
+    "label_ru": "Отношения с Китаем",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Китай - главный союзник России, способный противостоять США, со схожими внешнеполитическими проблемами"
+  },
+  {
+    "topic_id": 216,
+    "count": 219,
+    "name": "216_индонезия_g_саммит g_саммит",
+    "narrative": 11,
+    "label_en": "Relations with Indonesia",
+    "label_ru": "Отношения с Индонезией",
+    "narrative_name": "«‎Cold War II»‌‎",
+    "label_long_ru": "Индонезия - потенциальный геополитический союзник России"
+  },
+  {
+    "topic_id": 4,
+    "count": 6300,
+    "name": "4_германия_канцлер_немец_берлин",
+    "narrative": 12,
+    "label_en": "Instability in Germany",
+    "label_ru": "Нестабильность в Германии",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Немецкая власть и общество расколоты. Германия нестабильна, страна зависит от газа и от требований НАТО."
+  },
+  {
+    "topic_id": 10,
+    "count": 4588,
+    "name": "10_грузия_грузинский_sputnik грузия_sputnik",
+    "narrative": 12,
+    "label_en": "Ambiguous position of Georgia",
+    "label_ru": "Неоднозначная позиция Грузии",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Грузия не присоединяется к антироссийским санкциям после вторжения в Украину, не стремится активно поддерживать Украину. И общество, и государство ведут себя противоречиво."
+  },
+  {
+    "topic_id": 15,
+    "count": 3825,
+    "name": "15_финляндия_швеция_вступление_нато",
+    "narrative": 12,
+    "label_en": "NATO enlargement",
+    "label_ru": "Расширение НАТО",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Попытки вступления швеции и финляндии в НАТО не увенчаются успехом из-за внутренних конфликтов в НАТО, их недружественная политика не представляет угрозы для России"
+  },
+  {
+    "topic_id": 21,
+    "count": 2883,
+    "name": "21_польша_польский_варшава_поляк",
+    "narrative": 12,
+    "label_en": "Poland's role in the conflict",
+    "label_ru": "Роль Польши в конфликте",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "роль польши в конфликте, наплыв беженцев"
+  },
+  {
+    "topic_id": 23,
+    "count": 2819,
+    "name": "23_италия_итальянский_итальянец_мид италия",
+    "narrative": 12,
+    "label_en": "Instability in Italy",
+    "label_ru": "Нестабильность в Италии",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Италия - самостоятельный игрок в Европе, испытывает, политический кризис и не полностью разделяет антироссийскую политику Запада"
+  },
+  {
+    "topic_id": 27,
+    "count": 2319,
+    "name": "27_евросоюз_европа_санкция_европейский",
+    "narrative": 12,
+    "label_en": "The issue of European political autonomy",
+    "label_ru": "Самостоятельность Европы",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Европа - несамостоятельный игрок, находится под влиянием США. Европе невыгодна антироссийская санкционная политика. Руками Европы США давит на Россию, но пострадает от этого сама Европа"
+  },
+  {
+    "topic_id": 32,
+    "count": 2160,
+    "name": "32_франция_выборы_президент франция_макрон",
+    "narrative": 12,
+    "label_en": "Instability in France",
+    "label_ru": "Нестабильность во Франции",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Во Франции политический и экономический кризис - постоянные протесты, полицейское насилие. Франция проводит неоднозначную политику, пытается примирить Украину и Россию, но поддерживает санкции."
+  },
+  {
+    "topic_id": 39,
+    "count": 1834,
+    "name": "39_турция_эрдоган_турецкий_мид турция",
+    "narrative": 12,
+    "label_en": "Turkish autonomy",
+    "label_ru": "Самостоятельность Турции",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Турция, хоть и член НАТО, ведет самостоятельную политику и договороспособна, преследует собственные интересы, не солидарна со странами Запада."
+  },
+  {
+    "topic_id": 68,
+    "count": 906,
+    "name": "68_венгрия_орбан_премьер_будапешт",
+    "narrative": 12,
+    "label_en": "Hungary's role in the conflict",
+    "label_ru": "Роль Венгрии в конфликте",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "роль венгрии в конфликте"
+  },
+  {
+    "topic_id": 107,
+    "count": 512,
+    "name": "107_венгрия_эмбарго_газ_газ рубль",
+    "narrative": 12,
+    "label_en": "Hungary's role in the conflict",
+    "label_ru": "Роль Венгрии в конфликте",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Венгрия как член Евросоюза, пытается вести политику, дружественную России (покупает нефть за рубли), но сталкивается с ограничениями в рамках эмбарго"
+  },
+  {
+    "topic_id": 121,
+    "count": 446,
+    "name": "121_восточный европа_восточный_европа_переброска",
+    "narrative": 12,
+    "label_en": "The issue of European political autonomy",
+    "label_ru": "Самостоятельность Европы",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Европа - несамостоятельный игрок, находится под влиянием США. Европе невыгодна антироссийская санкционная политика. Руками Европы США давит на Россию, но пострадает от этого сама Европа"
+  },
+  {
+    "topic_id": 132,
+    "count": 395,
+    "name": "132_италия_итальянский_российский газ_газ",
+    "narrative": 12,
+    "label_en": "Instability in Italy",
+    "label_ru": "Нестабильность в Италии",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Италия - самостоятельный игрок в Европе, испытывает, политический кризис и не полностью разделяет антироссийскую политику Запада"
+  },
+  {
+    "topic_id": 201,
+    "count": 239,
+    "name": "201_белый дом_белый_украина белый_дом",
+    "narrative": 12,
+    "label_en": "The US does not seek to support Ukraine",
+    "label_ru": "США не стремятся поддержать Украину",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": "Белый дом в США не готов оказывать действенную поддержку Украине"
+  },
+  {
+    "topic_id": 231,
+    "count": 202,
+    "name": "231_грузия_украина грузия_тбилиси_грузинский",
+    "narrative": 12,
+    "label_en": "Ambiguous position of Georgia",
+    "label_ru": "Неоднозначная позиция Грузии",
+    "narrative_name": "«‎Internal contradictions of the West»",
+    "label_long_ru": ""
+  },
+  {
+    "topic_id": 12,
+    "count": 4162,
+    "name": "12_конфликт_украина_конфликт украина_вторжение",
+    "narrative": 13,
+    "label_en": "Aggression of Ukraine",
+    "label_ru": "Украина агрессор",
+    "narrative_name": "“No plans of any aggressive actions”",
+    "label_long_ru": "Украина собирается напасть на Россию, днр, лнр, но Запад обвиняет в планах нападения Россию."
+  },
+  {
+    "topic_id": 33,
+    "count": 2121,
+    "name": "33_дипломат_покинуть_посольство_эвакуация",
+    "narrative": 13,
+    "label_en": "Diplomatic evacuation",
+    "label_ru": "Эвакуация дипломатов",
+    "narrative_name": "“No plans of any aggressive actions”",
+    "label_long_ru": "Эвакуациия дипломатов. Запад знал о войне и скором поражении Украины."
+  },
+  {
+    "topic_id": 94,
+    "count": 657,
+    "name": "94_геноцид_народ_донбасс_советский",
+    "narrative": 14,
+    "label_en": "Genocide of Russian speakers in Donbass",
+    "label_ru": "Геноцид русских",
+    "narrative_name": "“No plans of any aggressive actions”",
+    "label_long_ru": "Геноцид русских - причина войны"
+  },
+  {
+    "topic_id": 99,
+    "count": 613,
+    "name": "99_безопасность_гарантия безопасность_гарантия_ответ",
+    "narrative": 14,
+    "label_en": "Security guarantees",
+    "label_ru": "Гарантии безопасности",
+    "narrative_name": "“No plans of any aggressive actions”",
+    "label_long_ru": "гарантии безопасности"
+  },
+  {
+    "topic_id": 145,
+    "count": 345,
+    "name": "145_спецоперация украина_спецоперация_завершение_закончиться",
+    "narrative": 14,
+    "label_en": "Aims and terms of \"Special operation",
+    "label_ru": "Цели и сроки СВО",
+    "narrative_name": "“No plans of any aggressive actions”",
+    "label_long_ru": "Цели и сроки проведения спецопериации, условия ее завершения"
+  },
+  {
+    "topic_id": 181,
+    "count": 268,
+    "name": "181_нейтральный_демилитаризация_денацификация_денацификация украина",
+    "narrative": 14,
+    "label_en": "Denazification and demilitarisation",
+    "label_ru": "Денацификация и демилитаризация",
+    "narrative_name": "“No plans of any aggressive actions”",
+    "label_long_ru": "Денацификация, демилитаризация и нейтральный статус Украины - ключевая цель спецоперации"
+  },
+  {
+    "topic_id": 193,
+    "count": 250,
+    "name": "193_безопасность_гарантия безопасность_гарантия_ответ сша",
+    "narrative": 14,
+    "label_en": "Security guarantees",
+    "label_ru": "Гарантии безопасности",
+    "narrative_name": "“No plans of any aggressive actions”",
+    "label_long_ru": "Россия стремится получить гарантии безопасности по нерасширению НАТО"
+  },
+  {
+    "topic_id": 11,
+    "count": 4337,
+    "name": "11_медведев_медведчук_дмитрий_обменять",
+    "narrative": 15,
+    "label_en": "",
+    "label_ru": "",
+    "narrative_name": "",
+    "label_long_ru": "Политическая элита России едина в своем порыве - бывший президент Медведев высказывается по наиболее острым вопросам"
+  },
+  {
+    "topic_id": 41,
+    "count": 1696,
+    "name": "41_закон_путин подписать_подписать_путин подписать закон",
+    "narrative": 15,
+    "label_en": "",
+    "label_ru": "",
+    "narrative_name": "",
+    "label_long_ru": "Субъектность власти и ее реагирование на вызовы войны"
+  },
+  {
+    "topic_id": 180,
+    "count": 270,
+    "name": "180_хазин_скоро_путин_россия путин",
+    "narrative": 15,
+    "label_en": "",
+    "label_ru": "",
+    "narrative_name": "",
+    "label_long_ru": "Очень высокая субъектность Путина, на все найдет правильное объяснение и решение"
+  },
+  {
+    "topic_id": 0,
+    "count": 31730,
+    "name": "0_обстрелять_всу_обстрел_спецоперация украина",
+    "narrative": "3+4",
+    "label_en": "Ukrainian Armed Forces shelling civilians",
+    "label_ru": "ВСУ обстреливает гражданское население",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "В ходе непосредственных военных действий ВСУ обстреливает территории и мирных жителей, Россия уничтожает военные объекты"
+  },
+  {
+    "topic_id": 25,
+    "count": 2341,
+    "name": "25_журналист_журналистка_блогер_fox",
+    "narrative": "3+4",
+    "label_en": "Journalists under fire",
+    "label_ru": "Журналисты под обстрелом",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Журналисты дружественных российских изданий, даже иностранные, страдают от украинских обстрелов"
+  },
+  {
+    "topic_id": 31,
+    "count": 2182,
+    "name": "31_ракета_спутник_рогозин_космический",
+    "narrative": "3+4",
+    "label_en": "High-tech Russian army",
+    "label_ru": "Высокотехнологичная российская армия",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Российская ракетная отрасль имеет высокий военный потенциал"
+  },
+  {
+    "topic_id": 64,
+    "count": 925,
+    "name": "64_беспилотник_сбить_дрон_пво",
+    "narrative": "3+4",
+    "label_en": "Drones attack Russia",
+    "label_ru": "Беспилотники атакуют Россию",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Украинцы атакуют беспилотниками, в том числе территорию России, но российские ПВО успешно защищают граждан"
+  },
+  {
+    "topic_id": 80,
+    "count": 794,
+    "name": "80_беспилотник_дрон_ударный_создать",
+    "narrative": "3+4",
+    "label_en": "Drones attack Russia",
+    "label_ru": "Беспилотники атакуют Россию",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": ""
+  },
+  {
+    "topic_id": 106,
+    "count": 520,
+    "name": "106_бастрыкин_расследовать_пытка_поручить",
+    "narrative": "3+4",
+    "label_en": "Torture of Russian military personnel",
+    "label_ru": "Пытки над российскими военными",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Пытки над российскими военными расследуются Следственным Комитетом РФ."
+  },
+  {
+    "topic_id": 113,
+    "count": 482,
+    "name": "113_мост_крымский_взорвать_ударить",
+    "narrative": "3+4",
+    "label_en": "Ukraint destroys infrastructure",
+    "label_ru": "Разрушение инфраструктурой Украиной",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Украина разрушает инфраструктуру - мосты, и угрожает Крымскому мосту"
+  },
+  {
+    "topic_id": 118,
+    "count": 460,
+    "name": "118_вертолёт_ми_сбить_пво",
+    "narrative": "3+4",
+    "label_en": "Air battles",
+    "label_ru": "Бои в воздухе",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Российские вертолеты наносят удары, а украинские вертолеты сбиваются"
+  },
+  {
+    "topic_id": 144,
+    "count": 346,
+    "name": "144_москальков_обмен_пленный_военнопленный",
+    "narrative": "3+4",
+    "label_en": "Prisoner exchange",
+    "label_ru": "Обмен пленными",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Россия способствует обмену пленными, в том числе с участием Красного креста, но срывы происходят по вине украинской стороны"
+  },
+  {
+    "topic_id": 158,
+    "count": 311,
+    "name": "158_трибунал_госизмена_международный_суд",
+    "narrative": "3+4",
+    "label_en": "Military tribunal",
+    "label_ru": "Военный трибунал",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Украина обвиняет в военных преступлениях россиян, Россия - украинских националистов. Каждая из сторон стремится организовать военный трибунал (Украина, Европа, Россия/днр)"
+  },
+  {
+    "topic_id": 164,
+    "count": 297,
+    "name": "164_танк_уничтожить_бмп_украинский",
+    "narrative": "3+4",
+    "label_en": "High-tech Russian army",
+    "label_ru": "Высокотехнологичная российская армия",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Российское вооружение уничтожает противника"
+  },
+  {
+    "topic_id": 175,
+    "count": 283,
+    "name": "175_контроль_взять контроль_взять_полный",
+    "narrative": "3+4",
+    "label_en": "Russia takes control of territories",
+    "label_ru": "Захват территорий Россией",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Российская армия берет под контроль населенные пункты в ходе спецоперации"
+  },
+  {
+    "topic_id": 225,
+    "count": 211,
+    "name": "225_змеиный_остров_захватить_попытка",
+    "narrative": "3+4",
+    "label_en": "Zmeiny\" (Snake) Island",
+    "label_ru": "Змеиный остров",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Российская армия успешно захватила остров Змеиный, украинская армия неспособна его вернуть. Россия вывела войска с острова"
+  },
+  {
+    "topic_id": 230,
+    "count": 204,
+    "name": "230_завод_северодонецк_мирный житель_мирный",
+    "narrative": "3+4",
+    "label_en": "Ukraine blocks infrastructure",
+    "label_ru": "Украина блокирует инфраструктуру",
+    "narrative_name": "“High-precision missiles vs. fakes”",
+    "label_long_ru": "Украина нарушает работу производств и инфраструктуры, используя их для укрытия армии и удержания гражданского населения в заложниках. Россия вынуждена блокировать и силой захватывать заводы"
+  }
+]

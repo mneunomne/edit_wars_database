@@ -24,6 +24,7 @@ const getContent = () => {
     readContentFile().then((contents)=>{
       var contentData = {"steps": [], "backgrounds": []}
       contents.forEach(content => {
+        //console.log("content", content)
         //step
         const narrativeId = narratives.indexOf(content.narrative)
         // create narrative folder if it doesnt exist
@@ -59,7 +60,7 @@ const getContent = () => {
           const backgroundData = {
             narrative: narrativeId,
             narrativeName: content.narrative,
-            path: `${narrativeFolder}/backgrounds/${content.identifier}.json`,
+            path: `${narrativeFolder}/backgrounds/${parseInt(content.bg_idx)}-${content.identifier}.json`,
             identifier: content.identifier,
             order: parseInt(content.bg_idx),
             component: content.graph_component,
@@ -116,7 +117,7 @@ background data
   "body_en": "**Propaganda** narratives and myths about sanctions in Russian-language media.",
   "identifier": "1-Step 1",
   "name": "Step 1",
-  "order": 1,
+  "order":; 1,
   "date": "2022-10-06T14:05:48.612Z",
   "narrative": 1,
   "uuid": "H9IcNQk_lXWq5DGjikhY4",

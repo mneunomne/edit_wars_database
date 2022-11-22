@@ -2,9 +2,14 @@
 var fs = require('fs'); 
 
 exports.parseGermanDate = (input) => {
+  console.log("parseGermanDate", input)
   var parts = input.match(/(\d+)/g);
   if (parts == null) return null
-  return new Date(parts[2], parts[1]-1, parts[0]);
+  if (parts[0].length == 4) {
+    return new Date(parts[0], parts[1]-1, parts[2]);
+  } else {
+    return new Date(parts[2], parts[1]-1, parts[0]);
+  }
 }
 
 exports.sortByDate = function(a,b){

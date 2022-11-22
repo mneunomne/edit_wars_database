@@ -86,7 +86,8 @@ const processWeeklyStackedChart = (jsonObj) => {
       "page_domain_root": obj["page_domain_root"],
       "page_url": obj["page_url"],
       "title": obj["title"],
-      "id": obj["ID"]
+      "id": obj["ID"],
+      "topic": obj["topic"],
     }
   }).filter(obj => 
     new Date (obj.fetchdate_orig) >= new Date ("01/01/2022")
@@ -101,22 +102,21 @@ const processDailyStackedChart = (jsonObj) => {
       "page_domain_root": obj["page_domain_root"],
       "page_url": obj["page_url"],
       "title": obj["title_new"],
-      "id": obj["ID"]
+      "id": obj["ID"],
+      "topic": obj["topic"],
     }
   })
 }
 
-
-
 const generateCountArray = (jsonObj, nameId) => {
-  //console.log("jsonObj", jsonObj)
+  if (jsonObj[0]["topic"]) { // check if this tableau data has more than one data
+    return generateCountArrayMultiple(jsonObj)
+  }
   var dates = [...new Set(jsonObj.map(obj => obj["fetchdate_orig"]))]
-  var dataValues = dates.map(d => {
-    return {
-      x: d,
-      y: 0
-    }
-  })
+  var dataValues = dates.map(d => ({
+    x: d,
+    y: 0
+  }))
   jsonObj.map((d) => {
     var date = d.fetchdate_orig
     var index = dates.indexOf(date)
@@ -128,6 +128,31 @@ const generateCountArray = (jsonObj, nameId) => {
       "label": nameId,
       "data": dataValues
     }]
+  }
+}
+
+const generateCountArrayMultiple = (jsonObj) => {
+  var dates = [...new Set(jsonObj.map(obj => obj["fetchdate_orig"]))]
+  var topics = [...new Set(jsonObj.map(obj => obj["topic"]))]
+  var datasets = topics.map(topic => {
+    // add initial topic onbect to data array
+    var dataValues = dates.map(d => ({
+      x: d,
+      y: 0
+    }))
+    jsonObj.filter(obj => obj.topic == topic).forEach((obj) => {
+      var date = obj.fetchdate_orig
+      var index = dates.indexOf(date)
+      dataValues[index].y = dataValues[index].y+1
+    })
+    return {
+      "label": topic,
+      "data": dataValues
+    }
+  })
+  return {
+    "labels": dates,
+    "datasets": datasets
   }
 }
 
@@ -146,7 +171,7 @@ const formatDateWeekly = (dateString) => {
 }
 
 // not used because graph js can use time parameter on its graphs
-function getFormattedDateString(date) {
+function getFormattedDateString (date) {
   var year = date.getFullYear();
   var month = (1 + date.getMonth()).toString();
   month = month.length > 1 ? month : '0' + month;

@@ -13,6 +13,7 @@
     "move": "cp -R /Users/albertoharres/edit_wars_database/export/content /Users/albertoharres/edit_wars/",
     "headlines": "node ./script/headlines.js",
     "events": "node ./script/events.js",
+    "keywords": "node ./script/generate_keywords.js",
     "content_table": "node ./script/content_table.js"
   },
   "repository": {
