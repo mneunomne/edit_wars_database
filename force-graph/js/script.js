@@ -206,26 +206,38 @@ const updateHighlight = function () {
 const functions = {
   autoRotate: function () {
     if (isRotating) return 
-    isRotating=true
-    highlightNodes.clear();
-    updateHighlight()
-    if (isTransitioning) return;
-    //console.log("Graph.cameraPosition()", )
-    // camera orbit
-    var dist = Graph.cameraPosition().z
-    let angle = 0;
-    window.interval = setInterval(() => {
-      Graph.cameraPosition({
-        x: dist * Math.sin(angle),
-        z: dist * Math.cos(angle)
-      });
-      angle += Math.PI / 5000;
-    }, 10);
+      console.log('autorotate received');
+      highlightNodes.clear();
+      updateHighlight()
+      if (isTransitioning) {
+        return; 
+      }
+      console.log('rodou auto');
+      isRotating = true
+      isTransitioning = false;
+      if (window.interval) {
+        clearInterval(window.interval);
+      }
+      //console.log("Graph.cameraPosition()", )
+      // camera orbit
+      var dist = Graph.cameraPosition().z
+      let angle = 0;
+
+      window.interval = setInterval(() => {
+        Graph.cameraPosition({
+          x: dist * Math.sin(angle),
+          z: dist * Math.cos(angle)
+        }, 10);
+        angle += Math.PI / 5000;
+      }, 10);
   },
   focusOnNodes: function (params) {
     let nodes_id = (params.node_ids || params)
-    clearInterval(window.interval)
-    isRotating=false
+    if (window.interval) {
+      clearInterval(window.interval);
+    }
+    
+    isRotating = false
     isTransitioning = true
     let distance = params.distance || default_distance 
     var nodes = []
@@ -244,6 +256,9 @@ const functions = {
     }
     
     var node = nodes[0]
+    if (window.timeout) {
+      clearTimeout(window.timeout);
+    };
     
     // Aim at node from outside it
     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
@@ -257,10 +272,8 @@ const functions = {
       node, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
-    setTimeout(() => {
+    window.timeout = setTimeout(() => {
       isTransitioning = false
-      //highlightNodes.clear();
-      //updateHighlight()
     }, 3000)
   },
   focusOnNode: function (params) {
@@ -269,7 +282,10 @@ const functions = {
     if ((params.node_id || params).includes(',')) {
       this.focusOnNodes(data.split(','))
     }
-    clearInterval(window.interval)
+    
+    if (window.interval) {
+      clearInterval(window.interval);
+    }
     isRotating=false
     isTransitioning = true
     let node_id = params.node_id || params
@@ -284,6 +300,10 @@ const functions = {
       this.resetZoom()
       return
     }
+    
+    if (window.timeout) {
+      clearTimeout(window.timeout);
+    };
 
     // Aim at node from outside it
     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
@@ -296,7 +316,7 @@ const functions = {
       node, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
-    setTimeout(() => {
+    window.timeout = setTimeout(() => {
       isTransitioning = false
     }, 3000)
   },
@@ -331,14 +351,25 @@ const functions = {
   },
   resetZoom: function () {
     highlightNodes.clear();
-    clearInterval(window.interval)
-    isRotating = false
+        
+    if (window.interval) {
+      clearInterval(window.interval);
+    }
+    isRotating = false;
+    isTransitioning = true;
+    if (window.timeout) {
+      clearTimeout(window.timeout); 
+    }
     // 
     Graph.cameraPosition(
       savedCameraPos, // new position
       {x: 0, y: 0, z: 0}, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
+    window.timeout = setTimeout(() => {
+      isTransitioning = false;
+    }, 3000)
+    
   },
   noZoom: function (set) {
     Graph.controls().noZoom = set || true
