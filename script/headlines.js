@@ -16,7 +16,6 @@ const getGraphHeadlines = (graph_id) => {
   return new Promise((resolve, reject) => {
     readEventsFile().then((headlines)=>{
       headlines = headlines.filter(h => {
-        console.log("h.chart", h.chart, graph_id)
         return h.chart == graph_id
       })
       headlines = cleanHeadlineData(headlines)
