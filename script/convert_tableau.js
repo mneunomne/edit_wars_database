@@ -9,6 +9,23 @@ const narrativesFolder = 'data/narratives/';
 const outputStackedFolder = 'export/'
 const outputUnstackedFolder = 'export/'
 
+const startDate = new Date(2022, 0, 1)
+const endDate = new Date(2022,6,31)
+
+function calculateSundaysBetweenDates(dDate1, dDate2) {
+  if (dDate1 > dDate2) return false;
+  var date  = dDate1;
+  var dates = [];
+  while (date < dDate2) {
+      console.log("date.getDay()", date.getDay())
+      if (date.getDay() === 1) dates.push(new Date(date).toISOString());
+      date.setDate( date.getDate() + 1 );
+  }
+  return dates;
+}
+
+var allDates = calculateSundaysBetweenDates(startDate, endDate)
+console.log("allDates", allDates)
 
 const getDirectories = (source) => {
   //console.log("getDirectories", source)
@@ -112,7 +129,8 @@ const generateCountArray = (jsonObj, nameId) => {
   if (jsonObj[0]["topic"]) { // check if this tableau data has more than one data
     return generateCountArrayMultiple(jsonObj)
   }
-  var dates = [...new Set(jsonObj.map(obj => obj["fetchdate_orig"]))]
+  var dates = [...new Set(jsonObj.map(obj => obj["fetchdate_orig"])), ...allDates]
+  dates = [...new Set(dates)].sort()
   var dataValues = dates.map(d => ({
     x: d,
     y: 0
