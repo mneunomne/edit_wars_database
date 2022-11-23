@@ -212,7 +212,7 @@ const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
   node_index = nodes_length
   threeNodes.forEach((n) => {
-    if (highlightNodes.indexOf(n.nodeId.toLowerCase()) !== -1) {
+    if (highlightNodes.has(n.nodeId.toLowerCase())) {
         n.material.opacity = 0.9
     } else {
         n.material.opacity = 0.2
