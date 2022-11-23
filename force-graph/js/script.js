@@ -241,6 +241,7 @@ const functions = {
   },
   focusOnNodes: function (params) {
     console.time("focusonnodes");
+    console.log('params', params)
     let nodes_id = (params.node_ids || params)
     if (window.interval) {
       clearInterval(window.interval);
@@ -249,13 +250,9 @@ const functions = {
     isRotating = false
     isTransitioning = true
     let distance = params.distance || default_distance 
-    var nodes = []
-    for(let i in nodes_id) {
-      var node = Graph.graphData().nodes.find(n => {
-        return n.id.toLowerCase() == nodes_id[i].toLowerCase()
-      })
-      if (node) nodes.push(node)
-    }
+
+    const nodes = Graph.graphData().nodes.filter((node) => node.id.indexOf(nodes_id) !== -1)
+
 
     setHightlightNodes(nodes)
 
