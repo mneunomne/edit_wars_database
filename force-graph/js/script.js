@@ -174,6 +174,7 @@ const init = function (gData) {
 
 const hightlightNode = (node => {
   if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
+  console.log('hightlightNode')
   highlightNodes.clear();
   if (node) {
     highlightNodes.add(node.id);
@@ -188,6 +189,8 @@ const hightlightNode = (node => {
 
 const setHightlightNodes = (nodes => {
   if (!nodes && !highlightNodes.size) return;
+  console.log('hightlightNodes')
+
   highlightNodes.clear();
   if (nodes) {
     for (let i in nodes) {
