@@ -160,6 +160,7 @@ const init = function (gData) {
       group.add(sprite);
       return group;
     }
+    sprite.nodeId = node.id
     threeNodes.push(sprite)
     return sprite;
   });
