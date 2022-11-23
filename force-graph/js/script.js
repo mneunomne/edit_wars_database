@@ -35,6 +35,8 @@ var isTransitioning = false
 var isRotating = false
 const options = {}//{ controlType: 'fly' }
 
+var threeNodes = []
+
 window.guiOptions = {
   size: 18,
   showCircle: false
@@ -109,6 +111,7 @@ const init = function (gData) {
 
   })
   .nodeThreeObject((node, index) => {
+    threeNodes = []
     node_index--
     if (node_index == 0) {
       node_index = gData.nodes.length
@@ -142,7 +145,7 @@ const init = function (gData) {
     sprite.textHeight = size
     // sprite.position.set(0, 100, 100);
   
-    
+    /*
     if (highlightNodes.size > 0) {
       if (highlightNodes.has(node.id)) {
         sprite.material.opacity = 0.9
@@ -150,6 +153,7 @@ const init = function (gData) {
         sprite.material.opacity = 0.3
       }
     }
+    */
     //sprite.material.opacity = 0.5
     sprite.fontWeight = 'normal';
     //node_index++
@@ -157,6 +161,7 @@ const init = function (gData) {
       group.add(sprite);
       return group;
     }
+    threeNodes.push(sprite)
     return sprite;
   });
 
@@ -206,12 +211,16 @@ const setHightlightNodes = (nodes => {
 const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
   node_index = nodes_length
+
+  console.log('threeNodes', threeNodes)
   // trigger update of highlighted objects in scene
+  /*
   Graph
     //.nodeVisibility(Graph.nodeVisibility())
     //.linkVisibility(Graph.linkVisibility())
     .nodeThreeObject(Graph.nodeThreeObject())
   //.linkDirectionalParticles(Graph.linkDirectionalParticles());
+  */
 }
 
 const functions = {
