@@ -116,12 +116,14 @@ const init = function (gData) {
     const group = new THREE.Group();
     var size =  Math.min(Math.sqrt(node.value)/2 + 6, 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
     
-    const geometry = new THREE.SphereGeometry(size, 32, 64);
-    const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
-    const sphere = new THREE.Mesh(geometry, material);
-    sphere.material.opacity = 0.5
-    sphere.material.transparent = true
-    if (guiOptions.showCircle) group.add(sphere);
+    if (guiOptions.showCircle) {
+      const geometry = new THREE.SphereGeometry(size, 32, 64);
+      const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+      const sphere = new THREE.Mesh(geometry, material);
+      sphere.material.opacity = 0.5
+      sphere.material.transparent = true
+      group.add(sphere);
+    }
   
     const sprite = new SpriteText(node[lang].toLowerCase());
     sprite.position.set(0, 0, 0);
@@ -150,9 +152,9 @@ const init = function (gData) {
     }
     //sprite.material.opacity = 0.5
     sprite.fontWeight = 'normal';
-    group.add(sprite);
+    // group.add(sprite);
     //node_index++
-    return group;
+    return sprite;
   });
 
   // no scroll zoom
