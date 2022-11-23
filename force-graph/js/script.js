@@ -276,15 +276,17 @@ const functions = {
       ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
       : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
     console.timeEnd("focusonnodes");
-
-    Graph.cameraPosition(
-      newPos, // new position
-      node, // lookAt ({ x, y, z })
-      3000  // ms transition duration
-    );
+    setTimeout(() => {
+      console.log('move camera')
+      Graph.cameraPosition(
+        newPos, // new position
+        node, // lookAt ({ x, y, z })
+        3000  // ms transition duration
+      );
+    }, 250)
     window.timeout = setTimeout(() => {
       isTransitioning = false
-    }, 3000)
+    }, 3250)
   },
   focusOnNode: function (params) {
 
