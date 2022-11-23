@@ -211,8 +211,13 @@ const setHightlightNodes = (nodes => {
 const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
   node_index = nodes_length
-
-  console.log('threeNodes', threeNodes)
+  threeNodes.forEach((n) => {
+    if (highlightNodes.indexOf(n.nodeId.toLowerCase()) !== -1) {
+        n.material.opacity = 0.9
+    } else {
+        n.material.opacity = 0.2
+    }
+  })
   // trigger update of highlighted objects in scene
   /*
   Graph
