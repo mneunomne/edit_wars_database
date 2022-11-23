@@ -300,10 +300,10 @@ const functions = {
         node, // lookAt ({ x, y, z })
         3000  // ms transition duration
       );
-    }, 250)
+    }, 50)
     window.timeout = setTimeout(() => {
       isTransitioning = false
-    }, 3250)
+    }, 3050)
   },
   focusOnNode: function (params) {
 
@@ -346,11 +346,11 @@ const functions = {
         node, // lookAt ({ x, y, z })
         3000  // ms transition duration
       );
-    }, 250)
+    }, 50)
 
     window.timeout = setTimeout(() => {
       isTransitioning = false
-    }, 3000)
+    }, 3050)
   },
   xf: function () {
     var data = Graph.graphData()
