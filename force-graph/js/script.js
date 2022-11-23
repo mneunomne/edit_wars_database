@@ -212,10 +212,14 @@ const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
   node_index = nodes_length
   threeNodes.forEach((n) => {
-    if (highlightNodes.has(n.nodeId.toLowerCase())) {
+    if (highlightNodes.size === 0) {
         n.material.opacity = 0.9
     } else {
-        n.material.opacity = 0.2
+        if (highlightNodes.has(n.nodeId.toLowerCase())) {
+            n.material.opacity = 0.9
+        } else {
+            n.material.opacity = 0.2
+        }
     }
   })
   // trigger update of highlighted objects in scene
