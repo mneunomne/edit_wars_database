@@ -54,7 +54,6 @@ const init = function (gData) {
   .graphData(gData)
   .enableNodeDrag(false)
   .showNavInfo(true)
-  .cooldownTicks(50)
   .linkLabel(link => {
     return `
       <div class="tooltip-box">
@@ -241,6 +240,7 @@ const functions = {
       }, 10);
   },
   focusOnNodes: function (params) {
+    console.time("focusonnodes");
     let nodes_id = (params.node_ids || params)
     if (window.interval) {
       clearInterval(window.interval);
@@ -275,7 +275,8 @@ const functions = {
     const newPos = node.x || node.y || node.z
       ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
       : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
-  
+    console.timeEnd("focusonnodes");
+
     Graph.cameraPosition(
       newPos, // new position
       node, // lookAt ({ x, y, z })
@@ -286,6 +287,7 @@ const functions = {
     }, 3000)
   },
   focusOnNode: function (params) {
+
     let data = (params.node_id || params)
     let show_all = params.show_all || false
     if ((params.node_id || params).includes(',')) {
@@ -309,7 +311,6 @@ const functions = {
     if (window.timeout) {
       clearTimeout(window.timeout);
     };
-    
     setTimeout(() => {
       if (!node) {
         this.resetZoom()
