@@ -250,9 +250,8 @@ const functions = {
     isRotating = false
     isTransitioning = true
     let distance = params.distance || default_distance 
-
-    const nodes = Graph.graphData().nodes.filter((node) => node.id.indexOf(nodes_id) !== -1)
-
+    
+    const nodes = Graph.graphData().nodes.filter((node) => nodes_id.indexOf(node.id) !== -1)
 
     setHightlightNodes(nodes)
 
