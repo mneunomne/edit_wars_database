@@ -111,7 +111,6 @@ const init = function (gData) {
 
   })
   .nodeThreeObject((node, index) => {
-    threeNodes = []
     node_index--
     if (node_index == 0) {
       node_index = gData.nodes.length
