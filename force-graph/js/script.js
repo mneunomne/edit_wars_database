@@ -54,8 +54,7 @@ const init = function (gData) {
   .graphData(gData)
   .enableNodeDrag(false)
   .showNavInfo(true)
-  .warmupTicks(100)
-  .cooldownTicks(10)
+  .cooldownTicks(50)
   .linkLabel(link => {
     return `
       <div class="tooltip-box">
