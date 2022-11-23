@@ -103,7 +103,7 @@ const init = function (gData) {
   */
   .onEngineStop(() => {
     console.log("onEngineStop!")
-    Graph.pauseAnimation()
+    // Graph.pauseAnimation()
   })
   .onNodeHover((node) => {
 
