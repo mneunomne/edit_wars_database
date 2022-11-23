@@ -113,10 +113,10 @@ const init = function (gData) {
     if (node_index == 0) {
       node_index = gData.nodes.length
     }
-    const group = new THREE.Group();
     var size =  Math.min(Math.sqrt(node.value)/2 + 6, 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
     
     if (guiOptions.showCircle) {
+      const group = new THREE.Group();
       const geometry = new THREE.SphereGeometry(size, 32, 64);
       const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
       const sphere = new THREE.Mesh(geometry, material);
@@ -152,8 +152,11 @@ const init = function (gData) {
     }
     //sprite.material.opacity = 0.5
     sprite.fontWeight = 'normal';
-    // group.add(sprite);
     //node_index++
+    if (guiOptions.showCircle) {
+      group.add(sprite);
+      return group;
+    }
     return sprite;
   });
 
