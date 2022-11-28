@@ -174,7 +174,7 @@ const filterDataByKeywords = (jsonObj, keywords) =>
   )
 
 const filterDataByKeywordsRank = (jsonObj, keywords, topRanked) => {
-  var rankNum = 20;
+  var rankNum = 15;
   var keywordsConnections = {}
   jsonObj.forEach(obj => {
     keywords.forEach((k) => {
@@ -192,9 +192,9 @@ const filterDataByKeywordsRank = (jsonObj, keywords, topRanked) => {
   for (var k in keywordsConnections) {
     keywordsConnections[k].forEach((w, i) => {
       if (i < rankNum) {
-        if (!topRanked.some(d => d.source == w.source)) {
+        if (!topRanked.some(d => d.source == w.source) || !topRanked.some(d => d.target == w.target)) {
           topRanked.push(w)
-        }
+        } 
       }
     })
   }
