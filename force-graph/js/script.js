@@ -195,7 +195,7 @@ const hightlightNode = (node => {
 
 const setHightlightNodes = (nodes => {
   if (!nodes && !highlightNodes.size) return;
-  console.log('hightlightNodes')
+  console.log('hightlightNodes', nodes)
 
   highlightNodes.clear();
   if (nodes) {
@@ -327,7 +327,6 @@ const functions = {
 
     if (!show_all) hightlightNode(node)
 
-    
     if (window.timeout) {
       clearTimeout(window.timeout);
     };
