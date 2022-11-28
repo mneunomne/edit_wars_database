@@ -32,6 +32,7 @@
     "csv-parse": "^5.3.0",
     "csvtojson": "^2.0.10",
     "esm": "^3.2.25",
+    "markdown": "^0.5.0",
     "node-snowball": "^0.6.0",
     "showdown": "^2.1.0",
     "three": "^0.144.0",

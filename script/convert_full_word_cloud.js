@@ -74,7 +74,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
         nodes.push({
           "id": obj["source"],
           "ru": source,
-          "en": obj["source_en"],
+          "en": obj["correction_source_en"].length > 0 ? obj["correction_source_en"] : obj["source_en"],
           "group": keywords.indexOf(obj.keyword),
           "value": parseInt(obj["count"]),
           "keyword": obj.keyword,
@@ -88,7 +88,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
       if (!existing_node) {
         nodes.push({
           "id": obj["target"],
-          "en": obj["target_ru"],
+          "en": obj["correction_target_en"].length > 0 ? obj["correction_target_en"] : obj["target_en"],
           "ru": target,
           "group": keywords.indexOf(obj.keyword),
           "value": parseInt(obj["count"]),
@@ -194,9 +194,6 @@ const filterDataByKeywordsRank = (jsonObj, keywords, topRanked) => {
       console.log('keywordsConnections[k]', keywordsConnections[k])
     }
     keywordsConnections[k].forEach((w, i) => {
-      if (k.includes('киев')) {
-        console.log('киев', i, w.source, topRanked.some(d => d.source == w.source))
-      }
       if (i < rankNum) {
         if (!topRanked.some(d => d.source == w.source)) {
           topRanked.push(w)

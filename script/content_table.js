@@ -1,9 +1,10 @@
-var fs = require('fs'); 
+const fs = require('fs'); 
 const { parse } = require("csv-parse");
-var path = require('path')
+const path = require('path')
 const csv=require('csvtojson');
 const { resolve } = require('path');
 const uuid = require('uuid');
+const markdown = require('markdown').markdown
 
 const utils = require('./utils')
 
@@ -69,8 +70,8 @@ const getContent = () => {
             data: content.data,
             events: content.events,
             headlines: content.headlines,
-            description: content.description,
-            chart_title: content.chart_title,
+            description: markdown.toHTML(content.description),
+            chart_title: markdown.toHTML(content.chart_title),
             uuid: uuid.v1()
           }
           contentData.backgrounds.push(backgroundData)
