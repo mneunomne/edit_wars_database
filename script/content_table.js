@@ -4,8 +4,8 @@ const path = require('path')
 const csv=require('csvtojson');
 const { resolve } = require('path');
 const uuid = require('uuid');
-const markdown = require('markdown').markdown
-
+const MarkdownIt = require('markdown-it')
+const markdown = new MarkdownIt();
 const utils = require('./utils')
 
 const contentPath = 'data/content_table/content_table.csv'
@@ -70,8 +70,8 @@ const getContent = () => {
             data: content.data,
             events: content.events,
             headlines: content.headlines,
-            description: markdown.toHTML(content.description),
-            chart_title: markdown.toHTML(content.chart_title),
+            description: markdown.renderInline(content.description),
+            chart_title: markdown.renderInline(content.chart_title),
             uuid: uuid.v1()
           }
           contentData.backgrounds.push(backgroundData)
