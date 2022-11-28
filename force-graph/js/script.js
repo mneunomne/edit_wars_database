@@ -35,6 +35,8 @@ var isTransitioning = false
 var isRotating = false
 const options = {}//{ controlType: 'fly' }
 
+var threeNodes = []
+
 window.guiOptions = {
   size: 18,
   showCircle: false
@@ -103,7 +105,7 @@ const init = function (gData) {
   */
   .onEngineStop(() => {
     console.log("onEngineStop!")
-    Graph.pauseAnimation()
+    // Graph.pauseAnimation()
   })
   .onNodeHover((node) => {
 
@@ -113,15 +115,17 @@ const init = function (gData) {
     if (node_index == 0) {
       node_index = gData.nodes.length
     }
-    const group = new THREE.Group();
     var size =  Math.min(Math.sqrt(node.value)/2 + 6, 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
     
-    const geometry = new THREE.SphereGeometry(size, 32, 64);
-    const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
-    const sphere = new THREE.Mesh(geometry, material);
-    sphere.material.opacity = 0.5
-    sphere.material.transparent = true
-    if (guiOptions.showCircle) group.add(sphere);
+    if (guiOptions.showCircle) {
+      const group = new THREE.Group();
+      const geometry = new THREE.SphereGeometry(size, 32, 64);
+      const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+      const sphere = new THREE.Mesh(geometry, material);
+      sphere.material.opacity = 0.5
+      sphere.material.transparent = true
+      group.add(sphere);
+    }
   
     const sprite = new SpriteText(node[lang].toLowerCase());
     sprite.position.set(0, 0, 0);
@@ -140,7 +144,7 @@ const init = function (gData) {
     sprite.textHeight = size
     // sprite.position.set(0, 100, 100);
   
-    
+    /*
     if (highlightNodes.size > 0) {
       if (highlightNodes.has(node.id)) {
         sprite.material.opacity = 0.9
@@ -148,11 +152,17 @@ const init = function (gData) {
         sprite.material.opacity = 0.3
       }
     }
+    */
     //sprite.material.opacity = 0.5
     sprite.fontWeight = 'normal';
-    group.add(sprite);
     //node_index++
-    return group;
+    if (guiOptions.showCircle) {
+      group.add(sprite);
+      return group;
+    }
+    sprite.nodeId = node.id
+    threeNodes.push(sprite)
+    return sprite;
   });
 
   // no scroll zoom
@@ -169,6 +179,7 @@ const init = function (gData) {
 
 const hightlightNode = (node => {
   if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
+  console.log('hightlightNode')
   highlightNodes.clear();
   if (node) {
     highlightNodes.add(node.id);
@@ -183,6 +194,8 @@ const hightlightNode = (node => {
 
 const setHightlightNodes = (nodes => {
   if (!nodes && !highlightNodes.size) return;
+  console.log('hightlightNodes')
+
   highlightNodes.clear();
   if (nodes) {
     for (let i in nodes) {
@@ -198,12 +211,25 @@ const setHightlightNodes = (nodes => {
 const updateHighlight = function () {
   //console.log("nodeThreeObject", highlightNodes)
   node_index = nodes_length
+  threeNodes.forEach((n) => {
+    if (highlightNodes.size === 0) {
+        n.material.opacity = 0.9
+    } else {
+        if (highlightNodes.has(n.nodeId.toLowerCase())) {
+            n.material.opacity = 0.9
+        } else {
+            n.material.opacity = 0.2
+        }
+    }
+  })
   // trigger update of highlighted objects in scene
+  /*
   Graph
     //.nodeVisibility(Graph.nodeVisibility())
     //.linkVisibility(Graph.linkVisibility())
     .nodeThreeObject(Graph.nodeThreeObject())
   //.linkDirectionalParticles(Graph.linkDirectionalParticles());
+  */
 }
 
 const functions = {
@@ -235,6 +261,8 @@ const functions = {
       }, 10);
   },
   focusOnNodes: function (params) {
+    console.time("focusonnodes");
+    console.log('params', params)
     let nodes_id = (params.node_ids || params)
     if (window.interval) {
       clearInterval(window.interval);
@@ -243,13 +271,8 @@ const functions = {
     isRotating = false
     isTransitioning = true
     let distance = params.distance || default_distance 
-    var nodes = []
-    for(let i in nodes_id) {
-      var node = Graph.graphData().nodes.find(n => {
-        return n.id.toLowerCase() == nodes_id[i].toLowerCase()
-      })
-      if (node) nodes.push(node)
-    }
+    
+    const nodes = Graph.graphData().nodes.filter((node) => nodes_id.indexOf(node.id.toLowerCase()) !== -1)
 
     setHightlightNodes(nodes)
     var node = nodes[0]
@@ -271,18 +294,19 @@ const functions = {
         node, // lookAt ({ x, y, z })
         3000  // ms transition duration
       );
-    }, 500)
+    }, 50)
       
 
     if (window.timeout) {
       clearTimeout(window.timeout);
     };
-
+    
     window.timeout = setTimeout(() => {
       isTransitioning = false
-    }, 3000)
+    }, 3050)
   },
   focusOnNode: function (params) {
+
     let data = (params.node_id || params)
     let show_all = params.show_all || false
     if ((params.node_id || params).includes(',')) {
@@ -306,7 +330,6 @@ const functions = {
     if (window.timeout) {
       clearTimeout(window.timeout);
     };
-    
     setTimeout(() => {
       if (!node) {
         this.resetZoom()
@@ -323,11 +346,11 @@ const functions = {
         node, // lookAt ({ x, y, z })
         3000  // ms transition duration
       );
-    }, 250)
+    }, 50)
 
     window.timeout = setTimeout(() => {
       isTransitioning = false
-    }, 3000)
+    }, 3050)
   },
   xf: function () {
     var data = Graph.graphData()
