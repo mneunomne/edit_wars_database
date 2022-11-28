@@ -33,6 +33,7 @@
     "csvtojson": "^2.0.10",
     "esm": "^3.2.25",
     "node-snowball": "^0.6.0",
+    "showdown": "^2.1.0",
     "three": "^0.144.0",
     "uuid": "^9.0.0"
   }

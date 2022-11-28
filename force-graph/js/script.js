@@ -275,32 +275,32 @@ const functions = {
     const nodes = Graph.graphData().nodes.filter((node) => nodes_id.indexOf(node.id.toLowerCase()) !== -1)
 
     setHightlightNodes(nodes)
-
-    if (nodes.length == 0) {
-      this.resetZoom()
-      return
-    }
-    
     var node = nodes[0]
-    if (window.timeout) {
-      clearTimeout(window.timeout);
-    };
     
-    // Aim at node from outside it
-    const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
-  
-    const newPos = node.x || node.y || node.z
-      ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
-      : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
-    console.timeEnd("focusonnodes");
     setTimeout(() => {
-      console.log('move camera')
+      if (nodes.length == 0) {
+        this.resetZoom()
+        return
+      }  
+      // Aim at node from outside it
+      const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+    
+      const newPos = node.x || node.y || node.z
+        ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
+        : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
+    
       Graph.cameraPosition(
         newPos, // new position
         node, // lookAt ({ x, y, z })
         3000  // ms transition duration
       );
     }, 50)
+      
+
+    if (window.timeout) {
+      clearTimeout(window.timeout);
+    };
+    
     window.timeout = setTimeout(() => {
       isTransitioning = false
     }, 3050)
