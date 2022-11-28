@@ -3,10 +3,12 @@ const { parse } = require("csv-parse");
 const path = require('path')
 const csv=require('csvtojson');
 const { resolve } = require('path');
-const uuid = require('uuid');
+//const uuid = require('uuid');
 const MarkdownIt = require('markdown-it')
 const markdown = new MarkdownIt();
 const utils = require('./utils')
+
+const uuid = require('uuid-1345');
 
 const contentPath = 'data/content_table/content_table.csv'
 
@@ -35,6 +37,7 @@ const getContent = () => {
           fs.mkdirSync(`${narrativeFolder}/steps`);
           fs.mkdirSync(`${narrativeFolder}/backgrounds`);
         }
+
         const stepName = `${content.narrative}-${parseInt(content.step_idx)}-${content.text_component}`
         var stepData = {
           narrative: narrativeId,
@@ -44,8 +47,8 @@ const getContent = () => {
           component: content.text_component,
           body_en: content.body_en,
           body_ru: content.body_ru,
-          name: `${content.narrative}-${parseInt(content.step_idx)}-${content.text_component}`,
-          uuid: uuid.v1(),
+          name: stepName,
+          uuid: uuid.v5({namespace: uuid.namespace.url,name: stepName}),
           chart_comment: content.comments,
           chart_description: content.comment,
         }
@@ -55,13 +58,14 @@ const getContent = () => {
 
         contentData.steps.push(stepData)
         //saveStepData(stepData, narrativeFolder)
-
+        
         // check if background is there 
         if (content.identifier.length > 0) {
+          const name = `${parseInt(content.bg_idx)}-${content.identifier}`
           const backgroundData = {
             narrative: narrativeId,
             narrativeName: content.narrative,
-            path: `${narrativeFolder}/backgrounds/${parseInt(content.bg_idx)}-${content.identifier}.json`,
+            path: `${narrativeFolder}/backgrounds/${name}.json`,
             identifier: content.identifier,
             order: parseInt(content.bg_idx),
             component: content.graph_component,
@@ -72,7 +76,7 @@ const getContent = () => {
             headlines: content.headlines,
             description: markdown.renderInline(content.description),
             chart_title: markdown.renderInline(content.chart_title),
-            uuid: uuid.v1()
+            uuid: uuid.v5({namespace: uuid.namespace.url,name: name})
           }
           contentData.backgrounds.push(backgroundData)
           //saveBackgroundData(backgroundData, narrativeFolder)
