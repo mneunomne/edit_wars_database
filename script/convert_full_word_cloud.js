@@ -190,9 +190,6 @@ const filterDataByKeywordsRank = (jsonObj, keywords, topRanked) => {
     keywordsConnections[k] = keywordsConnections[k].sort(sortByCount)
   }
   for (var k in keywordsConnections) {
-    if (k.includes('бандер')) { 
-      console.log('keywordsConnections[k]', keywordsConnections[k])
-    }
     keywordsConnections[k].forEach((w, i) => {
       if (i < rankNum) {
         if (!topRanked.some(d => d.source == w.source)) {
