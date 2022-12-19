@@ -12,7 +12,7 @@ const path_full_connections_data = 'data/full_connections_data/full_data.csv'
 const path_narratives_keywords = 'data/narratives_keywords.json'
 
 const maxNumNodes = 300
-const mergedMaxNodes = 60000
+const mergedMaxNodes = 2000
 
 var mergedNodes = []
 var mergedLinks = []
@@ -41,24 +41,24 @@ const readCsvFile = (filename) => {
       mergedKeywords = mergedKeywords.concat(narrative["keywords"])
       var nodes = []
       var links = []
-      var narrativeConnectionData = collectNarrativeNodes(nodes, links, keywords, jsonObj, narrativeKeywords)
+      var narrativeConnectionData = collectNarrativeNodes(nodes, links, keywords, jsonObj, narrativeKeywords, false)
       if (narrativeConnectionData) {
         saveJsonFile(`${outputFolder}${narrative.id}.json`, narrativeConnectionData)
       }
     })
     
     //console.log("mergedKeywords", mergedKeywords)
-    const mergedConnectionData = collectNarrativeNodes(mergedNodes, mergedLinks, mergedKeywords, jsonObj, narrativeKeywords)
+    const mergedConnectionData = collectNarrativeNodes(mergedNodes, mergedLinks, mergedKeywords, jsonObj, narrativeKeywords, true)
     saveJsonFile(`${outputFolder}mergedNarrativesConnections.json`, mergedConnectionData)
     
   })
 }
 
-const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeywords) => {
+const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeywords, isMerged) => {
   if (keywords.length > 0 ) {
     jsonObj = filterDataByKeywords(jsonObj, keywords)
     jsonObj = mergeByStemmification(jsonObj)
-    var topRanked = jsonObj.sort(sortByCount).slice(0, nodes.length == 0 ? maxNumNodes : mergedMaxNodes);
+    var topRanked = jsonObj.sort(sortByCount).slice(0, isMerged ? mergedMaxNodes : maxNumNodes);
     jsonObj = filterDataByKeywordsRank(jsonObj, keywords, topRanked)
     jsonObj.map(obj => {
       let source = obj["source"]

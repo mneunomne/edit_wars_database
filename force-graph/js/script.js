@@ -2,7 +2,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
 const isMerged = narrative.includes('merged')
-const lang = urlParams.get('lang') ? urlParams.get('lang') : 'en'
+const lang = urlParams.get('lang') ? urlParams.get('lang') : isMerged ? 'ru' : 'en'
 const default_distance = isMerged ? 1200 : 600;
 const color_param = isMerged ? 'narrative' : 'group'
 
