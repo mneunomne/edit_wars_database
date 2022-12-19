@@ -3,8 +3,8 @@ const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
 const isMerged = narrative.includes('merged')
 const lang = urlParams.get('lang') ? urlParams.get('lang') : isMerged ? 'ru' : 'en'
-const default_distance = isMerged ? 1200 : 600;
-const color_param = isMerged ? 'narrative' : 'group'
+const default_distance = isMerged ? 900 : 600;
+const color_param = isMerged ? 'narrative_index' : 'group'
 
 let focusNode = null;
 const highlightNodes = new Set();
@@ -73,7 +73,8 @@ const init = function (gData) {
       <div class="tooltip-box">
         <span>source: ${node.ru}</span><br/>
         <span>count: ${node.value}</span><br/>
-        <span>keyword: ${node.keyword}</span>
+        <span>keyword: ${node.keyword}</span><br/>
+        <span style="${isMerged?'':'display:none;'}">narrative: ${node.narrative_title_en}</span>
       </div>
     `
   })
@@ -129,7 +130,7 @@ const init = function (gData) {
       group.add(sphere);
     }
   
-    const sprite = new SpriteText(node[lang].toLowerCase());
+    const sprite = new SpriteText(node[lang == 'ru' ? 'original' : lang].toLowerCase());
     sprite.position.set(0, 0, 0);
     sprite.fontFace = "roboto-mono";
     sprite.padding = [2, 1]

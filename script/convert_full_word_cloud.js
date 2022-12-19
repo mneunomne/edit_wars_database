@@ -30,9 +30,10 @@ const readNarrativeKeywords = () => {
 const readCsvFile = (filename) => {
   return csv({delimiter: ','})
   .fromFile(filename)
-  .then((jsonObj)=>{
+  .then((_jsonObj)=>{
     const narrativeKeywords = readNarrativeKeywords()
     narrativeKeywords.map(n => {n})
+    var jsonObj = JSON.parse(JSON.stringify(_jsonObj))
 
     var mergedKeywords = []
     narrativeKeywords.map((narrative) => {
@@ -41,6 +42,7 @@ const readCsvFile = (filename) => {
       mergedKeywords = mergedKeywords.concat(narrative["keywords"])
       var nodes = []
       var links = []
+
       var narrativeConnectionData = collectNarrativeNodes(nodes, links, keywords, jsonObj, narrativeKeywords, false)
       if (narrativeConnectionData) {
         saveJsonFile(`${outputFolder}${narrative.id}.json`, narrativeConnectionData)
@@ -48,7 +50,7 @@ const readCsvFile = (filename) => {
     })
     
     //console.log("mergedKeywords", mergedKeywords)
-    const mergedConnectionData = collectNarrativeNodes(mergedNodes, mergedLinks, mergedKeywords, jsonObj, narrativeKeywords, true)
+    const mergedConnectionData = collectNarrativeNodes(mergedNodes, mergedLinks, mergedKeywords, _jsonObj, narrativeKeywords, true)
     saveJsonFile(`${outputFolder}mergedNarrativesConnections.json`, mergedConnectionData)
     
   })
@@ -80,10 +82,12 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeyword
           "id": obj["source"],
           "ru": source,
           "en": obj["correction_source_en"].length > 0 ? obj["correction_source_en"] : obj["source_en"],
+          "original": obj["source_original"],
           "group": keywords.indexOf(obj.keyword),
           "value": parseInt(obj["count"]),
           "keyword": obj.keyword,
-          "narrative": narrativeKeywords.indexOf(narrative)
+          "narrative_index": narrativeKeywords.indexOf(narrative),
+          "narrative_title_en": narrative.title
         })
       } else {
         // add count to node if it already exists
@@ -96,10 +100,12 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeyword
           "id": obj["target"],
           "en": obj["correction_target_en"].length > 0 ? obj["correction_target_en"] : obj["target_en"],
           "ru": target,
+          "original": obj["target_original"],
           "group": keywords.indexOf(obj.keyword),
           "value": parseInt(obj["count"]),
           "keyword": obj.keyword,
-          "narrative": narrativeKeywords.indexOf(narrative)
+          "narrative_index": narrativeKeywords.indexOf(narrative),
+          "narrative_title_en": narrative.title
         })
       } else {
         // add count to node if it already exists
@@ -153,10 +159,13 @@ const generateNeighbors = (gData) => {
 
 const mergeByStemmification = (jsonObj) => {
   var mergedData = []
-  // merge all sounces
+  // merge all sources
   jsonObj = jsonObj.map(obj => {
+    obj["source_original"] = obj["source"]
+    obj["target_original"] = obj["target"]
     obj["source"] = snowball.stemword(obj.source, 'russian')
     obj["target"] = snowball.stemword(obj.target, 'russian')
+    console.log("original", obj["source_original"], obj["source"])
     return obj
   })
   jsonObj.forEach(obj => {
