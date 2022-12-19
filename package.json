@@ -36,6 +36,7 @@
     "markdown-it": "^13.0.1",
     "node-snowball": "^0.6.0",
     "showdown": "^2.1.0",
+    "snowball": "^0.3.1",
     "three": "^0.144.0",
     "uuid": "^9.0.0",
     "uuid-1345": "^1.0.2"

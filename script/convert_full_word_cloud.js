@@ -3,7 +3,7 @@ const { parse } = require("csv-parse");
 var path = require('path')
 
 const csv=require('csvtojson')
-var snowball = require('node-snowball');
+const snowball = require('node-snowball');
 
 const dataFolder = 'data/WordCloud/';
 const outputFolder = 'export/narratives_word_graphs/'
@@ -12,6 +12,7 @@ const path_full_connections_data = 'data/full_connections_data/full_data.csv'
 const path_narratives_keywords = 'data/narratives_keywords.json'
 
 const maxNumNodes = 300
+const mergedMaxNodes = 30000
 
 var mergedNodes = []
 var mergedLinks = []
@@ -33,11 +34,11 @@ const readCsvFile = (filename) => {
     const narrativeKeywords = readNarrativeKeywords()
     narrativeKeywords.map(n => {n})
 
-    //var mergedKeywords = []
+    var mergedKeywords = []
     narrativeKeywords.map(narrative => {
       console.log("narrative", narrative)
       var keywords = narrative["keywords"]
-      // mergedKeywords = mergedKeywords.concat(narrative["keywords"])
+      mergedKeywords = mergedKeywords.concat(narrative["keywords"])
       var nodes = []
       var links = []
       var narrativeConnectionData = collectNarrativeNodes(nodes, links, keywords, jsonObj)
@@ -45,11 +46,11 @@ const readCsvFile = (filename) => {
         saveJsonFile(`${outputFolder}${narrative.id}.json`, narrativeConnectionData)
       }
     })
-    /*
+    
     //console.log("mergedKeywords", mergedKeywords)
     const mergedConnectionData = collectNarrativeNodes(mergedNodes, mergedLinks, mergedKeywords, jsonObj)
     saveJsonFile(`${outputFolder}mergedNarrativesConnections.json`, mergedConnectionData)
-    */
+    
   })
 }
 
@@ -57,7 +58,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
   if (keywords.length > 0 ) {
     jsonObj = filterDataByKeywords(jsonObj, keywords)
     jsonObj = mergeByStemmification(jsonObj)
-    var topRanked = jsonObj.sort(sortByCount).slice(0, maxNumNodes);
+    var topRanked = jsonObj.sort(sortByCount).slice(0, nodes.length == 0 ? maxNumNodes : mergedMaxNodes);
     jsonObj = filterDataByKeywordsRank(jsonObj, keywords, topRanked)
     jsonObj.map(obj => {
       let source = obj["source"]

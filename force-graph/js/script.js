@@ -1,8 +1,9 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
+const isMerged = narrative.includes('merged')
 const lang = urlParams.get('lang') ? urlParams.get('lang') : 'en'
-const default_distance = 600;
+const default_distance = isMerged ? 1200 : 600;
 
 let focusNode = null;
 const highlightNodes = new Set();
@@ -115,7 +116,7 @@ const init = function (gData) {
     if (node_index == 0) {
       node_index = gData.nodes.length
     }
-    var size =  Math.min(Math.sqrt(node.value)/2 + 6, 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
+    var size =  Math.min(Math.sqrt(node.value)/1.5 + 6, isMerged ? 30 : 60) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
     
     if (guiOptions.showCircle) {
       const group = new THREE.Group();
@@ -166,7 +167,7 @@ const init = function (gData) {
   });
 
   // no scroll zoom
-  Graph.controls().noZoom = true
+  Graph.controls().noZoom = !isMerged
 
   // Spread nodes a little wider
   Graph.d3Force('charge').strength(-300);
