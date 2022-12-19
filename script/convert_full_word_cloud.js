@@ -12,7 +12,7 @@ const path_full_connections_data = 'data/full_connections_data/full_data.csv'
 const path_narratives_keywords = 'data/narratives_keywords.json'
 
 const maxNumNodes = 300
-const mergedMaxNodes = 30000
+const mergedMaxNodes = 60000
 
 var mergedNodes = []
 var mergedLinks = []
@@ -35,26 +35,26 @@ const readCsvFile = (filename) => {
     narrativeKeywords.map(n => {n})
 
     var mergedKeywords = []
-    narrativeKeywords.map(narrative => {
+    narrativeKeywords.map((narrative) => {
       console.log("narrative", narrative)
       var keywords = narrative["keywords"]
       mergedKeywords = mergedKeywords.concat(narrative["keywords"])
       var nodes = []
       var links = []
-      var narrativeConnectionData = collectNarrativeNodes(nodes, links, keywords, jsonObj)
+      var narrativeConnectionData = collectNarrativeNodes(nodes, links, keywords, jsonObj, narrativeKeywords)
       if (narrativeConnectionData) {
         saveJsonFile(`${outputFolder}${narrative.id}.json`, narrativeConnectionData)
       }
     })
     
     //console.log("mergedKeywords", mergedKeywords)
-    const mergedConnectionData = collectNarrativeNodes(mergedNodes, mergedLinks, mergedKeywords, jsonObj)
+    const mergedConnectionData = collectNarrativeNodes(mergedNodes, mergedLinks, mergedKeywords, jsonObj, narrativeKeywords)
     saveJsonFile(`${outputFolder}mergedNarrativesConnections.json`, mergedConnectionData)
     
   })
 }
 
-const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
+const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeywords) => {
   if (keywords.length > 0 ) {
     jsonObj = filterDataByKeywords(jsonObj, keywords)
     jsonObj = mergeByStemmification(jsonObj)
@@ -64,6 +64,10 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
       let source = obj["source"]
       let target = obj["target"]
       obj["count"] = parseInt(obj["count"])
+
+      let narrative = narrativeKeywords.find(n => {
+        return n.keywords.includes(obj.keyword)
+      })
 
       const link =  links.find(link => obj.source == link.source && obj.target == link.target)
       
@@ -79,6 +83,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
           "group": keywords.indexOf(obj.keyword),
           "value": parseInt(obj["count"]),
           "keyword": obj.keyword,
+          "narrative": narrativeKeywords.indexOf(narrative)
         })
       } else {
         // add count to node if it already exists
@@ -94,6 +99,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj) => {
           "group": keywords.indexOf(obj.keyword),
           "value": parseInt(obj["count"]),
           "keyword": obj.keyword,
+          "narrative": narrativeKeywords.indexOf(narrative)
         })
       } else {
         // add count to node if it already exists
