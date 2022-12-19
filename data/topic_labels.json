@@ -14,7 +14,7 @@
     "count": 754,
     "name": "83_нацист_нацизм_украинский нацист_нацистский",
     "narrative": 1,
-    "label_en": "Nazis\" in Ukraine",
+    "label_en": "\"Nazis\" in Ukraine",
     "label_ru": "Нацисты в Украине",
     "narrative_name": "Mythical “Nazis”",
     "label_long_ru": "Неонацизм остается глобальной угрозой. Нацистские преступники, дело гитлера живет."
@@ -24,7 +24,7 @@
     "count": 434,
     "name": "124_националист_мариуполь_азовсталь_мариуполь националист",
     "narrative": 1,
-    "label_en": "Elimination\" of Nazis in Mariupol",
+    "label_en": "Elimination of \"Nazis\" in Mariupol",
     "label_ru": "Уничтожение нацистов в Мариуполе",
     "narrative_name": "Mythical “Nazis”",
     "label_long_ru": "Противоположная сторона - не украинцы, а нацисты, совершающие бесчеловечные поступки. Успехи российской армии - через уничтожение националистов."
@@ -104,7 +104,7 @@
     "count": 655,
     "name": "96_наградить_вручить_герой россия_герой",
     "narrative": 5,
-    "label_en": "Rewarding veterans of the \"special operation",
+    "label_en": "Rewarding veterans of the \"special operation\"",
     "label_ru": "Помощь ветеранам СВО",
     "narrative_name": "«‎Protecting the Russian World»",
     "label_long_ru": "Участники спецоперации - герои, о которых заботится государство"
@@ -124,7 +124,7 @@
     "count": 463,
     "name": "117_семья_выплата_погибнуть_погибнуть украина",
     "narrative": 5,
-    "label_en": "Support for the families of the deceased participants of the \"special operation",
+    "label_en": "Support for the families of the deceased participants of the \"special operation\"",
     "label_ru": "Помощь ветеранам СВО",
     "narrative_name": "«‎Protecting the Russian World»",
     "label_long_ru": "Погибшие во время спецоперации россияне и ветераны - герои, о семьях которых заботится государство, давая им выплаты"
@@ -174,7 +174,7 @@
     "count": 247,
     "name": "194_освобождение_освободить_кадыров_кадыров заявить",
     "narrative": 5,
-    "label_en": "Liberation\" of the territories of Ukraine",
+    "label_en": "\"Liberation\" of the territories of Ukraine",
     "label_ru": "Освобождение\" территорий Украины",
     "narrative_name": "«‎Protecting the Russian World»",
     "label_long_ru": "Россия освобождает территории в Украине"
@@ -864,7 +864,7 @@
     "count": 913,
     "name": "67_молдавия_румыния_приднестровье_санда",
     "narrative": 9,
-    "label_en": "Russophobes\" in Eastern Europe",
+    "label_en": "\"Russophobes\" in Eastern Europe",
     "label_ru": "Русофобы в Восточной Европе",
     "narrative_name": "Traditional Values vs. Decadence",
     "label_long_ru": "роль молдавии в конфликте, приднестровье, низкая субъектность"
@@ -884,7 +884,7 @@
     "count": 754,
     "name": "84_актив_конфискация_имущество_заморозить",
     "narrative": 9,
-    "label_en": "Seizure of Russian assets - \"violation of property rights",
+    "label_en": "Seizure of Russian assets - \"violation of property rights\"",
     "label_ru": "Арест российского имущества",
     "narrative_name": "Traditional Values vs. Decadence",
     "label_long_ru": "Запад продвигает идею защиты частной собственности, но бандитски поступает с имуществом российских бизнесменов (олигархов) - показатель русофобии в отношении россиян."
@@ -984,7 +984,7 @@
     "count": 253,
     "name": "191_z_буква z_буква_символ",
     "narrative": 9,
-    "label_en": "Z, V - symbols of the \"Special Operation",
+    "label_en": "Z, V - symbols of the \"Special Operation\"",
     "label_ru": "Символика СВО",
     "narrative_name": "Traditional Values vs. Decadence",
     "label_long_ru": "Символика российской спецоперации пользуется массовой поддержкой среди союзников россии. Противники россии стремятся осквернить новый символ, нападая на людей, запрещая"
@@ -994,7 +994,7 @@
     "count": 244,
     "name": "196_папа_римский_патриарх_патриарх кирилл",
     "narrative": 9,
-    "label_en": "Russian Orthodox Church supports \"Special Operation",
+    "label_en": "Russian Orthodox Church supports \"Special Operation\"",
     "label_ru": "РПЦ поддерживает СВО",
     "narrative_name": "Traditional Values vs. Decadence",
     "label_long_ru": "Церковь молится о мире, при этом западная греховна и призывает прекратить войну, а РПЦ поддерживает спецоперацию"
@@ -1354,7 +1354,7 @@
     "count": 345,
     "name": "145_спецоперация украина_спецоперация_завершение_закончиться",
     "narrative": 14,
-    "label_en": "Aims and terms of \"Special operation",
+    "label_en": "Aims and terms of \"Special operation\"",
     "label_ru": "Цели и сроки СВО",
     "narrative_name": "“No plans of any aggressive actions”",
     "label_long_ru": "Цели и сроки проведения спецопериации, условия ее завершения"
@@ -1534,7 +1534,7 @@
     "count": 211,
     "name": "225_змеиный_остров_захватить_попытка",
     "narrative": "3+4",
-    "label_en": "Zmeiny\" (Snake) Island",
+    "label_en": "Zmeiny (Snake) Island",
     "label_ru": "Змеиный остров",
     "narrative_name": "“High-precision missiles vs. fakes”",
     "label_long_ru": "Российская армия успешно захватила остров Змеиный, украинская армия неспособна его вернуть. Россия вывела войска с острова"
