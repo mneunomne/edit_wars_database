@@ -3,7 +3,7 @@
     "title": "“No plans of any aggressive actions”",
     "subtitle": "- initial contradictions in the goal setting of the invasion",
     "id": "no-plans-of-any-aggressive-actions",
-    "keywords": ["цель","задача","миссия"]
+    "keywords": ["цель","задача","миссия", "спецоперац"]
   },
   {
     "title": "Mythical “Nazis”",
@@ -28,11 +28,11 @@
     "title": "“High-precision missiles vs. fakes”",
     "subtitle": "- isolating and contrasting the qualities of belligerents",
     "id": "high-precision-missiles-vs-fakes",
-    "keywords": ["^уничтож","всу","обстрел","расстрел","провокац","фейк","буча","бастрык","кременч","высокоточ","нацбат","роддом","гиперзв","ракет","расправ","^пленн","наёмник","военноплен"]
+    "keywords": ["^уничтож","всу","обстрел","расстрел","провокац","фейк","^буча","бастрык","кременч","высокоточ","нацбат","роддом","гиперзв","ракет","расправ","^пленн","наёмник","военноплен"]
   },
   {
     "title": "“Cold War II”",
-    "subtitle": "- cultivating the fear of Western threat ",
+    "subtitle": "- cultivating the fear of Western threat",
     "id": "cold-war-ii",
     "keywords": ["поставк","накачив","запад","угроз","оруж","^киев$","планиров","^порядок","ошибк", "^нато","биооруж", "планиров"]
   },
