@@ -3,49 +3,57 @@
     "title": "“No plans of any aggressive actions”",
     "subtitle": "- initial contradictions in the goal setting of the invasion",
     "id": "no-plans-of-any-aggressive-actions",
-    "keywords": ["цель","задача","миссия", "спецоперац"]
+    "keywords": ["цель","задача","миссия", "спецоперац"],
+    "color": "#F7A9A8"
   },
   {
     "title": "Mythical “Nazis”",
     "subtitle": "- constructing an enemy through the exploitation of historical memory",
     "id": "mythical-nazis",
-    "keywords": ["борьба","жесток","нацис","нациз", "национализм","денацификац","всу","зверств","реабилитац","побед","бандер","^киев$", "режим","мариупол","^буч","азов", "^уничтож"]
+    "keywords": ["борьба","жесток","нацис","нациз", "национализм","денацификац","всу","зверств","реабилитац","побед","бандер","^киев$", "режим","мариупол","^буч","азов", "^уничтож"],
+    "color": "#EA5545" 
   },
   {
     "title": "“Protecting the Russian World”",
     "subtitle": "- a populist idea of paternal concern for the nation",
     "id": "protecting-russian-world",
-    "keywords": ["защита","защища","геноцид","русскоязычн","освобож","освобо","беженц","гуманитар$","эвакуаци","эвакуиро","ветеран"]
+    "keywords": ["защита","защища","геноцид","русскоязычн","освобож","освобо","беженц","гуманитар$","эвакуаци","эвакуиро","ветеран"],
+    "color": "#FF9F1C"
 
   },
   {
     "title": "“Ukrainian crisis”",
     "subtitle": "- denial of the state's right to sovereignty",
     "id": "ukrainian-crisis",
-    "keywords": ["кризис","референдум","вхождение","признание","призна","присоедин","негосударство","днр","лнр","херсон","режим","агония","агонизир","конец"]
+    "keywords": ["кризис","референдум","вхождение","признание","призна","присоедин","негосударство","днр","лнр","херсон","режим","агония","агонизир","конец"],
+    "color": "#F5C243"
   },
   {
     "title": "“High-precision missiles vs. fakes”",
     "subtitle": "- isolating and contrasting the qualities of belligerents",
     "id": "high-precision-missiles-vs-fakes",
-    "keywords": ["^уничтож","всу","обстрел","расстрел","провокац","фейк","^буча","бастрык","кременч","высокоточ","нацбат","роддом","гиперзв","ракет","расправ","^пленн","наёмник","военноплен"]
+    "keywords": ["^уничтож","всу","обстрел","расстрел","провокац","фейк","^буча","бастрык","кременч","высокоточ","нацбат","роддом","гиперзв","ракет","расправ","^пленн","наёмник","военноплен"],
+    "color": "#B33DC6"
   },
   {
     "title": "“Cold War II”",
     "subtitle": "- cultivating the fear of Western threat",
     "id": "cold-war-ii",
-    "keywords": ["поставк","накачив","запад","угроз","оруж","^киев$","планиров","^порядок","ошибк", "^нато","биооруж", "планиров"]
+    "keywords": ["поставк","накачив","запад","угроз","оруж","^киев$","планиров","^порядок","ошибк", "^нато","биооруж", "планиров"],
+    "color": "#27AEEF"
   },
   {
     "title": "“Freezing Europe”",
     "subtitle": "- myths and propaganda about sanctions against Russia in connection with the invasion of Ukraine",
     "id": "freezing-europe",  
-    "keywords": ["^газовы","swift","дефицит","санкц","антирос","изоляц","^изолир","замороз","замораж","актив$","изъят","изым","^газ$","^кризис","^нефть$","^голод","антироссийск"]
+    "keywords": ["^газовы","swift","дефицит","санкц","антирос","изоляц","^изолир","замороз","замораж","актив$","изъят","изым","^газ$","^кризис","^нефть$","^голод","антироссийск"],
+    "color": "#87BC45"
   },
   {
     "title": "“Internal contradictions of the West”",
     "subtitle": "- lack unanimity as proof of weakness.",
     "id": "internal-contradictions-of-the-west",
-    "keywords": ["вступле","членст","слабост","смочь"]
+    "keywords": ["вступле","членст","слабост","смочь"],
+    "color": "#F46A9B"
   }
 ]

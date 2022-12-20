@@ -87,6 +87,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeyword
           "value": parseInt(obj["count"]),
           "keyword": obj.keyword,
           "narrative_index": narrativeKeywords.indexOf(narrative),
+          "narrative_color": narrativeKeywords.color,
           "narrative_title_en": narrative.title
         })
       } else {
@@ -105,6 +106,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeyword
           "value": parseInt(obj["count"]),
           "keyword": obj.keyword,
           "narrative_index": narrativeKeywords.indexOf(narrative),
+          "narrative_color": narrativeKeywords.color,
           "narrative_title_en": narrative.title
         })
       } else {
@@ -165,7 +167,6 @@ const mergeByStemmification = (jsonObj) => {
     obj["target_original"] = obj["target"]
     obj["source"] = snowball.stemword(obj.source, 'russian')
     obj["target"] = snowball.stemword(obj.target, 'russian')
-    console.log("original", obj["source_original"], obj["source"])
     return obj
   })
   jsonObj.forEach(obj => {
