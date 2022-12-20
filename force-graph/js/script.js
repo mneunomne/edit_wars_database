@@ -118,7 +118,7 @@ const init = function (gData) {
     if (node_index == 0) {
       node_index = gData.nodes.length
     }
-    var size =  Math.min(Math.sqrt(node.value)/1.5 + 6, isMerged ? 30 : 60) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
+    var size =  Math.min(Math.sqrt(node.value)/1.5 + 6, isMerged ? 60 : 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
     
     if (guiOptions.showCircle) {
       const group = new THREE.Group();
