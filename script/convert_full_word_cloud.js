@@ -87,7 +87,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeyword
           "value": parseInt(obj["count"]),
           "keyword": obj.keyword,
           "narrative_index": narrativeKeywords.indexOf(narrative),
-          "narrative_color": narrativeKeywords.color,
+          "narrative_color": narrative.color,
           "narrative_title_en": narrative.title
         })
       } else {
@@ -106,7 +106,7 @@ const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeyword
           "value": parseInt(obj["count"]),
           "keyword": obj.keyword,
           "narrative_index": narrativeKeywords.indexOf(narrative),
-          "narrative_color": narrativeKeywords.color,
+          "narrative_color": narrative.color,
           "narrative_title_en": narrative.title
         })
       } else {
@@ -219,6 +219,7 @@ const filterDataByKeywordsRank = (jsonObj, keywords, topRanked) => {
 }
 
 const saveJsonFile = (path, jsonObj) => {
+  console.log("save json file", path)
   fs.writeFileSync(path, JSON.stringify(jsonObj), 'utf8', function (err) {
   if (err) {
     console.log("An error occured while writing JSON Object to File.");

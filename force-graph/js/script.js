@@ -4,7 +4,7 @@ const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'myt
 const isMerged = narrative.includes('merged')
 const lang = urlParams.get('lang') ? urlParams.get('lang') : isMerged ? 'ru' : 'en'
 const default_distance = isMerged ? 900 : 600;
-const color_param = isMerged ? 'narrative_index' : 'group'
+const color_param = 'group'
 
 let focusNode = null;
 const highlightNodes = new Set();
@@ -136,8 +136,8 @@ const init = function (gData) {
     sprite.padding = [2, 1]
     sprite.material.depthWrite = false; // make sprite background transparent
     sprite.color = 'black'//node.color;
-    sprite.strokeColor = colors[node[color_param] % colors.length]//node.color;
-    sprite.backgroundColor = colors[node[color_param] % colors.length]//node.color//'black'
+    sprite.strokeColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color;
+    sprite.backgroundColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color//'black'
 
     sprite.renderOrder = 999;
     sprite.material.depthTest = false;
