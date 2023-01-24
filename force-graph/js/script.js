@@ -110,9 +110,6 @@ const init = function (gData) {
     console.log("onEngineStop!")
     // Graph.pauseAnimation()
   })
-  .onNodeHover((node) => {
-
-  })
   .nodeThreeObject((node, index) => {
     node_index--
     if (node_index == 0) {
@@ -262,6 +259,14 @@ const functions = {
         }, 10);
         angle += Math.PI / 5000;
       }, 10);
+  },
+  stopRotate: function () {
+    console.log('stopRotate received');
+    isRotating = false
+    isTransitioning = false;
+    if (window.interval) {
+      clearInterval(window.interval);
+    }
   },
   focusOnNodes: function (params) {
     console.time("focusonnodes");
@@ -426,4 +431,4 @@ function onWindowResize(){
   Graph.height(window.innerHeight)
 }
 
-window.addEventListener( 'resize', onWindowResize, false );
+window.addEventListener('resize', onWindowResize, false );
