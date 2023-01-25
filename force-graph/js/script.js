@@ -1,3 +1,5 @@
+console.time("load")
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
@@ -54,6 +56,7 @@ fetch(`../export/narratives_word_graphs/${narrative}.json`)
   });
 
 const init = function (gData) {
+  var i = 0
   window.Graph = ForceGraph3D(options)(document.getElementById('3d-graph'))
   .graphData(gData)
   .enableNodeDrag(false)
@@ -112,8 +115,10 @@ const init = function (gData) {
   })
   .nodeThreeObject((node, index) => {
     node_index--
+    i++
     if (node_index == 0) {
       node_index = gData.nodes.length
+      i = 0
     }
     var size =  Math.min(Math.sqrt(node.value)/1.5 + 6, isMerged ? 60 : 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
     
@@ -162,6 +167,9 @@ const init = function (gData) {
     }
     sprite.nodeId = node.id
     threeNodes.push(sprite)
+    if (i == gData.nodes.length - 1) {
+      console.timeEnd("load")
+    }
     return sprite;
   });
 
@@ -176,10 +184,13 @@ const init = function (gData) {
   
 }
 
+const onLoadedData = () => {
+  console.log("onLoadedData")
+}
+
 
 const hightlightNode = (node => {
   if ((!node && !highlightNodes.size) || (node && focusNode === node)) return;
-  console.log('hightlightNode')
   highlightNodes.clear();
   if (node) {
     highlightNodes.add(node.id);
@@ -194,7 +205,6 @@ const hightlightNode = (node => {
 
 const setHightlightNodes = (nodes => {
   if (!nodes && !highlightNodes.size) return;
-  console.log('hightlightNodes', nodes)
 
   highlightNodes.clear();
   if (nodes) {
@@ -235,13 +245,11 @@ const updateHighlight = function () {
 const functions = {
   autoRotate: function () {
     if (isRotating) return 
-      console.log('autorotate received');
       highlightNodes.clear();
       updateHighlight()
       if (isTransitioning) {
         return; 
       }
-      console.log('rodou auto');
       isRotating = true
       isTransitioning = false;
       if (window.interval) {
@@ -261,7 +269,6 @@ const functions = {
       }, 10);
   },
   stopRotate: function () {
-    console.log('stopRotate received');
     isRotating = false
     isTransitioning = false;
     if (window.interval) {
@@ -269,8 +276,7 @@ const functions = {
     }
   },
   focusOnNodes: function (params) {
-    console.time("focusonnodes");
-    console.log('params', params)
+    console.log("focusonnodes");
     let nodes_id = (params.node_ids || params)
     if (window.interval) {
       clearInterval(window.interval);
