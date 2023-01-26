@@ -12,3 +12,7 @@ function focusOnNode (node_id) {
     "*"
   );
 }
+
+window.addEventListener("message", (event) => {
+  console.log("event", event);
+})

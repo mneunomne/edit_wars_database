@@ -1,4 +1,4 @@
-console.time("load")
+console.time("loaded")
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -35,7 +35,7 @@ window.Graph = null
 var fontFace = null
 var savedCameraPos = null
 window.interval = null
-var isTransitioning = false 
+var isTransitioning = false
 var isRotating = false
 const options = {}//{ controlType: 'fly' }
 
@@ -58,11 +58,11 @@ fetch(`../export/narratives_word_graphs/${narrative}.json`)
 const init = function (gData) {
   var i = 0
   window.Graph = ForceGraph3D(options)(document.getElementById('3d-graph'))
-  .graphData(gData)
-  .enableNodeDrag(false)
-  .showNavInfo(true)
-  .linkLabel(link => {
-    return `
+    .graphData(gData)
+    .enableNodeDrag(false)
+    .showNavInfo(true)
+    .linkLabel(link => {
+      return `
       <div class="tooltip-box">
         <span>source: ${link.source.id}</span><br/>
         <span>target: ${link.target.id}</span><br/>
@@ -70,108 +70,95 @@ const init = function (gData) {
         <span>count: ${link.count}</span>
       </div>
     `
-  })
-  .nodeLabel(node => {
-    return `
+    })
+    .nodeLabel(node => {
+      return `
       <div class="tooltip-box">
         <span>source: ${node.ru}</span><br/>
         <span>count: ${node.value}</span><br/>
         <span>keyword: ${node.keyword}</span><br/>
-        <span style="${isMerged?'':'display:none;'}">narrative: ${node.narrative_title_en}</span>
+        <span style="${isMerged ? '' : 'display:none;'}">narrative: ${node.narrative_title_en}</span>
       </div>
     `
-  })
-  .onNodeClick(node => {
-    functions.focusOnNode({node_id: node.id, show_all: true})
-  })
-  /*
-  .nodeVisibility(node => 
-    highlightNodes.size == 0 || highlightNodes.has(node.id))
-  .linkVisibility(link =>
-    highlightNodes.size == 0 || (focusNode !== null && (link.source.id == focusNode.id || link.target.id == focusNode.id))
-  )
-  */
-  .nodeAutoColorBy(color_param)
-  .enableNavigationControls(true)
-  .backgroundColor("rgba(0, 0, 0, 0)")
-  .linkColor((link) => {
-    return "#000000"
-  })
-  /*
-  .linkWidth(link => {
-    // console.log("link", link, link_index, link_index/250)
-    var width = link_index/250 * 2
-    if (link_index > 1) {
-      link_index--
-    } else {
-      link_index = 250
-    }
-    return width
-  })
-  */
-  .onEngineStop(() => {
-    console.log("onEngineStop!")
-    // Graph.pauseAnimation()
-  })
-  .nodeThreeObject((node, index) => {
-    node_index--
-    i++
-    if (node_index == 0) {
-      node_index = gData.nodes.length
-      i = 0
-    }
-    var size =  Math.min(Math.sqrt(node.value)/1.5 + 6, isMerged ? 60 : 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
-    
-    if (guiOptions.showCircle) {
-      const group = new THREE.Group();
-      const geometry = new THREE.SphereGeometry(size, 32, 64);
-      const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
-      const sphere = new THREE.Mesh(geometry, material);
-      sphere.material.opacity = 0.5
-      sphere.material.transparent = true
-      group.add(sphere);
-    }
-  
-    const sprite = new SpriteText(node[lang == 'ru' ? 'original' : lang].toLowerCase());
-    sprite.position.set(0, 0, 0);
-    sprite.fontFace = "roboto-mono";
-    sprite.padding = [2, 1]
-    sprite.material.depthWrite = false; // make sprite background transparent
-    sprite.color = 'black'//node.color;
-    sprite.strokeColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color;
-    sprite.backgroundColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color//'black'
-
-    sprite.renderOrder = 999;
-    sprite.material.depthTest = false;
-    sprite.material.depthWrite = false;
-    sprite.onBeforeRender = function (renderer) { renderer.clearDepth(); };
-
-    sprite.textHeight = size
-    // sprite.position.set(0, 100, 100);
-  
+    })
+    .onNodeClick(node => {
+      functions.focusOnNode({ node_id: node.id, show_all: true })
+    })
     /*
-    if (highlightNodes.size > 0) {
-      if (highlightNodes.has(node.id)) {
-        sprite.material.opacity = 0.9
-      } else {
-        sprite.material.opacity = 0.3
-      }
-    }
+    .nodeVisibility(node => 
+      highlightNodes.size == 0 || highlightNodes.has(node.id))
+    .linkVisibility(link =>
+      highlightNodes.size == 0 || (focusNode !== null && (link.source.id == focusNode.id || link.target.id == focusNode.id))
+    )
     */
-    //sprite.material.opacity = 0.5
-    sprite.fontWeight = 'normal';
-    //node_index++
-    if (guiOptions.showCircle) {
-      group.add(sprite);
-      return group;
-    }
-    sprite.nodeId = node.id
-    threeNodes.push(sprite)
-    if (i == gData.nodes.length - 1) {
-      console.timeEnd("load")
-    }
-    return sprite;
-  });
+    .nodeAutoColorBy(color_param)
+    .enableNavigationControls(true)
+    .backgroundColor("rgba(0, 0, 0, 0)")
+    .linkColor((link) => {
+      return "#000000"
+    })
+    /*
+    .linkWidth(link => {
+      // console.log("link", link, link_index, link_index/250)
+      var width = link_index/250 * 2
+      if (link_index > 1) {
+        link_index--
+      } else {
+        link_index = 250
+      }
+      return width
+    })
+    */
+    .onEngineStop(() => {
+      console.log("onEngineStop!")
+      // Graph.pauseAnimation()
+    })
+    .nodeThreeObject((node, index) => {
+      node_index--
+      i++
+      if (node_index == 0) {
+        node_index = gData.nodes.length
+        i = 0
+      }
+      var size = Math.min(Math.sqrt(node.value) / 1.5 + 6, isMerged ? 60 : 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
+
+      if (guiOptions.showCircle) {
+        const group = new THREE.Group();
+        const geometry = new THREE.SphereGeometry(size, 32, 64);
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+        const sphere = new THREE.Mesh(geometry, material);
+        sphere.material.opacity = 0.5
+        sphere.material.transparent = true
+        group.add(sphere);
+      }
+
+      const sprite = new SpriteText(node[lang == 'ru' ? 'original' : lang].toLowerCase());
+      sprite.position.set(0, 0, 0);
+      sprite.fontFace = "roboto-mono";
+      sprite.padding = [2, 1]
+      sprite.material.depthWrite = false; // make sprite background transparent
+      sprite.color = 'black'//node.color;
+      sprite.strokeColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color;
+      sprite.backgroundColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color//'black'
+      sprite.renderOrder = 999;
+      sprite.material.depthTest = false;
+      sprite.material.depthWrite = false;
+      sprite.onBeforeRender = function (renderer) { renderer.clearDepth(); };
+      sprite.textHeight = size
+      sprite.fontWeight = 'normal';
+      //node_index++
+      if (guiOptions.showCircle) {
+        group.add(sprite);
+        return group;
+      }
+      sprite.nodeId = node.id
+      threeNodes.push(sprite)
+      if (i == gData.nodes.length - 1) {
+        console.timeEnd("loaded")
+        if (parent) parent.postMessage("nodes_loaded", "*")
+      }
+      return sprite;
+    });
 
   // no scroll zoom
   Graph.controls().noZoom = !isMerged
@@ -181,7 +168,7 @@ const init = function (gData) {
 
   // save initial camera position
   savedCameraPos = Graph.cameraPosition();
-  
+
 }
 
 const onLoadedData = () => {
@@ -223,13 +210,13 @@ const updateHighlight = function () {
   node_index = nodes_length
   threeNodes.forEach((n) => {
     if (highlightNodes.size === 0) {
-        n.material.opacity = 0.9
+      n.material.opacity = 0.9
     } else {
-        if (highlightNodes.has(n.nodeId.toLowerCase())) {
-            n.material.opacity = 0.9
-        } else {
-            n.material.opacity = 0.2
-        }
+      if (highlightNodes.has(n.nodeId.toLowerCase())) {
+        n.material.opacity = 0.9
+      } else {
+        n.material.opacity = 0.2
+      }
     }
   })
   // trigger update of highlighted objects in scene
@@ -244,29 +231,29 @@ const updateHighlight = function () {
 
 const functions = {
   autoRotate: function () {
-    if (isRotating) return 
-      highlightNodes.clear();
-      updateHighlight()
-      if (isTransitioning) {
-        return; 
-      }
-      isRotating = true
-      isTransitioning = false;
-      if (window.interval) {
-        clearInterval(window.interval);
-      }
-      //console.log("Graph.cameraPosition()", )
-      // camera orbit
-      var dist = Graph.cameraPosition().z
-      let angle = 0;
+    if (isRotating) return
+    highlightNodes.clear();
+    updateHighlight()
+    if (isTransitioning) {
+      return;
+    }
+    isRotating = true
+    isTransitioning = false;
+    if (window.interval) {
+      clearInterval(window.interval);
+    }
+    //console.log("Graph.cameraPosition()", )
+    // camera orbit
+    var dist = Graph.cameraPosition().z
+    let angle = 0;
 
-      window.interval = setInterval(() => {
-        Graph.cameraPosition({
-          x: dist * Math.sin(angle),
-          z: dist * Math.cos(angle)
-        }, 10);
-        angle += Math.PI / 5000;
+    window.interval = setInterval(() => {
+      Graph.cameraPosition({
+        x: dist * Math.sin(angle),
+        z: dist * Math.cos(angle)
       }, 10);
+      angle += Math.PI / 5000;
+    }, 10);
   },
   stopRotate: function () {
     isRotating = false
@@ -281,40 +268,40 @@ const functions = {
     if (window.interval) {
       clearInterval(window.interval);
     }
-    
+
     isRotating = false
     isTransitioning = true
-    let distance = params.distance || default_distance 
-    
+    let distance = params.distance || default_distance
+
     const nodes = Graph.graphData().nodes.filter((node) => nodes_id.indexOf(node.id.toLowerCase()) !== -1)
 
     setHightlightNodes(nodes)
     var node = nodes[0]
-    
+
     setTimeout(() => {
       if (nodes.length == 0) {
         this.resetZoom()
         return
-      }  
+      }
       // Aim at node from outside it
       const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
-    
+
       const newPos = node.x || node.y || node.z
         ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
         : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
-    
+
       Graph.cameraPosition(
         newPos, // new position
         node, // lookAt ({ x, y, z })
         3000  // ms transition duration
       );
     }, 50)
-      
+
 
     if (window.timeout) {
       clearTimeout(window.timeout);
     };
-    
+
     window.timeout = setTimeout(() => {
       isTransitioning = false
     }, 3050)
@@ -326,14 +313,14 @@ const functions = {
     if ((params.node_id || params).includes(',')) {
       this.focusOnNodes(data.split(','))
     }
-    
+
     if (window.interval) {
       clearInterval(window.interval);
     }
-    isRotating=false
+    isRotating = false
     isTransitioning = true
     let node_id = params.node_id || params
-    let distance = params.distance || default_distance  
+    let distance = params.distance || default_distance
     var node = Graph.graphData().nodes.find(n => {
       return n.id.toLowerCase() == node_id.toLowerCase()
     })
@@ -353,7 +340,7 @@ const functions = {
       const newPos = node.x || node.y || node.z
         ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
         : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
-    
+
       Graph.cameraPosition(
         newPos, // new position
         node, // lookAt ({ x, y, z })
@@ -390,31 +377,31 @@ const functions = {
     // Graph.zoomToFit(data || 100)
     Graph.cameraPosition(
       {}, // new position
-      {x: 0, y: 0, z: 0}, // lookAt ({ x, y, z })
+      { x: 0, y: 0, z: 0 }, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
   },
   resetZoom: function () {
     highlightNodes.clear();
-        
+
     if (window.interval) {
       clearInterval(window.interval);
     }
     isRotating = false;
     isTransitioning = true;
     if (window.timeout) {
-      clearTimeout(window.timeout); 
+      clearTimeout(window.timeout);
     }
     // 
     Graph.cameraPosition(
       savedCameraPos, // new position
-      {x: 0, y: 0, z: 0}, // lookAt ({ x, y, z })
+      { x: 0, y: 0, z: 0 }, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
     window.timeout = setTimeout(() => {
       isTransitioning = false;
     }, 3000)
-    
+
   },
   noZoom: function (set) {
     Graph.controls().noZoom = set || true
@@ -432,9 +419,9 @@ window.addEventListener("message", (event) => {
 }, false);
 
 
-function onWindowResize(){
+function onWindowResize() {
   Graph.width(window.innerWidth)
   Graph.height(window.innerHeight)
 }
 
-window.addEventListener('resize', onWindowResize, false );
+window.addEventListener('resize', onWindowResize, false);
