@@ -61,16 +61,6 @@ const init = function (gData) {
     .graphData(gData)
     .enableNodeDrag(false)
     .showNavInfo(true)
-    .linkLabel(link => {
-      return `
-      <div class="tooltip-box">
-        <span>source: ${link.source.id}</span><br/>
-        <span>target: ${link.target.id}</span><br/>
-        <span>headline_id: ${link.headline}</span><br/>
-        <span>count: ${link.count}</span>
-      </div>
-    `
-    })
     .nodeLabel(node => {
       return `
       <div class="tooltip-box">
