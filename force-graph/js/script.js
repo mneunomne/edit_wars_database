@@ -74,13 +74,6 @@ const init = function (gData) {
     .onNodeClick(node => {
       functions.focusOnNode({ node_id: node.id, show_all: true })
     })
-    /*
-    .nodeVisibility(node => 
-      highlightNodes.size == 0 || highlightNodes.has(node.id))
-    .linkVisibility(link =>
-      highlightNodes.size == 0 || (focusNode !== null && (link.source.id == focusNode.id || link.target.id == focusNode.id))
-    )
-    */
     .nodeAutoColorBy(color_param)
     .enableNavigationControls(true)
     .backgroundColor("rgba(0, 0, 0, 0)")
