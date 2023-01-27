@@ -2,12 +2,15 @@ console.time("loaded")
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
+const color_param = 'group'
+const isMobile = getIsMobile()
+var narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
+if (isMobile) {
+  narrative = narrative + '_small' 
+}
 const isMerged = narrative.includes('merged')
 const lang = urlParams.get('lang') ? urlParams.get('lang') : isMerged ? 'ru' : 'en'
 const default_distance = isMerged ? 900 : 600;
-const color_param = 'group'
-
 let focusNode = null;
 const highlightNodes = new Set();
 const highlightLinks = new Set();
@@ -60,9 +63,9 @@ const init = function (gData) {
   window.Graph = ForceGraph3D(options)(document.getElementById('3d-graph'))
     .graphData(gData)
     .enableNodeDrag(false)
-    .showNavInfo(true)
+    .showNavInfo(!isMobile)
     .nodeLabel(node => {
-      return `
+      return !isMobile && `
       <div class="tooltip-box">
         <span>source: ${node.ru}</span><br/>
         <span>count: ${node.value}</span><br/>
@@ -74,8 +77,16 @@ const init = function (gData) {
     .onNodeClick(node => {
       functions.focusOnNode({ node_id: node.id, show_all: true })
     })
+    .onEngineStop(() => {
+      console.log("onEngineStop!")
+      Graph.pauseAnimation()
+    })
+    .cooldownTime(5000)
     .nodeAutoColorBy(color_param)
-    .enableNavigationControls(true)
+    .enableNodeDrag(false)
+    .enableNavigationControls(!isMobile)
+    .enablePointerInteraction(!isMobile)
+    .warmupTicks(10)
     .backgroundColor("rgba(0, 0, 0, 0)")
     .linkColor((link) => {
       return "#000000"
@@ -401,6 +412,9 @@ window.addEventListener("message", (event) => {
   }
 }, false);
 
+function getIsMobile () {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+}
 
 function onWindowResize() {
   Graph.width(window.innerWidth)
@@ -408,3 +422,4 @@ function onWindowResize() {
 }
 
 window.addEventListener('resize', onWindowResize, false);
+

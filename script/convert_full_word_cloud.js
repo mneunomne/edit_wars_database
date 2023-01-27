@@ -12,6 +12,7 @@ const path_full_connections_data = 'data/full_connections_data/full_data.csv'
 const path_narratives_keywords = 'data/narratives_keywords.json'
 
 const maxNumNodes = 300
+const maxNumNodesMobile = 100
 const mergedMaxNodes = 2000
 
 var mergedNodes = []
@@ -33,36 +34,49 @@ const readCsvFile = (filename) => {
   .then((_jsonObj)=>{
     const narrativeKeywords = readNarrativeKeywords()
     narrativeKeywords.map(n => {n})
-    var jsonObj = JSON.parse(JSON.stringify(_jsonObj))
 
     var mergedKeywords = []
     narrativeKeywords.map((narrative) => {
       console.log("narrative", narrative)
       var keywords = narrative["keywords"]
       mergedKeywords = mergedKeywords.concat(narrative["keywords"])
+      
       var nodes = []
       var links = []
+      var jsonObj = JSON.parse(JSON.stringify(_jsonObj))
 
-      var narrativeConnectionData = collectNarrativeNodes(nodes, links, keywords, jsonObj, narrativeKeywords, false)
+      var narrativeConnectionData = collectNarrativeNodes(nodes, links, keywords, jsonObj, narrativeKeywords, maxNumNodes, false)
       if (narrativeConnectionData) {
         saveJsonFile(`${outputFolder}${narrative.id}.json`, narrativeConnectionData)
       }
+
+      jsonObj = JSON.parse(JSON.stringify(_jsonObj))
+      nodes = []
+      links = []
+
+      var narrativeConnectionDataMobile = collectNarrativeNodes(nodes, links, keywords, jsonObj, narrativeKeywords, maxNumNodesMobile, true)
+      if (narrativeConnectionDataMobile) {
+        saveJsonFile(`${outputFolder}${narrative.id}_small.json`, narrativeConnectionDataMobile)
+      }
+      
     })
     
     //console.log("mergedKeywords", mergedKeywords)
-    const mergedConnectionData = collectNarrativeNodes(mergedNodes, mergedLinks, mergedKeywords, _jsonObj, narrativeKeywords, true)
+    const mergedConnectionData = collectNarrativeNodes(mergedNodes, mergedLinks, mergedKeywords, _jsonObj, narrativeKeywords, mergedMaxNodes, false)
     saveJsonFile(`${outputFolder}mergedNarrativesConnections.json`, mergedConnectionData)
     
   })
 }
 
-const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeywords, isMerged) => {
+const collectNarrativeNodes = (nodes, links, keywords, jsonObj, narrativeKeywords, numNodes, isSmall) => {
   if (keywords.length > 0 ) {
-    jsonObj = filterDataByKeywords(jsonObj, keywords)
-    jsonObj = mergeByStemmification(jsonObj)
-    var topRanked = jsonObj.sort(sortByCount).slice(0, isMerged ? mergedMaxNodes : maxNumNodes);
-    jsonObj = filterDataByKeywordsRank(jsonObj, keywords, topRanked)
-    jsonObj.map(obj => {
+    var filtered = filterDataByKeywords(jsonObj, keywords)
+    var merged = mergeByStemmification(filtered)
+    var topRanked = merged.sort(sortByCount).slice(0, numNodes)
+    console.log("topRanked", topRanked.length)
+    var filteredByRank = filterDataByKeywordsRank(merged, keywords, topRanked, isSmall)
+    console.log("filteredByRank", filteredByRank.length)
+    filteredByRank.map(obj => {
       let source = obj["source"]
       let target = obj["target"]
       obj["count"] = parseInt(obj["count"])
@@ -190,28 +204,30 @@ const filterDataByKeywords = (jsonObj, keywords) =>
     })
   )
 
-const filterDataByKeywordsRank = (jsonObj, keywords, topRanked) => {
-  var rankNum = 15;
+const filterDataByKeywordsRank = (jsonObj, keywords, topRanked, isSmall) => {
+  var rankNum = isSmall ? 8 : 15;
   var keywordsConnections = {}
   jsonObj.forEach(obj => {
+    // make sure that all words direcrlty connected to the keyword are in the array
     keywords.forEach((k) => {
       if (typeof keywordsConnections[k] == 'undefined') keywordsConnections[k] = []  
       let regex = new RegExp(k, 'g');
       if (regex.exec(obj["source"]) || regex.exec(obj["target"])) {
-        //var object = {...obj, keyword: k}
         keywordsConnections[k].push(obj)
       }
     })
   })
+  // sort the words on connected to each keyword by count
   for (var k in keywordsConnections) {
     keywordsConnections[k] = keywordsConnections[k].sort(sortByCount)
   }
   for (var k in keywordsConnections) {
     keywordsConnections[k].forEach((w, i) => {
       if (i < rankNum) {
+        // add top n words to the topRanked array
         if (!topRanked.some(d => d.source == w.source) || !topRanked.some(d => d.target == w.target)) {
           topRanked.push(w)
-        } 
+        }
       }
     })
   }
