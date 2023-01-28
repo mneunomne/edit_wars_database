@@ -1,5 +1,4 @@
 console.time("loaded")
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const color_param = 'group'
@@ -10,7 +9,7 @@ if (isMobile) {
 }
 const isMerged = narrative.includes('merged')
 const lang = urlParams.get('lang') ? urlParams.get('lang') : isMerged ? 'ru' : 'en'
-const default_distance = isMerged ? 900 : 600;
+var default_distance = isMerged ? 900 : 600;
 let focusNode = null;
 const highlightNodes = new Set();
 const highlightLinks = new Set();
@@ -52,10 +51,11 @@ window.guiOptions = {
 fetch(`../export/narratives_word_graphs/${narrative}.json`)
   .then((response) => response.json())
   .then((data) => {
-    //console.log(data)
-    init(data)
-    nodes_length = data.nodes.length
-    node_index = nodes_length
+    setTimeout(() => {
+      init(data)
+      nodes_length = data.nodes.length
+      node_index = nodes_length
+    }, 500)
   });
 
 const init = function (gData) {
@@ -91,18 +91,6 @@ const init = function (gData) {
     .linkColor((link) => {
       return "#000000"
     })
-    /*
-    .linkWidth(link => {
-      // console.log("link", link, link_index, link_index/250)
-      var width = link_index/250 * 2
-      if (link_index > 1) {
-        link_index--
-      } else {
-        link_index = 250
-      }
-      return width
-    })
-    */
     .onEngineStop(() => {
       console.log("onEngineStop!")
       // Graph.pauseAnimation()
