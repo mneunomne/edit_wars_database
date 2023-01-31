@@ -55,7 +55,7 @@ fetch(`../export/narratives_word_graphs/${narrative}.json`)
       init(data)
       nodes_length = data.nodes.length
       node_index = nodes_length
-    }, 500)
+    }, 1000)
   });
 
 const init = function (gData) {
@@ -83,7 +83,6 @@ const init = function (gData) {
     })
     .cooldownTime(5000)
     .nodeAutoColorBy(color_param)
-    .enableNodeDrag(false)
     .enableNavigationControls(!isMobile)
     .enablePointerInteraction(!isMobile)
     .warmupTicks(10)
