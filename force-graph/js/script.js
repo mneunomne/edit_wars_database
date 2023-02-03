@@ -48,16 +48,19 @@ window.guiOptions = {
   showCircle: false
 }
 document.fonts.ready.then(() => {
-fetch(`../export/narratives_word_graphs/${narrative}.json`)
-  .then((response) => response.json())
-  .then((data) => {
-    setTimeout(() => {
-      init(data)
-      nodes_length = data.nodes.length
-      node_index = nodes_length
-    }, 500)
-  });
-})
+  console.log("fonts loaded")
+  fetch(`../export/narratives_word_graphs/${narrative}.json`)
+    .then((response) => response.json())
+    .then((data) => {
+      setTimeout(() => {
+        init(data)
+        nodes_length = data.nodes.length
+        node_index = nodes_length
+      }, 500)
+    });
+}).catch(() => {
+  console.log("Error loading fonts");
+});
 
 const init = function (gData) {
   var i = 0
