@@ -39,7 +39,7 @@ var savedCameraPos = null
 window.interval = null
 var isTransitioning = false
 var isRotating = false
-const options = {}//{ controlType: 'fly' }
+const options = { controlType: 'trackball' }//{ controlType: 'fly' }
 
 var threeNodes = []
 
@@ -99,6 +99,12 @@ const init = function (gData) {
 
   // no scroll zoom
   Graph.controls().noZoom = !isMerged
+
+  console.log("Graph.controls()", Graph.controls())
+
+  if (!isMobile) {
+    Graph.enableNavigationControls(true)
+  }
 
   // Spread nodes a little wider
   Graph.d3Force('charge').strength(-300);
@@ -220,6 +226,7 @@ const updateHighlight = function () {
 
 const functions = {
   autoRotate: function () {
+    console.log("autorotate")
     if (isRotating) return
     highlightNodes.clear();
     updateHighlight()
