@@ -112,6 +112,9 @@ const init = function (gData) {
   savedCameraPos = Graph.cameraPosition();
 
   updateNodes(gData)
+
+  // dispatch resize event
+  window.dispatchEvent(new Event('resize'));
 }
 
 function updateNodes(gData) {
@@ -165,6 +168,7 @@ function updateNodes(gData) {
 
 const onLoadedData = () => {
   console.log("onLoadedData")
+  
 }
 
 
