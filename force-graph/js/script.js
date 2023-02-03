@@ -47,7 +47,7 @@ window.guiOptions = {
   size: 18,
   showCircle: false
 }
-
+document.fonts.ready.then(() => {
 fetch(`../export/narratives_word_graphs/${narrative}.json`)
   .then((response) => response.json())
   .then((data) => {
@@ -55,8 +55,9 @@ fetch(`../export/narratives_word_graphs/${narrative}.json`)
       init(data)
       nodes_length = data.nodes.length
       node_index = nodes_length
-    }, 1000)
+    }, 500)
   });
+})
 
 const init = function (gData) {
   var i = 0
