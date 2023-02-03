@@ -63,7 +63,6 @@ document.fonts.ready.then(() => {
 });
 
 const init = function (gData) {
-  var i = 0
   window.Graph = ForceGraph3D(options)(document.getElementById('3d-graph'))
     .graphData(gData)
     .enableNodeDrag(false)
@@ -96,52 +95,7 @@ const init = function (gData) {
     .onEngineStop(() => {
       console.log("onEngineStop!")
     })
-    .nodeThreeObject((node, index) => {
-      node_index--
-      i++
-      if (node_index == 0) {
-        node_index = gData.nodes.length
-        i = 0
-      }
-      var size = Math.min(Math.sqrt(node.value) / 1.5 + 6, isMerged ? 60 : 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
-
-      if (guiOptions.showCircle) {
-        const group = new THREE.Group();
-        const geometry = new THREE.SphereGeometry(size, 32, 64);
-        const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
-        const sphere = new THREE.Mesh(geometry, material);
-        sphere.material.opacity = 0.5
-        sphere.material.transparent = true
-        group.add(sphere);
-      }
-
-      const sprite = new SpriteText(node[lang == 'ru' ? 'original' : lang].toLowerCase());
-      sprite.position.set(0, 0, 0);
-      sprite.fontFace = "roboto-mono";
-      sprite.padding = [2, 1]
-      sprite.material.depthWrite = false; // make sprite background transparent
-      sprite.color = 'black'//node.color;
-      sprite.strokeColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color;
-      sprite.backgroundColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color//'black'
-      sprite.renderOrder = 999;
-      sprite.material.depthTest = false;
-      sprite.material.depthWrite = false;
-      sprite.onBeforeRender = function (renderer) { renderer.clearDepth(); };
-      sprite.textHeight = size
-      sprite.fontWeight = 'normal';
-      //node_index++
-      if (guiOptions.showCircle) {
-        group.add(sprite);
-        return group;
-      }
-      sprite.nodeId = node.id
-      threeNodes.push(sprite)
-      if (i == gData.nodes.length - 1) {
-        console.timeEnd("loaded")
-        if (parent) parent.postMessage("nodes_loaded", "*")
-      }
-      return sprite;
-    });
+    
 
   // no scroll zoom
   Graph.controls().noZoom = !isMerged
@@ -152,6 +106,58 @@ const init = function (gData) {
   // save initial camera position
   savedCameraPos = Graph.cameraPosition();
 
+  updateNodes(gData)
+
+}
+
+function updateNodes(gData) {
+  var i = 0
+  Graph.nodeThreeObject((node, index) => {
+    node_index--
+    i++
+    if (node_index == 0) {
+      node_index = gData.nodes.length
+      i = 0
+    }
+    var size = Math.min(Math.sqrt(node.value) / 1.5 + 6, isMerged ? 60 : 30) // guiOptions.size * ( node_index/gData.nodes.length) + 4 //node.index / 230 * 10
+
+    if (guiOptions.showCircle) {
+      const group = new THREE.Group();
+      const geometry = new THREE.SphereGeometry(size, 32, 64);
+      const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+      const sphere = new THREE.Mesh(geometry, material);
+      sphere.material.opacity = 0.5
+      sphere.material.transparent = true
+      group.add(sphere);
+    }
+
+    const sprite = new SpriteText(node[lang == 'ru' ? 'original' : lang].toLowerCase());
+    sprite.position.set(0, 0, 0);
+    sprite.fontFace = "roboto-mono";
+    sprite.padding = [2, 1]
+    sprite.material.depthWrite = false; // make sprite background transparent
+    sprite.color = 'black'//node.color;
+    sprite.strokeColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color;
+    sprite.backgroundColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color//'black'
+    sprite.renderOrder = 999;
+    sprite.material.depthTest = false;
+    sprite.material.depthWrite = false;
+    sprite.onBeforeRender = function (renderer) { renderer.clearDepth(); };
+    sprite.textHeight = size
+    sprite.fontWeight = 'normal';
+    //node_index++
+    if (guiOptions.showCircle) {
+      group.add(sprite);
+      return group;
+    }
+    sprite.nodeId = node.id
+    threeNodes.push(sprite)
+    if (i == gData.nodes.length - 1) {
+      console.timeEnd("loaded")
+      if (parent) parent.postMessage("nodes_loaded", "*")
+    }
+    return sprite;
+  });
 }
 
 const onLoadedData = () => {

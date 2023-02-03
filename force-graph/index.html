@@ -1,6 +1,5 @@
 <head>
   <title>edit_wars 3d-force-graph</title>
-  <link rel="preload" href="../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.ttf" as="roboto-mono" type="font/ttf" crossorigin>
   <style>
     body {
       margin: 0;
@@ -11,11 +10,12 @@
       src: url('./fonts/SpaceMono-Regular.ttf') format('truetype');
     }
 
-    /* roboto-mono-regular - latin_cyrillic
+    /* roboto-mono-regular - latin_cyrillic */
     @font-face {
       font-family: 'roboto-mono';
       font-style: normal;
       font-weight: 400;
+      font-display: auto; /* or block, swap, fallback, optional */
       src: url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.eot');
       src: local('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.eot'),
         url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.eot?#iefix') format('embedded-opentype'),
@@ -24,7 +24,6 @@
         url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.ttf') format('truetype'),
         url('../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.svg#RobotoMono') format('svg');
     }
-     */
 
     :root {
       --main-color-1: #fc3e3e;
