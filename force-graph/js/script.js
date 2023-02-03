@@ -86,7 +86,7 @@ const init = function (gData) {
     })
     //.cooldownTime(5000)
     .nodeAutoColorBy(color_param)
-    .enablePointerInteraction(!isMobile)
+    //.enablePointerInteraction(!isMobile)
     //.warmupTicks(10)
     .backgroundColor("rgba(0, 0, 0, 0)")
     .linkColor((link) => {
