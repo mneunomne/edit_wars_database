@@ -81,17 +81,16 @@ const init = function (gData) {
       console.log("onEngineStop!")
       Graph.pauseAnimation()
     })
-    .cooldownTime(5000)
+    //.cooldownTime(5000)
     .nodeAutoColorBy(color_param)
     .enablePointerInteraction(!isMobile)
-    .warmupTicks(10)
+    //.warmupTicks(10)
     .backgroundColor("rgba(0, 0, 0, 0)")
     .linkColor((link) => {
       return "#000000"
     })
     .onEngineStop(() => {
       console.log("onEngineStop!")
-      // Graph.pauseAnimation()
     })
     .nodeThreeObject((node, index) => {
       node_index--
