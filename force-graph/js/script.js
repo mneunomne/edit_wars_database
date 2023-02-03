@@ -96,7 +96,6 @@ const init = function (gData) {
       console.log("onEngineStop!")
     })
     
-
   // no scroll zoom
   Graph.controls().noZoom = !isMerged
 
@@ -113,7 +112,6 @@ const init = function (gData) {
   savedCameraPos = Graph.cameraPosition();
 
   updateNodes(gData)
-
 }
 
 function updateNodes(gData) {
@@ -151,7 +149,6 @@ function updateNodes(gData) {
     sprite.onBeforeRender = function (renderer) { renderer.clearDepth(); };
     sprite.textHeight = size
     sprite.fontWeight = 'normal';
-    //node_index++
     if (guiOptions.showCircle) {
       group.add(sprite);
       return group;
