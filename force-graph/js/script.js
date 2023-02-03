@@ -83,7 +83,6 @@ const init = function (gData) {
     })
     .cooldownTime(5000)
     .nodeAutoColorBy(color_param)
-    .enableNavigationControls(!isMobile)
     .enablePointerInteraction(!isMobile)
     .warmupTicks(10)
     .backgroundColor("rgba(0, 0, 0, 0)")
