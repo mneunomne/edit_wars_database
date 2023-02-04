@@ -51,8 +51,13 @@ window.guiOptions = {
   size: 18,
   showCircle: false
 }
-document.fonts.ready.then(() => {
-  console.log("fonts loaded")
+
+// Loading FontFaces via JavaScript is alternative to using CSS's @font-face rule.
+var robotoMono = new FontFace('roboto-mono', 'url("../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.woff2")');
+document.fonts.add(robotoMono);
+
+document.fonts.ready.then((evt) => {
+  console.log("fonts loaded", evt)
   fetch(`../export/narratives_word_graphs/${narrative}.json`)
     .then((response) => response.json())
     .then((data) => {
