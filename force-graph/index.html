@@ -10,6 +10,11 @@
     #graph {
       width: 100vw;
       height: 100vh;
+      transition: opacity 0.5s;
+    }
+
+    #graph.hide {
+      opacity: 0;
     }
 
     @font-face {
@@ -84,7 +89,7 @@
 </head>
 
 <body>
-  <div id="graph"></div>
+  <div id="graph" class="hide"></div>
   
   <h1 style="opacity: 0;">тест</h1>
 

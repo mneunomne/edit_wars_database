@@ -45,6 +45,8 @@ const options = {
 
 var threeNodes = []
 
+const graphDom = document.getElementById('graph')
+
 window.guiOptions = {
   size: 18,
   showCircle: false
@@ -58,15 +60,14 @@ document.fonts.ready.then(() => {
         init(data)
         nodes_length = data.nodes.length
         node_index = nodes_length
-      }, 500)
+      }, 50)
     });
 }).catch(() => {
   console.log("Error loading fonts");
 });
 
 const init = function (gData) {
-  window.Graph = ForceGraph3D(options)(document.getElementById('graph'))
-
+  window.Graph = ForceGraph3D(options)(graphDom)
     .graphData(gData)
     .enableNodeDrag(false)
     .showNavInfo(!isMobile)
@@ -109,13 +110,16 @@ const init = function (gData) {
     Graph.enableNavigationControls(true)
   }
 
-  // Spread nodes a little wider
-  Graph.d3Force('charge').strength(-300);
-
+  
   // save initial camera position
   savedCameraPos = Graph.cameraPosition();
-
-  updateNodes(gData)
+  
+  setTimeout(() => {
+    updateNodes(gData)
+    // Spread nodes a little wider
+    Graph.d3Force('charge').strength(-300);
+    graphDom.className = 'loaded'
+  }, 500)
 
   // dispatch resize event
   window.dispatchEvent(new Event('resize'));
@@ -172,7 +176,6 @@ function updateNodes(gData) {
 
 const onLoadedData = () => {
   console.log("onLoadedData")
-  
 }
 
 
