@@ -40,10 +40,7 @@ window.interval = null
 var isTransitioning = false
 var isRotating = false
 const options = {
-  controlType: 'trackball',
-  rendererConfig: {
-    canvas: document.querySelector('#canvas')
-  }
+  controlType: 'trackball'
 }
 
 var threeNodes = []
@@ -90,10 +87,10 @@ const init = function (gData) {
       console.log("onEngineStop!")
       Graph.pauseAnimation()
     })
-    //.cooldownTime(5000)
+    .cooldownTime(5000)
     .nodeAutoColorBy(color_param)
-    //.enablePointerInteraction(!isMobile)
-    //.warmupTicks(10)
+    .enablePointerInteraction(!isMobile)
+    .warmupTicks(10)
     .backgroundColor("rgba(0, 0, 0, 0)")
     .linkColor((link) => {
       return "#000000"
@@ -107,8 +104,6 @@ const init = function (gData) {
 
   Graph.controls().screen.width = window.innerWidth
   Graph.controls().screen.height = window.innerHeight
-
-  console.log("Graph.controls()", Graph.controls())
 
   if (!isMobile) {
     Graph.enableNavigationControls(true)
@@ -429,7 +424,6 @@ function getIsMobile () {
 }
 
 function onWindowResize() {
-  console.log("Graph", Graph)
   Graph.width(window.innerWidth)
   Graph.height(window.innerHeight)
   Graph.controls().screen.width = window.innerWidth
