@@ -427,8 +427,8 @@ function getIsMobile () {
 
 function onWindowResize() {
   console.log("Graph", Graph)
-  //Graph.width(window.innerWidth)
-  //Graph.height(window.innerHeight)
+  Graph.width(window.innerWidth)
+  Graph.height(window.innerHeight)
 }
 
 window.addEventListener('resize', onWindowResize, false);
