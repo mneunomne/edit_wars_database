@@ -63,7 +63,7 @@ document.fonts.ready.then(() => {
 });
 
 const init = function (gData) {
-  window.Graph = ForceGraph3D(options)(document.getElementById('3d-graph'))
+  window.Graph = ForceGraph3D(options)(document.getElementById('graph'))
     .graphData(gData)
     .enableNodeDrag(false)
     .showNavInfo(!isMobile)
