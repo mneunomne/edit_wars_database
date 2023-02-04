@@ -39,7 +39,12 @@ var savedCameraPos = null
 window.interval = null
 var isTransitioning = false
 var isRotating = false
-const options = { controlType: 'trackball' }//{ controlType: 'fly' }
+const options = {
+  controlType: 'trackball',
+  rendererConfig: {
+    canvas: document.querySelector('#canvas')
+  }
+}
 
 var threeNodes = []
 
@@ -64,6 +69,7 @@ document.fonts.ready.then(() => {
 
 const init = function (gData) {
   window.Graph = ForceGraph3D(options)(document.getElementById('graph'))
+
     .graphData(gData)
     .enableNodeDrag(false)
     .showNavInfo(!isMobile)
@@ -420,8 +426,9 @@ function getIsMobile () {
 }
 
 function onWindowResize() {
-  Graph.width(window.innerWidth)
-  Graph.height(window.innerHeight)
+  console.log("Graph", Graph)
+  //Graph.width(window.innerWidth)
+  //Graph.height(window.innerHeight)
 }
 
 window.addEventListener('resize', onWindowResize, false);
