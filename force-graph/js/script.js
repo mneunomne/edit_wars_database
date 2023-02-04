@@ -105,6 +105,9 @@ const init = function (gData) {
   // no scroll zoom
   Graph.controls().noZoom = !isMerged
 
+  Graph.controls().screen.width = window.innerWidth
+  Graph.controls().screen.height = window.innerHeight
+
   console.log("Graph.controls()", Graph.controls())
 
   if (!isMobile) {
@@ -429,6 +432,8 @@ function onWindowResize() {
   console.log("Graph", Graph)
   Graph.width(window.innerWidth)
   Graph.height(window.innerHeight)
+  Graph.controls().screen.width = window.innerWidth
+  Graph.controls().screen.height = window.innerHeight
 }
 
 window.addEventListener('resize', onWindowResize, false);
