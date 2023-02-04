@@ -53,7 +53,7 @@ window.guiOptions = {
 }
 
 // Loading FontFaces via JavaScript is alternative to using CSS's @font-face rule.
-var robotoMono = new FontFace('roboto-mono', 'url("../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.woff2")');
+var robotoMono = new FontFace('Roboto Mono', 'url("../fonts/roboto-mono-v22-latin_cyrillic-ext_cyrillic-regular.woff2")');
 document.fonts.add(robotoMono);
 
 document.fonts.ready.then((evt) => {
@@ -155,7 +155,7 @@ function updateNodes(gData) {
 
     const sprite = new SpriteText(node[lang == 'ru' ? 'original' : lang].toLowerCase());
     sprite.position.set(0, 0, 0);
-    sprite.fontFace = "roboto-mono";
+    sprite.fontFace = "Roboto Mono";
     sprite.padding = [2, 1]
     sprite.material.depthWrite = false; // make sprite background transparent
     sprite.color = 'black'//node.color;
