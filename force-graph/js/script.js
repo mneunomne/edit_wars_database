@@ -116,9 +116,11 @@ const init = function (gData) {
   
   setTimeout(() => {
     updateNodes(gData)
-    // Spread nodes a little wider
-    Graph.d3Force('charge').strength(-300);
-    graphDom.className = 'loaded'
+    setTimeout(() => {
+      // Spread nodes a little wider
+      Graph.d3Force('charge').strength(-300);
+      graphDom.className = 'loaded'
+      }, 500)
   }, 500)
 
   // dispatch resize event
