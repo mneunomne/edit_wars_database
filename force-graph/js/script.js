@@ -57,14 +57,7 @@ var robotoMono = new FontFace('roboto-mono', 'url("../fonts/roboto-mono-v22-lati
 document.fonts.add(robotoMono);
 
 document.fonts.ready.then((evt) => {
-  window.checkFontInterval = setInterval(() => {
-    var check = document.fonts.check("16px roboto-mono")
-    if (check) {
-      console.log("font loaded")
-      clearInterval(window.checkFontInterval)
-      loadData()
-    }
-  }, 100)
+  loadData()
 }).catch(() => {
   console.log("Error loading fonts");
 });
@@ -73,11 +66,16 @@ function loadData() {
   fetch(`../export/narratives_word_graphs/${narrative}.json`)
     .then((response) => response.json())
     .then((data) => {
-      setTimeout(() => {
-        init(data)
-        nodes_length = data.nodes.length
-        node_index = nodes_length
-      }, 1000)
+      window.checkFontInterval = setInterval(() => {
+        var check = document.fonts.check("16px roboto-mono")
+        if (check) {
+          console.log("font loaded")
+          clearInterval(window.checkFontInterval)
+          init(data)
+          nodes_length = data.nodes.length
+          node_index = nodes_length
+        }
+      }, 100)
     });
 }
 
