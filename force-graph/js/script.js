@@ -129,7 +129,6 @@ const init = function (gData) {
       sprite.renderOrder = 999;
       sprite.material.depthTest = false;
       sprite.material.depthWrite = false;
-      sprite.onBeforeRender = function (renderer) { renderer.clearDepth(); };
       sprite.textHeight = size
       sprite.fontWeight = 'normal';
       return sprite;
