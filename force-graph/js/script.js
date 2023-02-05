@@ -116,20 +116,8 @@ const init = function (gData) {
     }).nodeThreeObject(node => {
       const sprite = new SpriteText(node[lang == 'ru' ? 'original' : lang].toLowerCase());
       sprite.position.set(0, 0, 0);
-      if (document.fonts.check("16px roboto-mono")) {
-        sprite.fontFace = "roboto-mono";
-      } else {
-        sprite.fontFace = "Arial";
-      }
-      sprite.padding = [2, 1]
-      sprite.material.depthWrite = false; // make sprite background transparent
+      sprite.fontFace = "roboto-mono";
       sprite.color = 'black'//node.color;
-      sprite.strokeColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color;
-      sprite.backgroundColor = isMerged ? node.narrative_color : colors[node['group'] % colors.length]//node.color//'black'
-      sprite.renderOrder = 999;
-      sprite.material.depthTest = false;
-      sprite.material.depthWrite = false;
-      sprite.textHeight = size
       sprite.fontWeight = 'normal';
       return sprite;
     })
