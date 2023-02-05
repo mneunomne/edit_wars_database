@@ -156,6 +156,7 @@ function updateNodes(gData) {
     const sprite = new SpriteText(node[lang == 'ru' ? 'original' : lang].toLowerCase());
     sprite.position.set(0, 0, 0);
     //sprite.fontFace = "roboto-mono";
+    console.log("font check", document.fonts.check("16px roboto-mono"))
     sprite.padding = [2, 1]
     sprite.material.depthWrite = false; // make sprite background transparent
     sprite.color = 'black'//node.color;
