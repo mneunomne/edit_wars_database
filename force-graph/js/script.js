@@ -69,7 +69,7 @@ function loadData() {
       var attempts = 0
       window.checkFontInterval = setInterval(() => {
         var check = document.fonts.check("16px roboto-mono")
-        if (check || attempts > 100) {
+        if (check || attempts > 10) {
           console.log("font loaded")
           clearInterval(window.checkFontInterval)
           init(data)
