@@ -75,8 +75,8 @@ function loadData() {
           init(data)
           nodes_length = data.nodes.length
           node_index = nodes_length
-          attempts++
         }
+        attempts++
       }, 100)
     });
 }
