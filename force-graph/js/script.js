@@ -65,7 +65,7 @@ document.fonts.ready.then((evt) => {
         init(data)
         nodes_length = data.nodes.length
         node_index = nodes_length
-      }, 50)
+      }, 1000)
     });
 }).catch(() => {
   console.log("Error loading fonts");
