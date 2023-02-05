@@ -5,7 +5,7 @@ const color_param = 'group'
 const isMobile = getIsMobile()
 var narrative = urlParams.get('narrative') ? urlParams.get('narrative') : 'mythical-nazis'
 if (isMobile) {
-  narrative = narrative + '_small' 
+  narrative = narrative + '_small'
 }
 const isMerged = narrative.includes('merged')
 const lang = urlParams.get('lang') ? urlParams.get('lang') : isMerged ? 'ru' : 'en'
@@ -57,7 +57,19 @@ var robotoMono = new FontFace('roboto-mono', 'url("../fonts/roboto-mono-v22-lati
 document.fonts.add(robotoMono);
 
 document.fonts.ready.then((evt) => {
-  console.log("fonts loaded", evt)
+  window.checkFontInterval = setInterval(() => {
+    var check = document.fonts.check("16px roboto-mono")
+    if (check) {
+      console.log("font loaded")
+      clearInterval(window.checkFontInterval)
+      loadData()
+    }
+  }, 100)
+}).catch(() => {
+  console.log("Error loading fonts");
+});
+
+function loadData() {
   fetch(`../export/narratives_word_graphs/${narrative}.json`)
     .then((response) => response.json())
     .then((data) => {
@@ -67,9 +79,7 @@ document.fonts.ready.then((evt) => {
         node_index = nodes_length
       }, 1000)
     });
-}).catch(() => {
-  console.log("Error loading fonts");
-});
+}
 
 const init = function (gData) {
   window.Graph = ForceGraph3D(options)(graphDom)
@@ -104,7 +114,7 @@ const init = function (gData) {
     .onEngineStop(() => {
       console.log("onEngineStop!")
     })
-    
+
   // no scroll zoom
   Graph.controls().noZoom = !isMerged
 
@@ -115,17 +125,17 @@ const init = function (gData) {
     Graph.enableNavigationControls(true)
   }
 
-  
+
   // save initial camera position
   savedCameraPos = Graph.cameraPosition();
-  
+
   setTimeout(() => {
     updateNodes(gData)
     setTimeout(() => {
       // Spread nodes a little wider
       Graph.d3Force('charge').strength(-300);
       graphDom.className = 'loaded'
-      }, 500)
+    }, 500)
   }, 500)
 
   // dispatch resize event
@@ -429,7 +439,7 @@ window.addEventListener("message", (event) => {
   }
 }, false);
 
-function getIsMobile () {
+function getIsMobile() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 }
 
