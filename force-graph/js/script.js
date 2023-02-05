@@ -66,14 +66,16 @@ function loadData() {
   fetch(`../export/narratives_word_graphs/${narrative}.json`)
     .then((response) => response.json())
     .then((data) => {
+      var attempts = 0
       window.checkFontInterval = setInterval(() => {
         var check = document.fonts.check("16px roboto-mono")
-        if (check) {
+        if (check || attempts > 100) {
           console.log("font loaded")
           clearInterval(window.checkFontInterval)
           init(data)
           nodes_length = data.nodes.length
           node_index = nodes_length
+          attempts++
         }
       }, 100)
     });
@@ -163,8 +165,11 @@ function updateNodes(gData) {
 
     const sprite = new SpriteText(node[lang == 'ru' ? 'original' : lang].toLowerCase());
     sprite.position.set(0, 0, 0);
-    //sprite.fontFace = "roboto-mono";
-    console.log("font check", document.fonts.check("16px roboto-mono"))
+    if (document.fonts.check("16px roboto-mono")) {
+      sprite.fontFace = "roboto-mono";
+    } else {
+      sprite.fontFace = "Arial";
+    }
     sprite.padding = [2, 1]
     sprite.material.depthWrite = false; // make sprite background transparent
     sprite.color = 'black'//node.color;
